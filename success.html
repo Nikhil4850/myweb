@@ -27,25 +27,21 @@
       <a href="index.html" class="btn btn-primary" style="margin-top:1rem">Browse Projects</a>
     `;
   } else {
-    const { projectName, zipUrl, instructions } = JSON.parse(data);
-    sessionStorage.removeItem('downloadData'); // clear after reading
+    const { projectName, txnId, zipUrl } = JSON.parse(data);
+    sessionStorage.removeItem('downloadData');
 
     container.innerHTML = `
       <div class="success-icon">🎉</div>
-      <h1 style="font-size:2rem;font-weight:800;margin-bottom:0.5rem;">Payment Successful!</h1>
-      <p style="color:var(--muted);margin-bottom:2rem;">You've purchased <strong style="color:var(--text)">${projectName}</strong>. Download your files below.</p>
+      <h1 style="font-size:2rem;font-weight:800;margin-bottom:0.5rem;">Payment Submitted!</h1>
+      <p style="color:var(--muted);margin-bottom:0.5rem;">Thank you for purchasing <strong style="color:var(--text)">${projectName}</strong>.</p>
+      <p style="color:var(--muted);font-size:0.85rem;margin-bottom:2rem;">Transaction ID: <code style="color:var(--primary);background:var(--surface2);padding:0.2rem 0.5rem;border-radius:4px;">${txnId}</code></p>
 
       <div class="download-box">
-        <div style="font-weight:700;margin-bottom:1rem;font-size:1.1rem;">📦 Your Download</div>
-        <p style="color:var(--muted);font-size:0.9rem;margin-bottom:1rem;">Click the button below to download the full source code ZIP file.</p>
+        <div style="font-weight:700;margin-bottom:0.75rem;font-size:1.1rem;">📦 Download Your Project</div>
+        <p style="color:var(--muted);font-size:0.9rem;margin-bottom:1rem;">Click below to download the full source code ZIP.</p>
         <a href="${zipUrl}" download class="btn btn-success btn-lg" style="width:100%;justify-content:center;">
           ⬇ Download Source Code (ZIP)
         </a>
-      </div>
-
-      <div style="text-align:left;margin-bottom:1rem;">
-        <div style="font-weight:700;margin-bottom:0.75rem;">📋 How to Run This Project</div>
-        <div class="instructions-box">${instructions}</div>
       </div>
 
       <a href="index.html" class="btn btn-outline" style="margin-top:1rem">Browse More Projects</a>

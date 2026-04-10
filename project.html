@@ -20,21 +20,40 @@
   <p style="color:var(--muted)">Loading project...</p>
 </div>
 
-<!-- Payment Confirm Modal -->
+<!-- Payment Modal -->
 <div class="modal-overlay" id="payModal">
-  <div class="modal">
-    <h2>Confirm Purchase</h2>
-    <p id="modalDesc">You're about to purchase this project.</p>
-    <div class="modal-actions">
-      <button class="btn btn-outline" onclick="closeModal()">Cancel</button>
-      <button class="btn btn-primary" id="payBtn" onclick="startPayment()">Pay with Razorpay</button>
+  <div class="modal pay-modal">
+
+    <!-- Step 1: QR -->
+    <div id="step1">
+      <h2>Scan & Pay</h2>
+      <p id="modalDesc" style="color:var(--muted);font-size:0.9rem;margin-bottom:1rem;"></p>
+      <div style="text-align:center;">
+        <img src="images/qr.png" alt="UPI QR Code" class="qr-img" />
+        <p style="color:var(--muted);font-size:0.82rem;margin-top:0.75rem;">Scan with any UPI app (GPay, PhonePe, Paytm)</p>
+      </div>
+      <div class="modal-actions" style="margin-top:1.5rem;">
+        <button class="btn btn-outline" onclick="closeModal()">Cancel</button>
+        <button class="btn btn-primary" onclick="showStep2()">I've Paid →</button>
+      </div>
     </div>
+
+    <!-- Step 2: Transaction ID -->
+    <div id="step2" style="display:none;">
+      <h2>Enter Transaction ID</h2>
+      <p style="color:var(--muted);font-size:0.9rem;margin-bottom:1.25rem;">Paste the UPI transaction / UTR ID from your payment app.</p>
+      <input type="text" id="txnInput" class="txn-input" placeholder="e.g. 123456789012" />
+      <p id="txnError" style="color:#ef4444;font-size:0.82rem;margin-top:0.4rem;display:none;">Please enter a valid transaction ID.</p>
+      <div class="modal-actions" style="margin-top:1.5rem;">
+        <button class="btn btn-outline" onclick="showStep1()">← Back</button>
+        <button class="btn btn-primary" onclick="submitTxn()">Verify & Download</button>
+      </div>
+    </div>
+
   </div>
 </div>
 
-<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 <script src="js/projects.js"></script>
-<script src="js/razorpay.js"></script>
 <script>
   const params = new URLSearchParams(window.location.search);
   const projectId = params.get('id');
@@ -76,11 +95,37 @@
   }
 
   function openModal() {
-    document.getElementById('modalDesc').textContent = `Purchase "${project.title}" for ₹${project.price}`;
+    document.getElementById('modalDesc').textContent = `Pay ₹${project.price} for "${project.title}"`;
+    showStep1();
     document.getElementById('payModal').classList.add('active');
   }
   function closeModal() {
     document.getElementById('payModal').classList.remove('active');
+  }
+  function showStep1() {
+    document.getElementById('step1').style.display = '';
+    document.getElementById('step2').style.display = 'none';
+  }
+  function showStep2() {
+    document.getElementById('step1').style.display = 'none';
+    document.getElementById('step2').style.display = '';
+    document.getElementById('txnInput').value = '';
+    document.getElementById('txnError').style.display = 'none';
+  }
+  function submitTxn() {
+    const txn = document.getElementById('txnInput').value.trim();
+    if (!txn || txn.length < 6) {
+      document.getElementById('txnError').style.display = 'block';
+      return;
+    }
+    // Store data and go to download page
+    sessionStorage.setItem('downloadData', JSON.stringify({
+      projectName: project.title,
+      projectId: project.id,
+      txnId: txn,
+      zipUrl: `downloads/${project.id}.zip`,
+    }));
+    window.location.href = 'success.html';
   }
 </script>
 </body>
