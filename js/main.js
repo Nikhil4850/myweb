@@ -2,7 +2,20 @@
 const grid = document.getElementById('projectsGrid');
 let currentFilter = 'all';
 let currentSort = 'default';
-let filteredProjects = [...projects];
+
+// Ensure projects are loaded
+let filteredProjects = [];
+
+// Wait for projects to be available
+function initializeProjects() {
+  if (typeof projects !== 'undefined') {
+    filteredProjects = [...projects];
+    renderProjects();
+    setupEventListeners();
+  } else {
+    setTimeout(initializeProjects, 100);
+  }
+}
 
 // Add loading state
 function showLoadingState() {
@@ -233,8 +246,8 @@ document.addEventListener('DOMContentLoaded', () => {
   // Setup event listeners
   setupEventListeners();
   
-  // Initial render of all projects
-  renderProjects();
+  // Initialize projects with proper loading
+  initializeProjects();
   
   document.querySelectorAll('.section').forEach(section => {
     section.style.opacity = '0';
