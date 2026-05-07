@@ -171,8 +171,261 @@
   </div>
 </footer>
 
-<script src="js/projects.js"></script>
 <script src="js/enhancements.js"></script>
-<script src="js/main.js"></script>
+<script>
+// Projects data
+const projects = [
+  {
+    id: 'proj_001',
+    title: ' E-Commerce App',
+    description: 'Complete shopping platform with cart, payments, admin dashboard, and order tracking.',
+    tech: ['HTML', 'CSS', 'JavaScript'],
+    price: 499,
+    originalPrice: 899,
+    discount: 44,
+    demoUrl: 'https://nikprojects-1.github.io/eCommerce/',
+    thumbnail: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&h=340&fit=crop&auto=format',
+    features: ['User Auth', 'Product Management', 'Cart & Checkout', 'Admin Panel', 'Order History'],
+    available: true,
+    githubZip: 'https://github.com/Nikprojects-1/eCommerce/archive/refs/heads/main.zip'
+  },
+  {
+    id: 'proj_002',
+    title: 'Real-Time Chat Application',
+    description: 'WhatsApp-style chat app with rooms, private messaging, and online status.',
+    tech: ['React', 'Socket.io', 'Node.js', 'MongoDB'],
+    price: 399,
+    originalPrice: 599,
+    discount: 33,
+    demoUrl: 'https://your-demo-link.com/chat',
+    thumbnail: 'https://images.unsplash.com/photo-1611746879615-1a8c5b5c6e0b?w=600&h=340&fit=crop&auto=format',
+    features: ['Real-time Messaging', 'Chat Rooms', 'Private DMs', 'Online Status', 'File Sharing'],
+    available: true,
+  },
+  {
+    id: 'proj_003',
+    title: 'Developer Portfolio Website',
+    description: 'Clean, responsive portfolio with animations, project showcase, and contact form.',
+    tech: ['HTML', 'CSS', 'JavaScript'],
+    price: 1,
+    originalPrice: 299,
+    discount: 99,
+    demoUrl: 'https://your-demo-link.com/portfolio',
+    thumbnail: 'https://images.unsplash.com/photo-1542744175293-7a39f8e83fd?w=600&h=340&fit=crop&auto=format',
+    features: ['Responsive Design', 'Smooth Animations', 'Project Gallery', 'Contact Form', 'Dark Mode'],
+    available: true,
+  },
+  {
+    id: 'proj_004',
+    title: 'Task Management App',
+    description: 'Trello-like kanban board with drag & drop, deadlines, and team collaboration.',
+    tech: ['Vue.js', 'Firebase', 'Tailwind CSS'],
+    price: 299,
+    originalPrice: 699,
+    discount: 57,
+    demoUrl: 'https://nikprojects-1.github.io/TaskManager/',
+    thumbnail: 'https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=600&h=340&fit=crop&auto=format',
+    features: ['Kanban Board', 'Drag & Drop', 'Team Sharing', 'Deadlines', 'Notifications'],
+    available: true,
+    githubZip: 'https://github.com/Nikprojects-1/TaskManager/archive/refs/heads/main.zip'
+  },
+  {
+    id: 'proj_005',
+    title: 'Blog CMS Platform',
+    description: 'Full-featured blog with markdown editor, categories, comments, and SEO.',
+    tech: ['Next.js', 'PostgreSQL', 'Prisma'],
+    price: 499,
+    originalPrice: 899,
+    discount: 44,
+    demoUrl: 'https://your-demo-link.com/blog',
+    thumbnail: 'https://images.unsplash.com/photo-1499750310107-5fef28a66643e?w=600&h=340&fit=crop&auto=format',
+    features: ['Markdown Editor', 'Category Management', 'Comment System', 'SEO Optimization', 'Admin Panel']
+  },
+  {
+    id: 'proj_006',
+    title: 'Expense Tracker App',
+    description: 'Personal finance app with budget tracking, expenses, and analytics.',
+    tech: ['React', 'Chart.js', 'LocalStorage'],
+    price: 1,
+    originalPrice: 399,
+    discount: 99,
+    demoUrl: 'https://your-demo-link.com/expense',
+    thumbnail: 'https://images.unsplash.com/photo-1554224154-260325c02f57?w=600&h=340&fit=crop&auto=format',
+    features: ['Expense Tracking', 'Budget Planning', 'Analytics Dashboard', 'Export Reports', 'Mobile Responsive']
+  },
+  {
+    id: 'proj_007',
+    title: 'Weather Dashboard',
+    description: 'Real-time weather app with forecasts, maps, and location services.',
+    tech: ['JavaScript', 'Weather API', 'Chart.js'],
+    price: 299,
+    originalPrice: 599,
+    discount: 50,
+    demoUrl: 'https://your-demo-link.com/weather',
+    thumbnail: 'https://images.unsplash.com/photo-1592210454359-1d08e0b4bda6?w=600&h=340&fit=crop&auto=format',
+    features: ['Real-time Weather', '7-Day Forecast', 'Location Services', 'Weather Maps', 'Alerts']
+  },
+  {
+    id: 'proj_008',
+    title: 'Todo List App',
+    description: 'Modern todo app with categories, priorities, and progress tracking.',
+    tech: ['Vue.js', 'Vuex', 'Tailwind CSS'],
+    price: 1,
+    originalPrice: 199,
+    discount: 99,
+    demoUrl: 'https://your-demo-link.com/todo',
+    thumbnail: 'https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=600&h=340&fit=crop&auto=format',
+    features: ['Task Management', 'Priority Levels', 'Progress Tracking', 'Categories', 'Dark Mode']
+  }
+];
+
+// Main JavaScript functionality
+const grid = document.getElementById('projectsGrid');
+let currentFilter = 'all';
+let currentSort = 'default';
+
+// Ensure projects are loaded
+let filteredProjects = [];
+
+// Wait for projects to be available
+function initializeProjects() {
+  if (typeof projects !== 'undefined') {
+    filteredProjects = [...projects];
+    renderProjects();
+    setupEventListeners();
+  } else {
+    setTimeout(initializeProjects, 100);
+  }
+}
+
+// Filter projects
+function filterProjects(filter) {
+  currentFilter = filter;
+
+  if (filter === 'all') {
+    filteredProjects = [...projects];
+  } else if (filter === 'available') {
+    filteredProjects = projects.filter(p => 
+      p.available === true && 
+      p.demoUrl && 
+      p.demoUrl !== 'https://your-demo-link.com/chat' &&
+      p.demoUrl !== 'https://your-demo-link.com/portfolio'
+    );
+  } else if (filter === 'free') {
+    filteredProjects = projects.filter(p => p.price === 1);
+  } else if (filter === 'paid') {
+    filteredProjects = projects.filter(p => p.price > 1);
+  }
+
+  sortProjects(currentSort);
+}
+
+// Sort projects
+function sortProjects(sort) {
+  currentSort = sort;
+
+  if (sort === 'price-low-high') {
+    filteredProjects.sort((a, b) => a.price - b.price);
+  } else if (sort === 'price-high-low') {
+    filteredProjects.sort((a, b) => b.price - a.price);
+  } else {
+    filteredProjects.sort((a, b) => parseInt(a.id.slice(6)) - parseInt(b.id.slice(6)));
+  }
+
+  renderProjects();
+}
+
+// Render projects
+function renderProjects() {
+  grid.innerHTML = '';
+  
+  if (filteredProjects.length === 0) {
+    grid.innerHTML = `
+      <div style="grid-column: 1 / -1; text-align: center; padding: 3rem;">
+        <div style="font-size: 3rem; margin-bottom: 1rem;">🔍</div>
+        <p style="color: var(--text-secondary); font-size: 1.1rem;">No projects found for this filter.</p>
+        <button class="btn btn-outline" style="margin-top: 1rem;" onclick="resetFilters()">Reset Filters</button>
+      </div>
+    `;
+    return;
+  }
+  
+  filteredProjects.forEach((p, index) => {
+    const card = document.createElement('div');
+    card.className = 'card';
+    card.style.opacity = '0';
+    card.style.transform = 'translateY(20px)';
+    
+    const priceDisplay = p.price === 1 ? '₹1' : `₹${p.price}`;
+    const originalPriceDisplay = p.originalPrice > 1 ? `₹${p.originalPrice}` : '';
+    const discountDisplay = p.discount > 0 ? `${p.discount}% OFF` : '';
+    const buttonClass = p.price === 1 ? 'btn-success' : 'btn-primary';
+    const buttonText = p.price === 1 ? 'Get Now' : 'Buy Now';
+    
+    card.innerHTML = `
+      <img class="card-thumb" src="${p.thumbnail}" alt="${p.title}" loading="lazy" />
+      <div class="card-body">
+        <div class="card-title">${p.title}</div>
+        <div class="card-desc">${p.description}</div>
+        <div class="card-tech">
+          ${p.tech.map(t => `<span class="tech-tag">${t}</span>`).join('')}
+        </div>
+        <div class="card-footer">
+          <div class="price-container">
+            ${discountDisplay ? `<div class="discount-badge">${discountDisplay}</div>` : ''}
+            <div class="price-wrapper">
+              <div class="price-current">${priceDisplay}</div>
+              ${originalPriceDisplay ? `<div class="price-original">${originalPriceDisplay}</div>` : ''}
+            </div>
+            <div class="price-note">${p.price === 1 ? 'limited offer' : 'one-time'}</div>
+          </div>
+          <div class="card-buttons">
+            <a href="${p.demoUrl}" target="_blank" class="btn btn-outline btn-sm">Live Demo</a>
+            <button class="btn ${buttonClass} btn-sm" onclick="window.location.href='project.html?id=${p.id}'">${buttonText}</button>
+          </div>
+        </div>
+      </div>
+    `;
+    
+    grid.appendChild(card);
+    
+    setTimeout(() => {
+      card.style.transition = 'all 0.6s cubic-bezier(0.4, 0, 0.2, 1)';
+      card.style.opacity = '1';
+      card.style.transform = 'translateY(0)';
+    }, index * 100);
+  });
+}
+
+// Setup event listeners
+function setupEventListeners() {
+  // Filter buttons
+  document.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      filterProjects(btn.dataset.filter);
+    });
+  });
+
+  // Sort select
+  document.getElementById('sortSelect').addEventListener('change', (e) => {
+    sortProjects(e.target.value);
+  });
+}
+
+// Reset filters
+function resetFilters() {
+  document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+  document.querySelector('[data-filter="all"]').classList.add('active');
+  document.getElementById('sortSelect').value = 'default';
+  filterProjects('all');
+}
+
+// Initialize on page load
+document.addEventListener('DOMContentLoaded', () => {
+  initializeProjects();
+});
+</script>
 </body>
 </html>
