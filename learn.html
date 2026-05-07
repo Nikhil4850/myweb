@@ -115,6 +115,7 @@
   </div>
 </footer>
 
+<script src="js/enhancements.js"></script>
 <script>
 // Video data
 const videos = [
@@ -144,13 +145,57 @@ const videos = [
     thumbnail: 'https://img.youtube.com/vi/BPKiV6cGX9U/hqdefault.jpg',
     duration: 'Masterclass',
     videoUrl: 'https://www.youtube.com/embed/BPKiV6cGX9U?si=5cHxACDml8gykTXN'
+  },
+  {
+    id: 'video_004',
+    title: 'Professional Web Development',
+    description: 'Learn professional web development techniques and industry standards',
+    category: 'fullstack',
+    thumbnail: 'https://img.youtube.com/vi/7SOx4rGeCzQ/hqdefault.jpg',
+    duration: 'Professional',
+    videoUrl: 'https://www.youtube.com/embed/7SOx4rGeCzQ?si=LNwK9_-GZbxwRDq4'
+  },
+  {
+    id: 'video_005',
+    title: 'Expert Web Development',
+    description: 'Expert-level web development techniques and best practices',
+    category: 'fullstack',
+    thumbnail: 'https://img.youtube.com/vi/HpOuO2RbPBU/hqdefault.jpg',
+    duration: 'Expert',
+    videoUrl: 'https://www.youtube.com/embed/HpOuO2RbPBU?si=uFdGdKlFyrkpRwnh'
+  },
+  {
+    id: 'video_006',
+    title: 'Ultimate Web Development',
+    description: 'Ultimate guide to web development mastery and advanced techniques',
+    category: 'fullstack',
+    thumbnail: 'https://img.youtube.com/vi/QMaOa7naJSs/hqdefault.jpg',
+    duration: 'Ultimate',
+    videoUrl: 'https://www.youtube.com/embed/QMaOa7naJSs?si=JwG-6tJ2NCE5qcLQ'
+  },
+  {
+    id: 'video_007',
+    title: 'Complete Web Development',
+    description: 'Complete web development course from start to finish',
+    category: 'fullstack',
+    thumbnail: 'https://img.youtube.com/vi/B1pepta904o/hqdefault.jpg',
+    duration: 'Complete',
+    videoUrl: 'https://www.youtube.com/embed/B1pepta904o?si=qeYNMiGvBJP6zzTp'
   }
 ];
+
+// Initialize page
+document.addEventListener('DOMContentLoaded', () => {
+  renderVideos('all');
+  setupFilterButtons();
+});
 
 // Render videos
 function renderVideos(category) {
   const grid = document.getElementById('videosGrid');
-  const filteredVideos = category === 'all' ? videos : videos.filter(video => video.category === category);
+  const filteredVideos = category === 'all' 
+    ? videos 
+    : videos.filter(video => video.category === category);
   
   grid.innerHTML = '';
   
@@ -175,6 +220,7 @@ function renderVideos(category) {
     
     grid.appendChild(videoCard);
     
+    // Staggered animation
     setTimeout(() => {
       videoCard.style.transition = 'all 0.6s cubic-bezier(0.4, 0, 0.2, 1)';
       videoCard.style.opacity = '1';
@@ -189,9 +235,14 @@ function setupFilterButtons() {
   
   filterButtons.forEach(button => {
     button.addEventListener('click', () => {
+      // Remove active class from all buttons
       filterButtons.forEach(btn => btn.classList.remove('active'));
+      // Add active class to clicked button
       button.classList.add('active');
-      renderVideos(button.dataset.category);
+      
+      // Render videos for selected category
+      const category = button.dataset.category;
+      renderVideos(category);
     });
   });
 }
@@ -213,10 +264,18 @@ function closeVideoModal() {
   document.body.style.overflow = '';
 }
 
-// Initialize page
-document.addEventListener('DOMContentLoaded', () => {
-  renderVideos('all');
-  setupFilterButtons();
+// Close modal on overlay click
+document.getElementById('videoModal').addEventListener('click', (e) => {
+  if (e.target === document.getElementById('videoModal')) {
+    closeVideoModal();
+  }
+});
+
+// Close modal on escape key
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') {
+    closeVideoModal();
+  }
 });
 </script>
 </body>
