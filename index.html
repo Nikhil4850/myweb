@@ -171,8 +171,21 @@
   </div>
 </footer>
 
-<script src="js/projects.js"></script>
-<script src="js/enhancements.js"></script>
-<script src="js/main.js"></script>
+  <script src="js/projects.js"></script>
+  <script>
+    // Debug: Check if projects loaded
+    window.addEventListener('load', () => {
+      console.log('Window loaded, checking projects:', typeof projects, projects?.length || 'undefined');
+      if (typeof projects === 'undefined') {
+        console.error('Projects not loaded - script issue');
+      } else if (!projects || projects.length === 0) {
+        console.error('Projects empty or undefined');
+      } else {
+        console.log('Projects loaded successfully:', projects.length, 'projects');
+      }
+    });
+  </script>
+  <script src="js/enhancements.js"></script>
+  <script src="js/main.js"></script>
 </body>
 </html>
