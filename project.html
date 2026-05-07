@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Project Details - Niksprojects Store</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">Niks<span>projects</span></a>
+  <div class="nav-links">
+    <a href="index.html#projects">← Back to Projects</a>
+    <a href="learn.html">Learn</a>
+    <a href="index.html#how-it-works">How it Works</a>
+    <a href="contact.html">Contact</a>
+  </div>
+</nav>
+
+<div class="detail-hero" id="detailContent">
+  <p style="color:var(--muted)">Loading project...</p>
+</div>
+
+<!-- Payment Modal -->
+<div class="modal-overlay" id="payModal">
+  <div class="modal pay-modal">
+
+    <!-- Step 1: QR -->
+    <div id="step1">
+      <h2>Scan & Pay</h2>
+      <p id="modalDesc" style="color:var(--muted);font-size:0.9rem;margin-bottom:1rem;"></p>
+      <div style="text-align:center;">
+        <img src="images/qr.png" alt="UPI QR Code" class="qr-img" />
+        <p style="color:var(--muted);font-size:0.82rem;margin-top:0.75rem;">Scan with any UPI app (GPay, PhonePe, Paytm)</p>
+      </div>
+      <div class="modal-actions" style="margin-top:1.5rem;">
+        <button class="btn btn-outline" onclick="closeModal()">Cancel</button>
+        <button class="btn btn-primary" onclick="showStep2()">I've Paid →</button>
+      </div>
+    </div>
+
+    <!-- Step 2: Transaction ID -->
+    <div id="step2" style="display:none;">
+      <h2>Enter Transaction ID</h2>
+      <p style="color:var(--muted);font-size:0.9rem;margin-bottom:1.25rem;">Paste the UPI transaction / UTR ID from your payment app.</p>
+      <input type="text" id="txnInput" class="txn-input" placeholder="e.g. 123456789012" />
+      <p id="txnError" style="color:#ef4444;font-size:0.82rem;margin-top:0.4rem;display:none;">Please enter a valid transaction ID.</p>
+      <div class="modal-actions" style="margin-top:1.5rem;">
+        <button class="btn btn-outline" onclick="showStep1()">← Back</button>
+        <button class="btn btn-primary" onclick="submitTxn()">Verify & Download</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script src="js/projects.js"></script>
+<script src="js/enhancements.js"></script>
+<script>
+  // QR Code mapping based on price
+  const qrCodes = {
+    1: 'https://www.image2url.com/r2/default/images/1778054249544-9d832936-3d5e-4a5e-8e67-e0c6c344cf3e.jpeg',
+    199: 'https://www.image2url.com/r2/default/images/1778054653688-bd9d3b76-0e6d-4000-8178-731460d0b0e3.jpeg',
+    299: 'https://www.image2url.com/r2/default/images/1778054701879-0588696b-3886-45fa-8573-02ac2f0ff4ea.jpeg',
+    399: 'https://www.image2url.com/r2/default/images/1778054732891-30b95cee-0ab9-4ce2-9684-d41d0e184ff6.jpeg',
+    499: 'https://www.image2url.com/r2/default/images/1778054764848-359c3e7b-ccff-4aef-b2a5-a93ecad24774.jpeg'
+  };
+
+  const params = new URLSearchParams(window.location.search);
+  const projectId = params.get('id');
+  const project = projects.find(p => p.id === projectId);
+  const content = document.getElementById('detailContent');
+
+  if (!project) {
+    content.innerHTML = '<p style="color:var(--muted)">Project not found. <a href="index.html" style="color:var(--primary)">Go back</a></p>';
+  } else {
+    document.title = `${project.title} - Niksprojects Store`;
+    content.innerHTML = `
+      <h1 style="font-size:2rem;font-weight:800;margin-bottom:0.5rem;">${project.title}</h1>
+      <p style="color:var(--muted);margin-bottom:2rem;">${project.description}</p>
+      <div class="detail-grid">
+        <div>
+          <iframe class="demo-frame" src="${project.demoUrl}" title="Live Demo" allowfullscreen></iframe>
+          <p style="color:var(--muted);font-size:0.8rem;margin-top:0.5rem;">↑ Live demo preview. <a href="${project.demoUrl}" target="_blank" style="color:var(--primary)">Open in new tab →</a></p>
+          <div style="margin-top:1.5rem;">
+            <div style="font-weight:700;margin-bottom:0.75rem;">Tech Stack</div>
+            <div class="card-tech">${project.tech.map(t => `<span class="tech-tag">${t}</span>`).join('')}</div>
+          </div>
+        </div>
+        <div class="detail-sidebar">
+          <div class="detail-price">₹${project.price}</div>
+          <div style="color:var(--muted);font-size:0.85rem;margin-bottom:1rem;">One-time payment. Instant access.</div>
+          <button class="btn btn-primary btn-lg" style="width:100%" onclick="openModal()">Buy Now</button>
+          <hr class="divider" />
+          <div style="font-weight:600;margin-bottom:0.5rem;">What you get:</div>
+          <ul class="feature-list">
+            ${project.features.map(f => `<li>${f}</li>`).join('')}
+            <li>Full Source Code (ZIP)</li>
+            <li>Step-by-step Run Guide</li>
+          </ul>
+          <hr class="divider" />
+          <div style="color:var(--muted);font-size:0.8rem;text-align:center;">🔒 Secure payment via Razorpay</div>
+        </div>
+      </div>
+    `;
+  }
+
+  function openModal() {
+    document.getElementById('modalDesc').textContent = `Pay ₹${project.price} for "${project.title}"`;
+    // Update QR code based on price
+    const qrImage = document.querySelector('.qr-img');
+    qrImage.src = qrCodes[project.price];
+    showStep1();
+    document.getElementById('payModal').classList.add('active');
+  }
+  function closeModal() {
+    document.getElementById('payModal').classList.remove('active');
+  }
+  function showStep1() {
+    document.getElementById('step1').style.display = '';
+    document.getElementById('step2').style.display = 'none';
+  }
+  function showStep2() {
+    document.getElementById('step1').style.display = 'none';
+    document.getElementById('step2').style.display = '';
+    document.getElementById('txnInput').value = '';
+    document.getElementById('txnError').style.display = 'none';
+  }
+  function submitTxn() {
+    const txn = document.getElementById('txnInput').value.trim();
+    if (!txn || txn.length < 6) {
+      document.getElementById('txnError').style.display = 'block';
+      return;
+    }
+    // Store data and go to download page
+    sessionStorage.setItem('downloadData', JSON.stringify({
+      projectName: project.title,
+      projectId: project.id,
+      txnId: txn,
+      zipUrl: project.githubZip || `downloads/${project.id}.zip`,
+    }));
+    window.location.href = 'success.html';
+  }
+</script>
+
+<footer>
+  <div class="footer-content">
+    <div class="footer-grid">
+      <div class="footer-section">
+        <div class="footer-logo">Niks<span>projects</span></div>
+        <p class="footer-description">
+          Your trusted source for high-quality, ready-to-use student projects with comprehensive support and documentation.
+        </p>
+        <div class="social-links">
+          <a href="#" aria-label="Twitter">𝕏</a>
+          <a href="#" aria-label="GitHub">⚡</a>
+          <a href="#" aria-label="LinkedIn">in</a>
+          <a href="#" aria-label="YouTube">▶</a>
+        </div>
+      </div>
+      
+      <div class="footer-section">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="index.html#projects">Browse Projects</a></li>
+          <li><a href="learn.html">Video Tutorials</a></li>
+          <li><a href="index.html#how-it-works">How It Works</a></li>
+          <li><a href="contact.html">Contact Support</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-section">
+        <h3>Resources</h3>
+        <ul>
+          <li><a href="#">Documentation</a></li>
+          <li><a href="#">Setup Guides</a></li>
+          <li><a href="#">FAQ</a></li>
+          <li><a href="#">Blog</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-section">
+        <h3>Legal</h3>
+        <ul>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms of Service</a></li>
+          <li><a href="#">Refund Policy</a></li>
+          <li><a href="#">License Agreement</a></li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <div class="footer-bottom-content">
+        <p>&copy; 2026 Niksprojects Store. All rights reserved.</p>
+        <div class="footer-bottom-links">
+          <span>🔒 Payments secured by Razorpay</span>
+          <span>•</span>
+          <span>🛡️ SSL Encrypted</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

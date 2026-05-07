@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Learn Development - Niksprojects Store</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">Niks<span>projects</span></a>
+  <div class="nav-links">
+    <a href="index.html#projects">Projects</a>
+    <a href="learn.html" class="active">Learn</a>
+    <a href="index.html#how-it-works">How it Works</a>
+    <a href="contact.html">Contact</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="badge">📚 Free Learning Resources</div>
+  <h1>Master <span>Web Development</span><br/>with Video Tutorials</h1>
+  <p>Step-by-step video guides to help you build amazing projects. From basics to advanced concepts.</p>
+</section>
+
+<section class="section" id="learn-content">
+  <div class="section-title">Video Tutorials</div>
+  <div class="section-sub">Learn by watching professionals build real projects</div>
+  
+  <div class="video-filters">
+    <button class="filter-btn active" data-category="all">All Videos</button>
+    <button class="filter-btn" data-category="frontend">Frontend</button>
+    <button class="filter-btn" data-category="backend">Backend</button>
+    <button class="filter-btn" data-category="fullstack">Full Stack</button>
+    <button class="filter-btn" data-category="tools">Tools & Tips</button>
+  </div>
+
+  <div class="videos-grid" id="videosGrid">
+    <!-- Videos will be populated by JavaScript -->
+  </div>
+</section>
+
+<!-- Video Modal -->
+<div class="modal-overlay" id="videoModal">
+  <div class="modal video-modal">
+    <div class="video-modal-header">
+      <span id="videoTitle">Video Title</span>
+      <button class="video-close-btn" onclick="closeVideoModal()">✕</button>
+    </div>
+    <div class="video-embed-wrap">
+      <iframe id="videoFrame" src="" allowfullscreen></iframe>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-content">
+    <div class="footer-grid">
+      <div class="footer-section">
+        <div class="footer-logo">Niks<span>projects</span></div>
+        <p class="footer-description">
+          Your trusted source for high-quality, ready-to-use student projects with comprehensive support and documentation.
+        </p>
+        <div class="social-links">
+          <a href="#" aria-label="Twitter">𝕏</a>
+          <a href="#" aria-label="GitHub">⚡</a>
+          <a href="#" aria-label="LinkedIn">in</a>
+          <a href="#" aria-label="YouTube">▶</a>
+        </div>
+      </div>
+      
+      <div class="footer-section">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="index.html#projects">Browse Projects</a></li>
+          <li><a href="learn.html">Video Tutorials</a></li>
+          <li><a href="index.html#how-it-works">How It Works</a></li>
+          <li><a href="contact.html">Contact Support</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-section">
+        <h3>Resources</h3>
+        <ul>
+          <li><a href="#">Documentation</a></li>
+          <li><a href="#">Setup Guides</a></li>
+          <li><a href="#">FAQ</a></li>
+          <li><a href="#">Blog</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-section">
+        <h3>Legal</h3>
+        <ul>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms of Service</a></li>
+          <li><a href="#">Refund Policy</a></li>
+          <li><a href="#">License Agreement</a></li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <div class="footer-bottom-content">
+        <p>&copy; 2026 Niksprojects Store. All rights reserved.</p>
+        <div class="footer-bottom-links">
+          <span>🔒 Payments secured by Razorpay</span>
+          <span>•</span>
+          <span>🛡️ SSL Encrypted</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="js/enhancements.js"></script>
+<script>
+// Video data
+const videos = [
+  {
+    id: 'video_001',
+    title: 'Development Tutorial',
+    description: 'Learn web development with step-by-step tutorials',
+    category: 'fullstack',
+    thumbnail: 'https://img.youtube.com/vi/ZqkKNo-pSPQ/hqdefault.jpg',
+    duration: 'Tutorial',
+    videoUrl: 'https://www.youtube.com/embed/ZqkKNo-pSPQ?si=vu71_rRwnl6VR3BJ'
+  },
+  {
+    id: 'video_002',
+    title: 'Advanced Development Guide',
+    description: 'Master advanced web development concepts and techniques',
+    category: 'fullstack',
+    thumbnail: 'https://img.youtube.com/vi/Vx97HvV6W_Q/hqdefault.jpg',
+    duration: 'Advanced',
+    videoUrl: 'https://www.youtube.com/embed/Vx97HvV6W_Q?si=4K7mqWKLhHMi88Xx'
+  },
+  {
+    id: 'video_003',
+    title: 'Web Development Masterclass',
+    description: 'Complete guide to modern web development best practices',
+    category: 'fullstack',
+    thumbnail: 'https://img.youtube.com/vi/BPKiV6cGX9U/hqdefault.jpg',
+    duration: 'Masterclass',
+    videoUrl: 'https://www.youtube.com/embed/BPKiV6cGX9U?si=5cHxACDml8gykTXN'
+  },
+  {
+    id: 'video_004',
+    title: 'Professional Web Development',
+    description: 'Learn professional web development techniques and industry standards',
+    category: 'fullstack',
+    thumbnail: 'https://img.youtube.com/vi/7SOx4rGeCzQ/hqdefault.jpg',
+    duration: 'Professional',
+    videoUrl: 'https://www.youtube.com/embed/7SOx4rGeCzQ?si=LNwK9_-GZbxwRDq4'
+  },
+  {
+    id: 'video_005',
+    title: 'Expert Web Development',
+    description: 'Expert-level web development techniques and best practices',
+    category: 'fullstack',
+    thumbnail: 'https://img.youtube.com/vi/HpOuO2RbPBU/hqdefault.jpg',
+    duration: 'Expert',
+    videoUrl: 'https://www.youtube.com/embed/HpOuO2RbPBU?si=uFdGdKlFyrkpRwnh'
+  },
+  {
+    id: 'video_006',
+    title: 'Ultimate Web Development',
+    description: 'Ultimate guide to web development mastery and advanced techniques',
+    category: 'fullstack',
+    thumbnail: 'https://img.youtube.com/vi/QMaOa7naJSs/hqdefault.jpg',
+    duration: 'Ultimate',
+    videoUrl: 'https://www.youtube.com/embed/QMaOa7naJSs?si=JwG-6tJ2NCE5qcLQ'
+  },
+  {
+    id: 'video_007',
+    title: 'Complete Web Development',
+    description: 'Complete web development course from start to finish',
+    category: 'fullstack',
+    thumbnail: 'https://img.youtube.com/vi/B1pepta904o/hqdefault.jpg',
+    duration: 'Complete',
+    videoUrl: 'https://www.youtube.com/embed/B1pepta904o?si=qeYNMiGvBJP6zzTp'
+  }
+];
+
+// Initialize page
+document.addEventListener('DOMContentLoaded', () => {
+  renderVideos('all');
+  setupFilterButtons();
+});
+
+// Render videos
+function renderVideos(category) {
+  const grid = document.getElementById('videosGrid');
+  const filteredVideos = category === 'all' 
+    ? videos 
+    : videos.filter(video => video.category === category);
+  
+  grid.innerHTML = '';
+  
+  filteredVideos.forEach((video, index) => {
+    const videoCard = document.createElement('div');
+    videoCard.className = 'video-card';
+    videoCard.style.opacity = '0';
+    videoCard.style.transform = 'translateY(20px)';
+    
+    videoCard.innerHTML = `
+      <div class="video-thumb-wrap" onclick="openVideoModal('${video.id}')">
+        <img class="video-thumb" src="${video.thumbnail}" alt="${video.title}" loading="lazy" />
+        <div class="play-btn">▶</div>
+        <div class="video-duration">${video.duration}</div>
+      </div>
+      <div class="video-info">
+        <div class="video-category">${video.category}</div>
+        <div class="video-title">${video.title}</div>
+        <div class="video-desc">${video.description}</div>
+      </div>
+    `;
+    
+    grid.appendChild(videoCard);
+    
+    // Staggered animation
+    setTimeout(() => {
+      videoCard.style.transition = 'all 0.6s cubic-bezier(0.4, 0, 0.2, 1)';
+      videoCard.style.opacity = '1';
+      videoCard.style.transform = 'translateY(0)';
+    }, index * 100);
+  });
+}
+
+// Setup filter buttons
+function setupFilterButtons() {
+  const filterButtons = document.querySelectorAll('.filter-btn');
+  
+  filterButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      // Remove active class from all buttons
+      filterButtons.forEach(btn => btn.classList.remove('active'));
+      // Add active class to clicked button
+      button.classList.add('active');
+      
+      // Render videos for selected category
+      const category = button.dataset.category;
+      renderVideos(category);
+    });
+  });
+}
+
+// Video modal functions
+function openVideoModal(videoId) {
+  const video = videos.find(v => v.id === videoId);
+  if (video) {
+    document.getElementById('videoTitle').textContent = video.title;
+    document.getElementById('videoFrame').src = video.videoUrl;
+    document.getElementById('videoModal').classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+}
+
+function closeVideoModal() {
+  document.getElementById('videoModal').classList.remove('active');
+  document.getElementById('videoFrame').src = '';
+  document.body.style.overflow = '';
+}
+
+// Close modal on overlay click
+document.getElementById('videoModal').addEventListener('click', (e) => {
+  if (e.target === document.getElementById('videoModal')) {
+    closeVideoModal();
+  }
+});
+
+// Close modal on escape key
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') {
+    closeVideoModal();
+  }
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact Us - Niksprojects Store</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">Niks<span>projects</span></a>
+  <div class="nav-links">
+    <a href="index.html#projects">Projects</a>
+    <a href="learn.html">Learn</a>
+    <a href="index.html#how-it-works">How it Works</a>
+    <a href="contact.html" class="active">Contact</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="badge">💬 Get in Touch</div>
+  <h1>Let's <span>Connect</span></h1>
+  <p>Have questions about our projects? Need support? We're here to help you succeed.</p>
+</section>
+
+<section class="section">
+  <div class="contact-container">
+    <div class="contact-grid">
+      <!-- Contact Form -->
+      <div class="contact-form-section">
+        <div class="section-title">Send us a Message</div>
+        <div class="section-sub">We'll get back to you within 24 hours</div>
+        
+        <form class="contact-form" id="contactForm">
+          <div class="form-group">
+            <label for="name">Full Name *</label>
+            <input type="text" id="name" name="name" required placeholder="John Doe">
+          </div>
+          
+          <div class="form-group">
+            <label for="email">Email Address *</label>
+            <input type="email" id="email" name="email" required placeholder="john@example.com">
+          </div>
+          
+          <div class="form-group">
+            <label for="subject">Subject *</label>
+            <select id="subject" name="subject" required>
+              <option value="">Select a topic</option>
+              <option value="support">Technical Support</option>
+              <option value="billing">Billing & Payments</option>
+              <option value="projects">Project Questions</option>
+              <option value="partnership">Partnership Opportunities</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+          
+          <div class="form-group">
+            <label for="message">Message *</label>
+            <textarea id="message" name="message" rows="5" required placeholder="Tell us how we can help you..."></textarea>
+          </div>
+          
+          <button type="submit" class="btn btn-primary btn-lg">
+            <span>Send Message</span>
+            <span>→</span>
+          </button>
+        </form>
+      </div>
+      
+      <!-- Contact Information -->
+      <div class="contact-info-section">
+        <div class="section-title">Other Ways to Reach Us</div>
+        
+        <div class="contact-cards">
+          <div class="contact-card">
+            <div class="contact-icon">📧</div>
+            <div class="contact-details">
+              <h3>Email Support</h3>
+              <p>niksprojectss@gmail.com</p>
+              <span class="contact-subtitle">Response within 24 hours</span>
+            </div>
+          </div>
+          
+          <div class="contact-card">
+            <div class="contact-icon">💬</div>
+            <div class="contact-details">
+              <h3>Live Chat</h3>
+              <p>Available Mon-Fri, 9AM-6PM IST</p>
+              <span class="contact-subtitle">Instant help for urgent issues</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="faq-section">
+          <h3>Frequently Asked Questions</h3>
+          <div class="faq-list">
+            <div class="faq-item">
+              <button class="faq-question">How do I download my purchased project?</button>
+              <div class="faq-answer">
+                After successful payment, you'll be redirected to a download page where you can instantly download the ZIP file containing the complete source code and documentation.
+              </div>
+            </div>
+            
+            <div class="faq-item">
+              <button class="faq-question">What payment methods do you accept?</button>
+              <div class="faq-answer">
+                We accept UPI, credit/debit cards, net banking, and various digital wallets through our secure Razorpay payment gateway.
+              </div>
+            </div>
+            
+            <div class="faq-item">
+              <button class="faq-question">Can I get support after purchase?</button>
+              <div class="faq-answer">
+                Yes! All purchases include 30 days of email support for setup and basic customization questions. Extended support packages are also available.
+              </div>
+            </div>
+            
+            <div class="faq-item">
+              <button class="faq-question">Do you offer refunds?</button>
+              <div class="faq-answer">
+                We offer a 7-day money-back guarantee if the project doesn't work as described or has technical issues that we cannot resolve.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Success Modal -->
+<div class="modal-overlay" id="successModal">
+  <div class="modal">
+    <div style="text-align: center; padding: 1rem;">
+      <div style="font-size: 3rem; margin-bottom: 1rem;">✅</div>
+      <h2 style="margin-bottom: 0.5rem;">Message Sent!</h2>
+      <p style="color: var(--text-secondary); margin-bottom: 1.5rem;">We'll get back to you within 24 hours.</p>
+      <button class="btn btn-primary" onclick="closeSuccessModal()">Got it</button>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-content">
+    <div class="footer-grid">
+      <div class="footer-section">
+        <div class="footer-logo">Niks<span>projects</span></div>
+        <p class="footer-description">
+          Your trusted source for high-quality, ready-to-use student projects with comprehensive support and documentation.
+        </p>
+        <div class="social-links">
+          <a href="#" aria-label="Twitter">𝕏</a>
+          <a href="#" aria-label="GitHub">⚡</a>
+          <a href="#" aria-label="LinkedIn">in</a>
+          <a href="#" aria-label="YouTube">▶</a>
+        </div>
+      </div>
+      
+      <div class="footer-section">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="index.html#projects">Browse Projects</a></li>
+          <li><a href="learn.html">Video Tutorials</a></li>
+          <li><a href="index.html#how-it-works">How It Works</a></li>
+          <li><a href="contact.html">Contact Support</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-section">
+        <h3>Resources</h3>
+        <ul>
+          <li><a href="#">Documentation</a></li>
+          <li><a href="#">Setup Guides</a></li>
+          <li><a href="#">FAQ</a></li>
+          <li><a href="#">Blog</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-section">
+        <h3>Legal</h3>
+        <ul>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms of Service</a></li>
+          <li><a href="#">Refund Policy</a></li>
+          <li><a href="#">License Agreement</a></li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <div class="footer-bottom-content">
+        <p>&copy; 2026 Niksprojects Store. All rights reserved.</p>
+        <div class="footer-bottom-links">
+          <span>🔒 Payments secured by Razorpay</span>
+          <span>•</span>
+          <span>🛡️ SSL Encrypted</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="js/enhancements.js"></script>
+<script>
+// Contact form handling
+document.getElementById('contactForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+  
+  // Get form data
+  const formData = new FormData(this);
+  const data = Object.fromEntries(formData);
+  
+  // Show loading state
+  const submitBtn = this.querySelector('button[type="submit"]');
+  const originalText = submitBtn.innerHTML;
+  submitBtn.innerHTML = '<span style="animation: spin 1s linear infinite;">⚡</span> Sending...';
+  submitBtn.disabled = true;
+  
+  // Simulate form submission
+  setTimeout(() => {
+    // Reset form
+    this.reset();
+    
+    // Reset button
+    submitBtn.innerHTML = originalText;
+    submitBtn.disabled = false;
+    
+    // Show success modal
+    document.getElementById('successModal').classList.add('active');
+    
+    // Store in localStorage for demo purposes
+    localStorage.setItem('contactSubmission', JSON.stringify({
+      ...data,
+      timestamp: new Date().toISOString()
+    }));
+  }, 1500);
+});
+
+// Close success modal
+function closeSuccessModal() {
+  document.getElementById('successModal').classList.remove('active');
+}
+
+// FAQ accordion
+document.querySelectorAll('.faq-question').forEach(button => {
+  button.addEventListener('click', () => {
+    const faqItem = button.parentElement;
+    const answer = button.nextElementSibling;
+    const isOpen = faqItem.classList.contains('open');
+    
+    // Close all other FAQs
+    document.querySelectorAll('.faq-item').forEach(item => {
+      item.classList.remove('open');
+      item.querySelector('.faq-answer').style.maxHeight = '0';
+    });
+    
+    // Toggle current FAQ
+    if (!isOpen) {
+      faqItem.classList.add('open');
+      answer.style.maxHeight = answer.scrollHeight + 'px';
+    }
+  });
+});
+
+// Set initial FAQ answer heights
+document.querySelectorAll('.faq-answer').forEach(answer => {
+  answer.style.maxHeight = '0';
+  answer.style.overflow = 'hidden';
+  answer.style.transition = 'max-height 0.3s ease-out';
+});
+</script>
+</body>
+</html>

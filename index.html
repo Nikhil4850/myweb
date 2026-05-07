@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Niksprojects Store - Buy Student Projects</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">Niks<span>projects</span></div>
+  <div class="nav-links">
+    <a href="#projects">Projects</a>
+    <a href="learn.html">Learn</a>
+    <a href="#how-it-works">How it Works</a>
+    <a href="contact.html">Contact</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="badge">🎓 Built for Students</div>
+  <h1>Buy <span>Ready-Made</span> Projects<br/>with Source Code</h1>
+  <p>Browse real-world projects, see live demos, and get the full source code + setup guide instantly after purchase.</p>
+  <a href="#projects" class="btn btn-primary btn-lg">Browse Projects</a>
+  
+  <!-- 3D Floating Particles -->
+  <div class="particles-3d">
+    <div class="particle-3d" style="--x: 10%; --y: 20%; --z: 100px; --delay: 0s;"></div>
+    <div class="particle-3d" style="--x: 80%; --y: 10%; --z: 150px; --delay: 1s;"></div>
+    <div class="particle-3d" style="--x: 30%; --y: 80%; --z: 80px; --delay: 2s;"></div>
+    <div class="particle-3d" style="--x: 70%; --y: 70%; --z: 120px; --delay: 0.5s;"></div>
+    <div class="particle-3d" style="--x: 15%; --y: 50%; --z: 90px; --delay: 1.5s;"></div>
+    <div class="particle-3d" style="--x: 85%; --y: 40%; --z: 110px; --delay: 2.5s;"></div>
+  </div>
+</section>
+
+
+
+<section class="section" id="projects">
+  <div class="section-title">All Projects</div>
+  <div class="section-sub">Click "Live Demo" to preview, then purchase to get the full code.</div>
+  
+  <!-- Filters and Sorting -->
+  <div class="projects-controls">
+    <div class="filter-group">
+      <label>Price Type:</label>
+      <div class="filter-buttons">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="available">Available</button>
+        <button class="filter-btn" data-filter="free">Rs.1</button>
+        <button class="filter-btn" data-filter="paid">Paid</button>
+      </div>
+    </div>
+    
+    <div class="sort-group">
+      <label>Sort by:</label>
+      <select class="sort-select" id="sortSelect">
+        <option value="default">Default</option>
+        <option value="price-low-high">Price: Low to High</option>
+        <option value="price-high-low">Price: High to Low</option>
+      </select>
+    </div>
+  </div>
+  
+  <div class="projects-grid" id="projectsGrid"></div>
+</section>
+
+<section class="section" id="how-it-works">
+  <div class="section-title">How it Works</div>
+  <div class="section-sub">Simple 3-step process to get your project</div>
+  
+  <div class="steps-grid">
+    <div class="step-card">
+      <div class="step-number">1</div>
+      <div class="step-icon">👀</div>
+      <div class="step-title">Browse & Preview</div>
+      <div class="step-desc">Explore projects and watch live demos before buying.</div>
+      <div class="step-features">
+        <span>✓ Live Demos</span>
+        <span>✓ Free Preview</span>
+        <span>✓ Multiple Categories</span>
+      </div>
+    </div>
+    
+    <div class="step-card">
+      <div class="step-number">2</div>
+      <div class="step-icon">💳</div>
+      <div class="step-title">Secure Payment</div>
+      <div class="step-desc">Pay safely via Razorpay — UPI, cards, net banking all supported.</div>
+      <div class="step-features">
+        <span>✓ Secure Gateway</span>
+        <span>✓ Multiple Options</span>
+        <span>✓ Instant Confirmation</span>
+      </div>
+    </div>
+    
+    <div class="step-card">
+      <div class="step-number">3</div>
+      <div class="step-icon">📦</div>
+      <div class="step-title">Instant Download</div>
+      <div class="step-desc">Get the ZIP file + step-by-step run instructions immediately.</div>
+      <div class="step-features">
+        <span>✓ Source Code</span>
+        <span>✓ Documentation</span>
+        <span>✓ Setup Guide</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-content">
+    <div class="footer-grid">
+      <div class="footer-section">
+        <div class="footer-logo">Niks<span>projects</span></div>
+        <p class="footer-description">
+          Your trusted source for high-quality, ready-to-use student projects with comprehensive support and documentation.
+        </p>
+        <div class="social-links">
+          <a href="#" aria-label="Twitter">𝕏</a>
+          <a href="#" aria-label="GitHub">⚡</a>
+          <a href="#" aria-label="LinkedIn">in</a>
+          <a href="#" aria-label="YouTube">▶</a>
+        </div>
+      </div>
+      
+      <div class="footer-section">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="#projects">Browse Projects</a></li>
+          <li><a href="learn.html">Video Tutorials</a></li>
+          <li><a href="#how-it-works">How It Works</a></li>
+          <li><a href="contact.html">Contact Support</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-section">
+        <h3>Resources</h3>
+        <ul>
+          <li><a href="#">Documentation</a></li>
+          <li><a href="#">Setup Guides</a></li>
+          <li><a href="#">FAQ</a></li>
+          <li><a href="#">Blog</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-section">
+        <h3>Legal</h3>
+        <ul>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms of Service</a></li>
+          <li><a href="#">Refund Policy</a></li>
+          <li><a href="#">License Agreement</a></li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <div class="footer-bottom-content">
+        <p>&copy; 2026 Niksprojects Store. All rights reserved.</p>
+        <div class="footer-bottom-links">
+          <span>🔒 Payments secured by Razorpay</span>
+          <span>•</span>
+          <span>🛡️ SSL Encrypted</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+  <script src="js/projects.js"></script>
+    <script src="js/enhancements.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
