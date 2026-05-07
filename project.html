@@ -3,16 +3,19 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Project Details - DevProjects Store</title>
+  <title>Project Details - Niksprojects Store</title>
   <link rel="stylesheet" href="css/style.css" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet" />
 </head>
 <body>
 
 <nav>
-  <a href="index.html" class="nav-logo">Dev<span>Projects</span></a>
+  <a href="index.html" class="nav-logo">Niks<span>projects</span></a>
   <div class="nav-links">
-    <a href="index.html">← Back to Projects</a>
+    <a href="index.html#projects">← Back to Projects</a>
+    <a href="learn.html">Learn</a>
+    <a href="index.html#how-it-works">How it Works</a>
+    <a href="contact.html">Contact</a>
   </div>
 </nav>
 
@@ -54,7 +57,17 @@
 </div>
 
 <script src="js/projects.js"></script>
+<script src="js/enhancements.js"></script>
 <script>
+  // QR Code mapping based on price
+  const qrCodes = {
+    1: 'https://www.image2url.com/r2/default/images/1778054249544-9d832936-3d5e-4a5e-8e67-e0c6c344cf3e.jpeg',
+    199: 'https://www.image2url.com/r2/default/images/1778054653688-bd9d3b76-0e6d-4000-8178-731460d0b0e3.jpeg',
+    299: 'https://www.image2url.com/r2/default/images/1778054701879-0588696b-3886-45fa-8573-02ac2f0ff4ea.jpeg',
+    399: 'https://www.image2url.com/r2/default/images/1778054732891-30b95cee-0ab9-4ce2-9684-d41d0e184ff6.jpeg',
+    499: 'https://www.image2url.com/r2/default/images/1778054764848-359c3e7b-ccff-4aef-b2a5-a93ecad24774.jpeg'
+  };
+
   const params = new URLSearchParams(window.location.search);
   const projectId = params.get('id');
   const project = projects.find(p => p.id === projectId);
@@ -63,7 +76,7 @@
   if (!project) {
     content.innerHTML = '<p style="color:var(--muted)">Project not found. <a href="index.html" style="color:var(--primary)">Go back</a></p>';
   } else {
-    document.title = `${project.title} - DevProjects Store`;
+    document.title = `${project.title} - Niksprojects Store`;
     content.innerHTML = `
       <h1 style="font-size:2rem;font-weight:800;margin-bottom:0.5rem;">${project.title}</h1>
       <p style="color:var(--muted);margin-bottom:2rem;">${project.description}</p>
@@ -96,6 +109,9 @@
 
   function openModal() {
     document.getElementById('modalDesc').textContent = `Pay ₹${project.price} for "${project.title}"`;
+    // Update QR code based on price
+    const qrImage = document.querySelector('.qr-img');
+    qrImage.src = qrCodes[project.price];
     showStep1();
     document.getElementById('payModal').classList.add('active');
   }
@@ -123,10 +139,70 @@
       projectName: project.title,
       projectId: project.id,
       txnId: txn,
-      zipUrl: `downloads/${project.id}.zip`,
+      zipUrl: project.githubZip || `downloads/${project.id}.zip`,
     }));
     window.location.href = 'success.html';
   }
 </script>
+
+<footer>
+  <div class="footer-content">
+    <div class="footer-grid">
+      <div class="footer-section">
+        <div class="footer-logo">Niks<span>projects</span></div>
+        <p class="footer-description">
+          Your trusted source for high-quality, ready-to-use student projects with comprehensive support and documentation.
+        </p>
+        <div class="social-links">
+          <a href="#" aria-label="Twitter">𝕏</a>
+          <a href="#" aria-label="GitHub">⚡</a>
+          <a href="#" aria-label="LinkedIn">in</a>
+          <a href="#" aria-label="YouTube">▶</a>
+        </div>
+      </div>
+      
+      <div class="footer-section">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="index.html#projects">Browse Projects</a></li>
+          <li><a href="learn.html">Video Tutorials</a></li>
+          <li><a href="index.html#how-it-works">How It Works</a></li>
+          <li><a href="contact.html">Contact Support</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-section">
+        <h3>Resources</h3>
+        <ul>
+          <li><a href="#">Documentation</a></li>
+          <li><a href="#">Setup Guides</a></li>
+          <li><a href="#">FAQ</a></li>
+          <li><a href="#">Blog</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-section">
+        <h3>Legal</h3>
+        <ul>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms of Service</a></li>
+          <li><a href="#">Refund Policy</a></li>
+          <li><a href="#">License Agreement</a></li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <div class="footer-bottom-content">
+        <p>&copy; 2026 Niksprojects Store. All rights reserved.</p>
+        <div class="footer-bottom-links">
+          <span>🔒 Payments secured by Razorpay</span>
+          <span>•</span>
+          <span>🛡️ SSL Encrypted</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
 </body>
 </html>
