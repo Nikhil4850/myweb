@@ -8,13 +8,41 @@ let filteredProjects = [];
 
 // Wait for projects to be available
 function initializeProjects() {
-  if (typeof projects !== 'undefined') {
-    filteredProjects = [...projects];
-    renderProjects();
-    setupEventListeners();
-  } else {
-    setTimeout(initializeProjects, 100);
+  // Check multiple times for projects to be loaded
+  let attempts = 0;
+  const maxAttempts = 50;
+  
+  function checkProjects() {
+    attempts++;
+    
+    // Try to access projects from different sources
+    if (typeof projects !== 'undefined' && projects && projects.length > 0) {
+      console.log('Projects loaded:', projects.length, 'projects');
+      filteredProjects = [...projects];
+      renderProjects();
+      setupEventListeners();
+      return;
+    }
+    
+    if (attempts < maxAttempts) {
+      setTimeout(checkProjects, 100);
+    } else {
+      console.error('Failed to load projects after', maxAttempts, 'attempts');
+      // Fallback: Show error message
+      const grid = document.getElementById('projectsGrid');
+      if (grid) {
+        grid.innerHTML = `
+          <div style="grid-column: 1 / -1; text-align: center; padding: 3rem;">
+            <div style="font-size: 3rem; margin-bottom: 1rem;">⚠️</div>
+            <p style="color: var(--text-secondary); font-size: 1.1rem;">Unable to load projects. Please refresh the page.</p>
+            <button class="btn btn-primary" style="margin-top: 1rem;" onclick="window.location.reload()">Refresh Page</button>
+          </div>
+        `;
+      }
+    }
   }
+  
+  checkProjects();
 }
 
 // Add loading state
