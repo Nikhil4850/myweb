@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About Us - Niksprojects Store</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      max-width: 960px;
+      margin: 0 auto 3rem;
+      align-items: center;
+    }
+    @media (max-width: 768px) { .about-grid { grid-template-columns: 1fr; } }
+
+    .about-text h2 { font-size: 1.8rem; font-weight: 800; margin-bottom: 1rem; }
+    .about-text h2 span {
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+    .about-text p { color: var(--text-secondary); line-height: 1.8; margin-bottom: 1rem; font-size: 0.95rem; }
+
+    .about-visual {
+      background: linear-gradient(135deg, rgba(99,102,241,0.15), rgba(139,92,246,0.1));
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 2.5rem;
+      text-align: center;
+    }
+    .about-visual .big-icon { font-size: 5rem; margin-bottom: 1rem; }
+    .about-visual p { color: var(--muted); font-size: 0.9rem; }
+
+    .stats-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 1.2rem;
+      max-width: 960px;
+      margin: 0 auto 3rem;
+    }
+    .stat-card {
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem;
+      text-align: center;
+    }
+    .stat-card .stat-num { font-size: 2rem; font-weight: 800; color: var(--primary-light); }
+    .stat-card .stat-label { font-size: 0.82rem; color: var(--muted); margin-top: 0.3rem; }
+
+    .values-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.2rem;
+      max-width: 960px;
+      margin: 0 auto;
+    }
+    .value-card {
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem;
+    }
+    .value-card .v-icon { font-size: 1.8rem; margin-bottom: 0.6rem; }
+    .value-card h3 { font-size: 0.95rem; font-weight: 700; margin-bottom: 0.4rem; }
+    .value-card p { font-size: 0.82rem; color: var(--muted); line-height: 1.6; }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">Niks<span>projects</span></a>
+  <div class="nav-links">
+    <a href="index.html#projects">Projects</a>
+    <a href="learn.html">Learn</a>
+    <a href="custom-order.html">Custom Orders</a>
+    <a href="about.html" class="active">About Us</a>
+    <a href="privacy.html">Privacy Policy</a>
+    <a href="contact.html">Contact</a>
+  </div>
+</nav>
+
+<section class="section" style="padding-top: 4rem;">
+  <div style="text-align:center; margin-bottom: 3rem;">
+    <div class="badge" style="display:inline-block; margin-bottom:1rem;">👋 Our Story</div>
+    <div class="section-title">About Niksprojects</div>
+    <div class="section-sub">A student-first platform built to make learning and building easier.</div>
+  </div>
+
+  <div class="about-grid">
+    <div class="about-text">
+      <h2>Built by a <span>Student</span>, for Students</h2>
+      <p>Niksprojects started as a simple idea — what if students could access real, working projects to learn from, submit, or build on top of? No more starting from scratch every time.</p>
+      <p>We curate and build high-quality projects across web, mobile, and full-stack domains, complete with source code, documentation, and setup guides so you can hit the ground running.</p>
+      <p>Whether you need a ready-made project or want something custom-built to your exact specs, we've got you covered.</p>
+    </div>
+    <div class="about-visual">
+      <div class="big-icon">🚀</div>
+      <p>Helping students ship real projects since 2024</p>
+    </div>
+  </div>
+
+  <div class="stats-row">
+    <div class="stat-card">
+      <div class="stat-num">33+</div>
+      <div class="stat-label">Projects Available</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num">500+</div>
+      <div class="stat-label">Happy Students</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num">10+</div>
+      <div class="stat-label">Tech Stacks</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num">24h</div>
+      <div class="stat-label">Support Response</div>
+    </div>
+  </div>
+
+  <div style="text-align:center; margin-bottom: 2rem;">
+    <div class="section-title" style="font-size:1.4rem;">What We Stand For</div>
+  </div>
+  <div class="values-grid">
+    <div class="value-card">
+      <div class="v-icon">🎯</div>
+      <h3>Quality First</h3>
+      <p>Every project is tested, documented, and ready to run out of the box.</p>
+    </div>
+    <div class="value-card">
+      <div class="v-icon">💸</div>
+      <h3>Student Pricing</h3>
+      <p>Affordable prices designed around a student's budget — no compromises.</p>
+    </div>
+    <div class="value-card">
+      <div class="v-icon">🔓</div>
+      <h3>Full Ownership</h3>
+      <p>You get 100% of the source code. No subscriptions, no lock-in.</p>
+    </div>
+    <div class="value-card">
+      <div class="v-icon">🤝</div>
+      <h3>Real Support</h3>
+      <p>Stuck on setup? We respond within 24 hours and actually help.</p>
+    </div>
+  </div>
+
+  <div style="text-align:center; margin-top: 3rem;">
+    <a href="contact.html" class="btn btn-primary btn-lg">Get in Touch →</a>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-content">
+    <div class="footer-grid">
+      <div class="footer-section">
+        <div class="footer-logo">Niks<span>projects</span></div>
+        <p class="footer-description">Your trusted source for high-quality, ready-to-use student projects with comprehensive support and documentation.</p>
+        <div class="social-links">
+          <a href="#" aria-label="Twitter">𝕏</a>
+          <a href="#" aria-label="GitHub">⚡</a>
+          <a href="#" aria-label="LinkedIn">in</a>
+          <a href="#" aria-label="YouTube">▶</a>
+        </div>
+      </div>
+      <div class="footer-section">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="index.html#projects">Browse Projects</a></li>
+          <li><a href="learn.html">Video Tutorials</a></li>
+          <li><a href="custom-order.html">Custom Orders</a></li>
+          <li><a href="contact.html">Contact Support</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h3>Company</h3>
+        <ul>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="#">Blog</a></li>
+          <li><a href="#">FAQ</a></li>
+          <li><a href="#">Setup Guides</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h3>Legal</h3>
+        <ul>
+          <li><a href="privacy.html">Privacy Policy</a></li>
+          <li><a href="#">Terms of Service</a></li>
+          <li><a href="#">Refund Policy</a></li>
+          <li><a href="#">License Agreement</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-bottom-content">
+        <p>&copy; 2026 Niksprojects Store. All rights reserved.</p>
+        <div class="footer-bottom-links">
+          <span>🔒 Payments secured by Razorpay</span>
+          <span>•</span>
+          <span>🛡️ SSL Encrypted</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="js/enhancements.js"></script>
+</body>
+</html>

@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Custom Order - Niksprojects Store</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    /* Order type selector */
+    .order-types {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.2rem;
+      margin-bottom: 2rem;
+    }
+    .order-type-card {
+      background: var(--surface2);
+      border: 2px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem;
+      cursor: pointer;
+      text-align: center;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      user-select: none;
+    }
+    .order-type-card:hover {
+      border-color: var(--primary-light);
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-md);
+    }
+    .order-type-card.selected {
+      border-color: var(--primary);
+      background: rgba(99,102,241,0.12);
+      box-shadow: 0 0 0 3px rgba(99,102,241,0.2);
+    }
+    .order-type-card .type-icon { font-size: 2.2rem; margin-bottom: 0.6rem; }
+    .order-type-card .type-label { font-weight: 700; font-size: 1rem; color: var(--text); }
+    .order-type-card .type-desc { font-size: 0.82rem; color: var(--muted); margin-top: 0.3rem; }
+
+    /* Form layout */
+    .custom-order-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2.5rem;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    @media (max-width: 768px) {
+      .custom-order-grid { grid-template-columns: 1fr; }
+    }
+
+    .order-form-section, .order-info-section { width: 100%; }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+    @media (max-width: 480px) {
+      .form-row { grid-template-columns: 1fr; }
+    }
+
+    /* Info cards */
+    .info-card {
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 1.4rem 1.6rem;
+      margin-bottom: 1.2rem;
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+    }
+    .info-card .info-icon { font-size: 1.8rem; flex-shrink: 0; }
+    .info-card h3 { font-size: 0.95rem; font-weight: 700; margin-bottom: 0.25rem; color: var(--text); }
+    .info-card p { font-size: 0.83rem; color: var(--muted); line-height: 1.5; }
+
+    .price-estimate {
+      background: linear-gradient(135deg, rgba(99,102,241,0.15), rgba(139,92,246,0.1));
+      border: 1px solid var(--primary);
+      border-radius: var(--radius-lg);
+      padding: 1.4rem 1.6rem;
+      margin-bottom: 1.2rem;
+    }
+    .price-estimate h3 { font-size: 0.9rem; color: var(--muted); margin-bottom: 0.5rem; }
+    .price-estimate .price-range { font-size: 1.6rem; font-weight: 800; color: var(--primary-light); }
+    .price-estimate .price-note { font-size: 0.78rem; color: var(--muted); margin-top: 0.3rem; }
+
+    /* Success modal */
+    .success-icon { font-size: 3rem; margin-bottom: 1rem; }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">Niks<span>projects</span></a>
+  <div class="nav-links">
+    <a href="index.html#projects">Projects</a>
+    <a href="learn.html">Learn</a>
+    <a href="custom-order.html" class="active">Custom Orders</a>
+    <a href="about.html">About Us</a>
+    <a href="privacy.html">Privacy Policy</a>
+    <a href="contact.html">Contact</a>
+  </div>
+</nav>
+
+
+<section class="section">
+  <div class="custom-order-grid">
+
+    <!-- Left: Form -->
+    <div class="order-form-section">
+      <div class="section-title" style="text-align:left; font-size:1.3rem;">Order Details</div>
+      <div class="section-sub" style="text-align:left; margin-bottom:1.8rem;">Fill in the form and we'll get back to you within 24 hours.</div>
+
+      <form id="customOrderForm">
+
+        <!-- Order type selector -->
+        <div class="form-group">
+          <label>What do you need? *</label>
+          <div class="order-types">
+            <div class="order-type-card" data-type="website" onclick="selectType(this)">
+              <div class="type-icon">🌐</div>
+              <div class="type-label">Website</div>
+              <div class="type-desc">Portfolio, business, landing page</div>
+            </div>
+            <div class="order-type-card" data-type="webapp" onclick="selectType(this)">
+              <div class="type-icon">💻</div>
+              <div class="type-label">Web App</div>
+              <div class="type-desc">Full-stack app with backend</div>
+            </div>
+            <div class="order-type-card" data-type="mobile" onclick="selectType(this)">
+              <div class="type-icon">📱</div>
+              <div class="type-label">Mobile App</div>
+              <div class="type-desc">Android / iOS / React Native</div>
+            </div>
+            <div class="order-type-card" data-type="academic" onclick="selectType(this)">
+              <div class="type-icon">🎓</div>
+              <div class="type-label">Academic Project</div>
+              <div class="type-desc">Final year / semester project</div>
+            </div>
+          </div>
+          <input type="hidden" id="orderType" name="order_type" required />
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="fullName">Full Name *</label>
+            <input type="text" id="fullName" name="from_name" required placeholder="Your name" />
+          </div>
+          <div class="form-group">
+            <label for="email">Email Address *</label>
+            <input type="email" id="email" name="from_email" required placeholder="you@example.com" />
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="phone">Phone / WhatsApp</label>
+            <input type="tel" id="phone" name="phone" placeholder="+91 XXXXX XXXXX" />
+          </div>
+          <div class="form-group">
+            <label for="budget">Budget (₹) *</label>
+            <select id="budget" name="budget" required>
+              <option value="">Select range</option>
+              <option value="500-1000">₹500 – ₹1,000</option>
+              <option value="1000-3000">₹1,000 – ₹3,000</option>
+              <option value="3000-7000">₹3,000 – ₹7,000</option>
+              <option value="7000-15000">₹7,000 – ₹15,000</option>
+              <option value="15000+">₹15,000+</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="deadline">Deadline</label>
+          <input type="date" id="deadline" name="deadline" />
+        </div>
+
+        <div class="form-group">
+          <label for="techStack">Preferred Tech Stack</label>
+          <input type="text" id="techStack" name="tech_stack" placeholder="e.g. React, Node.js, MongoDB (leave blank if unsure)" />
+        </div>
+
+        <div class="form-group">
+          <label for="description">Project Description *</label>
+          <textarea id="description" name="message" rows="5" required
+            placeholder="Describe what you want built — features, pages, functionality, any reference sites..."></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-lg" style="width:100%;">
+          <span>Submit Order Request</span>
+          <span>→</span>
+        </button>
+      </form>
+    </div>
+
+    <!-- Right: Info -->
+    <div class="order-info-section">
+      <div class="section-title" style="text-align:left; font-size:1.3rem;">Why Order Custom?</div>
+      <div class="section-sub" style="text-align:left; margin-bottom:1.8rem;">Get exactly what you need, built to your specs.</div>
+
+      <div class="price-estimate" id="priceEstimate">
+        <h3>Estimated Price Range</h3>
+        <div class="price-range">₹500 – ₹15,000+</div>
+        <div class="price-note">Select an order type above for a specific estimate</div>
+      </div>
+
+      <div class="info-card">
+        <div class="info-icon">⚡</div>
+        <div>
+          <h3>Fast Turnaround</h3>
+          <p>Most projects delivered in 3–7 days depending on complexity.</p>
+        </div>
+      </div>
+
+      <div class="info-card">
+        <div class="info-icon">🔧</div>
+        <div>
+          <h3>Full Source Code</h3>
+          <p>You get 100% ownership — complete source code, no lock-in.</p>
+        </div>
+      </div>
+
+      <div class="info-card">
+        <div class="info-icon">📄</div>
+        <div>
+          <h3>Documentation Included</h3>
+          <p>Setup guide, code comments, and deployment instructions included.</p>
+        </div>
+      </div>
+
+      <div class="info-card">
+        <div class="info-icon">🛡️</div>
+        <div>
+          <h3>Revision Support</h3>
+          <p>Up to 2 free revisions after delivery to make sure you're happy.</p>
+        </div>
+      </div>
+
+      <div style="background: var(--surface2); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 1.4rem 1.6rem; margin-top: 0.5rem;">
+        <h3 style="font-size:0.95rem; font-weight:700; margin-bottom:0.8rem;">Contact Directly</h3>
+        <p style="font-size:0.85rem; color:var(--muted); margin-bottom:0.6rem;">📧 niksprojectss@gmail.com</p>
+        <p style="font-size:0.85rem; color:var(--muted);">💬 WhatsApp / Chat — Mon–Fri, 9AM–6PM IST</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- Success Modal -->
+<div class="modal-overlay" id="successModal">
+  <div class="modal">
+    <div style="text-align: center; padding: 1rem;">
+      <div class="success-icon">🎉</div>
+      <h2 style="margin-bottom: 0.5rem;">Order Request Sent!</h2>
+      <p style="color: var(--text-secondary); margin-bottom: 1.5rem;">We'll review your requirements and get back to you within 24 hours.</p>
+      <button class="btn btn-primary" onclick="closeModal()">Got it</button>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-content">
+    <div class="footer-grid">
+      <div class="footer-section">
+        <div class="footer-logo">Niks<span>projects</span></div>
+        <p class="footer-description">Your trusted source for high-quality, ready-to-use student projects with comprehensive support and documentation.</p>
+        <div class="social-links">
+          <a href="#" aria-label="Twitter">𝕏</a>
+          <a href="#" aria-label="GitHub">⚡</a>
+          <a href="#" aria-label="LinkedIn">in</a>
+          <a href="#" aria-label="YouTube">▶</a>
+        </div>
+      </div>
+      <div class="footer-section">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="index.html#projects">Browse Projects</a></li>
+          <li><a href="learn.html">Video Tutorials</a></li>
+          <li><a href="custom-order.html">Custom Orders</a></li>
+          <li><a href="contact.html">Contact Support</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h3>Company</h3>
+        <ul>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="#">Blog</a></li>
+          <li><a href="#">FAQ</a></li>
+          <li><a href="#">Setup Guides</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h3>Legal</h3>
+        <ul>
+          <li><a href="privacy.html">Privacy Policy</a></li>
+          <li><a href="#">Terms of Service</a></li>
+          <li><a href="#">Refund Policy</a></li>
+          <li><a href="#">License Agreement</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-bottom-content">
+        <p>&copy; 2026 Niksprojects Store. All rights reserved.</p>
+        <div class="footer-bottom-links">
+          <span>🔒 Payments secured by Razorpay</span>
+          <span>•</span>
+          <span>🛡️ SSL Encrypted</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="js/enhancements.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script>
+
+emailjs.init("M32vbh7w5hLMGs2Tz");
+
+const priceRanges = {
+
+website:{
+range:'₹500 – ₹3,000',
+note:'Simple or dynamic website'
+},
+
+webapp:{
+range:'₹3,000 – ₹10,000',
+note:'Full-stack application'
+},
+
+mobile:{
+range:'₹5,000 – ₹15,000+',
+note:'Android / iOS app'
+},
+
+academic:{
+range:'₹500 – ₹5,000',
+note:'Depends on complexity'
+}
+
+};
+
+function selectType(card){
+
+document.querySelectorAll('.order-type-card')
+.forEach(c => c.classList.remove('selected'));
+
+card.classList.add('selected');
+
+const type = card.dataset.type;
+
+document.getElementById('orderType').value = type;
+
+const est = priceRanges[type];
+
+document.querySelector('.price-range')
+.textContent = est.range;
+
+document.querySelector('.price-note')
+.textContent = est.note;
+
+}
+
+document.getElementById('customOrderForm')
+.addEventListener('submit', function(e){
+
+e.preventDefault();
+
+const orderType =
+document.getElementById('orderType').value;
+
+if(!orderType){
+
+alert('Please select order type');
+
+return;
+
+}
+
+emailjs.sendForm(
+'service_mohcq8k',
+'template_0sywgue',
+this
+)
+
+.then(() => {
+
+this.reset();
+
+document.querySelectorAll('.order-type-card')
+.forEach(c => c.classList.remove('selected'));
+
+document.querySelector('.price-range')
+.textContent = '₹500 – ₹15,000+';
+
+document.querySelector('.price-note')
+.textContent =
+'Select an order type above for estimate';
+
+document.getElementById('successModal')
+.classList.add('active');
+
+})
+
+.catch((error) => {
+
+console.log("FULL ERROR:", error);
+
+alert(
+'Failed To Send Order\n\n' +
+JSON.stringify(error)
+);
+
+});
+
+});
+
+function closeModal(){
+
+document.getElementById('successModal')
+.classList.remove('active');
+
+}
+
+</script>
+</body>
+</html>
+  
