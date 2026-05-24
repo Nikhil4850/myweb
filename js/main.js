@@ -50,6 +50,7 @@ function showLoadingState() {
 // Filter projects
 function filterProjects(filter) {
   currentFilter = filter;
+  showingAll = false;
   
   if (filter === 'all') {
     filteredProjects = [...projects];
@@ -121,12 +122,14 @@ function sortProjects(sortOption) {
 // Initialize with loading state
 showLoadingState();
 
+const MOBILE_INITIAL = 6; // projects shown on mobile before "Show More"
+let showingAll = false;
+
 function renderProjects() {
   grid.innerHTML = '';
-  // Ensure grid stays visible
   grid.style.opacity = '1';
   grid.style.visibility = 'visible';
-  
+
   if (filteredProjects.length === 0) {
     grid.innerHTML = `
       <div style="grid-column: 1 / -1; text-align: center; padding: 3rem;">
@@ -135,21 +138,27 @@ function renderProjects() {
         <button class="btn btn-outline" style="margin-top: 1rem;" onclick="resetFilters()">Reset Filters</button>
       </div>
     `;
+    updateShowMoreBtn();
     return;
   }
-  
-  filteredProjects.forEach((p, index) => {
+
+  const isMobile = window.innerWidth <= 768;
+  const visibleProjects = (isMobile && !showingAll)
+    ? filteredProjects.slice(0, MOBILE_INITIAL)
+    : filteredProjects;
+
+  visibleProjects.forEach((p, index) => {
     const card = document.createElement('div');
     card.className = 'card';
     card.style.opacity = '0';
     card.style.transform = 'translateY(20px)';
-    
+
     const priceDisplay = p.price === 1 ? '₹1' : `₹${p.price}`;
     const originalPriceDisplay = p.originalPrice > 1 ? `₹${p.originalPrice}` : '';
     const discountDisplay = p.discount > 0 ? `${p.discount}% OFF` : '';
     const buttonClass = p.price === 1 ? 'btn-success' : 'btn-primary';
     const buttonText = p.price === 1 ? 'Get Now' : 'Buy Now';
-    
+
     card.innerHTML = `
       <img class="card-thumb" src="${p.thumbnail}" alt="${p.title}" loading="lazy" />
       <div class="card-body">
@@ -174,18 +183,18 @@ function renderProjects() {
         </div>
       </div>
     `;
-    
+
     grid.appendChild(card);
-    
-    // Staggered animation for cards
+
     setTimeout(() => {
       card.style.transition = 'all 0.6s cubic-bezier(0.4, 0, 0.2, 1)';
       card.style.opacity = '1';
       card.style.transform = 'translateY(0)';
-      // Ensure card stays visible
       card.style.visibility = 'visible';
-    }, index * 100);
+    }, index * 80);
   });
+
+  updateShowMoreBtn();
 }
 
 // Setup event listeners for filters and sorting
@@ -212,14 +221,45 @@ function setupEventListeners() {
 function resetFilters() {
   currentFilter = 'all';
   currentSort = 'default';
+  showingAll = false;
   filteredProjects = [...projects];
-  
-  // Reset UI
+
   document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
   document.querySelector('.filter-btn[data-filter="all"]').classList.add('active');
   document.getElementById('sortSelect').value = 'default';
-  
+
   renderProjects();
+}
+
+function updateShowMoreBtn() {
+  const isMobile = window.innerWidth <= 768;
+  let btn = document.getElementById('showMoreBtn');
+
+  if (!isMobile || filteredProjects.length <= MOBILE_INITIAL) {
+    if (btn) btn.style.display = 'none';
+    return;
+  }
+
+  if (!btn) {
+    btn = document.createElement('div');
+    btn.id = 'showMoreBtn';
+    btn.style.cssText = 'text-align:center; margin-top:2rem;';
+    grid.parentNode.insertBefore(btn, grid.nextSibling);
+  }
+
+  btn.style.display = 'block';
+  const remaining = filteredProjects.length - MOBILE_INITIAL;
+  btn.innerHTML = showingAll
+    ? `<button class="btn btn-outline" onclick="toggleShowAll()">Show Less ↑</button>`
+    : `<button class="btn btn-primary" onclick="toggleShowAll()">Show All ${filteredProjects.length} Projects (${remaining} more) ↓</button>`;
+}
+
+function toggleShowAll() {
+  showingAll = !showingAll;
+  renderProjects();
+  if (!showingAll) {
+    document.getElementById('projects').scrollIntoView({ behavior: 'smooth' });
+  }
 }
 
 // Add smooth scroll behavior
