@@ -1314,15 +1314,37 @@ footer {
 
 @media (max-width: 480px) {
   .nav-links { display: none; }
-  .mobile-menu-btn { display: block; }
+  .mobile-menu-btn { display: flex; align-items: center; justify-content: center; }
   .hero h1 { font-size: clamp(1.8rem, 10vw, 2.5rem); }
   .hero p { font-size: 1rem; }
   .btn { padding: 0.8rem 1.5rem; font-size: 0.9rem; }
   .btn-lg { padding: 1rem 1.8rem; font-size: 1rem; }
-  .card-body { padding: 1.5rem; }
+  .card-body { padding: 1.2rem; }
+  .card-footer { flex-direction: column; align-items: flex-start; gap: 1rem; }
+  .card-actions { width: 100%; }
+  .card-actions .btn { flex: 1; justify-content: center; padding: 0.7rem 0.5rem; font-size: 0.85rem; }
   .detail-sidebar { padding: 1.5rem; }
   .video-filters { gap: 0.3rem; }
   .filter-btn { font-size: 0.75rem; padding: 0.3rem 0.8rem; }
+  .section { padding: 2rem 1rem; }
+  .section-title { font-size: 1.5rem; }
+  .projects-grid { grid-template-columns: 1fr; gap: 1.2rem; }
+  .footer-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+  .footer-content { padding: 2rem 1rem 1.5rem; }
+  .stats { gap: 1rem; padding: 1rem; }
+}
+
+/* Disable heavy 3D transforms on touch devices to prevent jank */
+@media (hover: none) {
+  .card:hover { transform: none; box-shadow: var(--shadow-md); }
+  .btn-primary:hover { transform: none; }
+  .btn-outline:hover { transform: none; }
+  .btn-success:hover { transform: none; }
+  .btn-lg:hover { transform: none; }
+  .step-card:hover { transform: translateY(-4px); }
+  .hero h1 { animation: none; transform: none; }
+  .hero p { animation: none; transform: none; }
+  .badge { animation: none; transform: none; }
 }
 
 /* ── LEARN / VIDEO SECTION ─────────────────────────────────── */

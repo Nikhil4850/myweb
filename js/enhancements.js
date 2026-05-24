@@ -79,13 +79,14 @@ function addMobileMenu() {
   mobileMenuBtn.className = 'mobile-menu-btn';
   mobileMenuBtn.innerHTML = '☰';
   mobileMenuBtn.style.cssText = `
-    display: none;
     background: none;
-    border: none;
+    border: 1px solid var(--border-light);
     color: var(--text);
-    font-size: 1.5rem;
+    font-size: 1.4rem;
     cursor: pointer;
-    padding: 0.5rem;
+    padding: 0.4rem 0.7rem;
+    border-radius: 8px;
+    line-height: 1;
   `;
   
   nav.appendChild(mobileMenuBtn);
@@ -102,6 +103,14 @@ function addMobileMenu() {
       navLinks.classList.remove('mobile-open');
       mobileMenuBtn.innerHTML = '☰';
     }
+  });
+
+  // Close mobile menu when a nav link is tapped
+  navLinks.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      navLinks.classList.remove('mobile-open');
+      mobileMenuBtn.innerHTML = '☰';
+    });
   });
 }
 
