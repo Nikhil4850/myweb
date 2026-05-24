@@ -23,9 +23,11 @@ const projects = [
     price: 499,
     originalPrice: 799,
     discount: 38,
-    demoUrl: 'https://your-demo-link.com/blog',
+    demoUrl: 'https://nikprojects-1.github.io/Blog-CMS-Platform/',
     thumbnail: 'https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=600&h=340&fit=crop&auto=format',
     features: ['Markdown Editor', 'Categories & Tags', 'Comments', 'SEO Optimized', 'RSS Feed'],
+    available: true,
+    githubZip: 'https://github.com/Nikprojects-1/Blog-CMS-Platform/archive/refs/heads/main.zip'
   },
   {
     id: 'proj_030',
