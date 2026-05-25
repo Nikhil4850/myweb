@@ -138,11 +138,11 @@ const projects = [
     price: 299,
     originalPrice: 699,
     discount: 57,
-    demoUrl: 'https://nikprojects-1.github.io/TaskManager/',
+    demoUrl: 'https://nikprojects-1.github.io/task-manager/',
     thumbnail: 'https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=600&h=340&fit=crop&auto=format',
     features: ['Kanban Board', 'Drag & Drop', 'Team Sharing', 'Deadlines', 'Notifications'],
     available: true,
-    githubZip: 'https://github.com/Nikprojects-1/TaskManager/archive/refs/heads/main.zip'
+    githubZip: 'https://github.com/Nikprojects-1/task-manager/archive/refs/heads/master.zip'
   },
   {
     id: 'proj_025',
