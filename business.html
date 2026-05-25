@@ -8,150 +8,46 @@
   <meta name="google-adsense-account" content="ca-pub-9595610341128742">
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Get Your Business Online - Niksprojects</title>
-  <meta name="description" content="We build websites and apps for local businesses — restaurants, salons, clinics, shops and more. Fast, affordable, mobile-friendly." />
+  <meta name="description" content="We build websites and apps for local businesses. Fast, affordable, mobile-friendly." />
   <link rel="stylesheet" href="css/style.css" />
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9595610341128742"crossorigin="anonymous"></script>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet" />
   <style>
-    /* ── Page layout ── */
-    .biz-page { max-width: 1100px; margin: 0 auto; padding: 3.5rem 2rem 5rem; }
-
-    /* Hide hamburger on desktop, show on mobile */
     #mobileMenuBtn { display: none; }
-    @media (max-width: 480px) {
-      #mobileMenuBtn { display: flex; }
+    @media (max-width: 480px) { #mobileMenuBtn { display: flex; } }
+
+    .biz-page {
+      max-width: 640px;
+      margin: 0 auto;
+      padding: 3rem 1.5rem 5rem;
     }
 
-    /* ── Hero ── */
-    .biz-hero {
-      text-align: center;
-      padding: 3rem 1rem 2.5rem;
-      background: linear-gradient(135deg, rgba(99,102,241,0.08) 0%, rgba(168,85,247,0.06) 100%);
-      border-radius: var(--radius-lg);
-      margin-bottom: 3rem;
-      border: 1px solid var(--border);
+    .biz-title {
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: var(--text);
+      margin-bottom: 0.4rem;
     }
-    .biz-hero .badge {
-      display: inline-block;
-      background: rgba(99,102,241,0.15);
-      color: var(--primary-light);
-      font-size: 0.8rem;
-      font-weight: 700;
-      padding: 0.35rem 1rem;
-      border-radius: 999px;
-      margin-bottom: 1.2rem;
-      letter-spacing: 0.05em;
-    }
-    .biz-hero h1 { font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 800; color: var(--text); line-height: 1.2; margin-bottom: 1rem; }
-    .biz-hero h1 span { color: var(--primary-light); }
-    .biz-hero p { font-size: 1.05rem; color: var(--text-secondary); max-width: 560px; margin: 0 auto 2rem; line-height: 1.6; }
-    .biz-hero-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
-
-    /* ── Business type cards ── */
-    .section-label {
-      font-size: 0.8rem;
-      font-weight: 700;
+    .biz-title span { color: var(--primary-light); }
+    .biz-subtitle {
+      font-size: 0.92rem;
       color: var(--muted);
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      margin-bottom: 1rem;
+      margin-bottom: 2rem;
     }
-    .biz-types-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+
+    .biz-form {
+      display: flex;
+      flex-direction: column;
       gap: 1rem;
-      margin-bottom: 3rem;
-    }
-    .biz-type-card {
-      background: var(--surface2);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-lg);
-      padding: 1.4rem 0.8rem 1.2rem;
-      text-align: center;
-      transition: all 0.2s ease;
-      cursor: default;
-    }
-    .biz-type-card:hover { border-color: var(--primary); background: rgba(99,102,241,0.07); transform: translateY(-2px); }
-    .biz-type-card .biz-icon { font-size: 2rem; margin-bottom: 0.6rem; display: block; }
-    .biz-type-card .biz-label { font-size: 0.88rem; font-weight: 700; color: var(--text); }
-
-    /* ── What we build section ── */
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-      gap: 1.2rem;
-      margin-bottom: 3rem;
-    }
-    .service-card {
-      background: var(--surface2);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-lg);
-      padding: 1.5rem 1.3rem;
-      transition: border-color 0.2s;
-    }
-    .service-card:hover { border-color: var(--border-light); }
-    .service-card .s-icon { font-size: 1.8rem; margin-bottom: 0.8rem; display: block; }
-    .service-card h3 { font-size: 1rem; font-weight: 700; color: var(--text); margin-bottom: 0.4rem; }
-    .service-card p { font-size: 0.83rem; color: var(--muted); line-height: 1.5; }
-    .service-card .s-price {
-      display: inline-block;
-      margin-top: 0.8rem;
-      font-size: 0.8rem;
-      font-weight: 700;
-      color: var(--primary-light);
-      background: rgba(99,102,241,0.12);
-      padding: 0.2rem 0.7rem;
-      border-radius: 999px;
     }
 
-    /* ── Two-col layout for form + info ── */
-    .biz-form-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 3rem;
-      align-items: start;
+    .biz-form label {
+      display: block;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+      margin-bottom: 0.3rem;
     }
-
-    @media (max-width: 768px) {
-      .biz-form-grid { grid-template-columns: 1fr; gap: 2rem; }
-      .biz-hero { padding: 2rem 1rem 2rem; }
-      .biz-page { padding: 2rem 1rem 3rem; }
-      .biz-types-grid { grid-template-columns: repeat(3, 1fr); gap: 0.75rem; }
-      .services-grid { grid-template-columns: 1fr 1fr; gap: 1rem; }
-      .biz-hero-btns { flex-direction: column; align-items: center; }
-    }
-
-    @media (max-width: 480px) {
-      .biz-page { padding: 1.5rem 0.75rem 2.5rem; }
-      .biz-hero { padding: 1.8rem 1rem 1.8rem; }
-      .biz-hero h1 { font-size: 1.6rem; }
-      .biz-hero p { font-size: 0.92rem; }
-      .biz-types-grid { grid-template-columns: repeat(2, 1fr); gap: 0.6rem; }
-      .biz-type-card { padding: 1rem 0.5rem 0.9rem; }
-      .biz-type-card .biz-icon { font-size: 1.6rem; margin-bottom: 0.4rem; }
-      .biz-type-card .biz-label { font-size: 0.78rem; }
-      .services-grid { grid-template-columns: 1fr; gap: 0.9rem; }
-      .service-card { padding: 1.2rem 1rem; }
-      .service-card .s-icon { font-size: 1.5rem; margin-bottom: 0.5rem; }
-      .form-row { grid-template-columns: 1fr; }
-      .biz-form input,
-      .biz-form select,
-      .biz-form textarea { font-size: 1rem; padding: 0.9rem; }
-      .col-heading { font-size: 1.3rem; }
-      .biz-section-heading { font-size: 1.2rem; }
-      .info-card { padding: 0.9rem 1rem; }
-      .info-card .info-icon { font-size: 1.1rem; }
-    }
-
-    /* ── Form ── */
-    .col-heading { font-size: 1.5rem; font-weight: 800; color: var(--text); margin-bottom: 0.4rem; }
-    .col-heading span { color: var(--primary-light); }
-    .col-heading-bar { width: 60px; height: 3px; background: linear-gradient(90deg, var(--primary), var(--secondary)); border-radius: 2px; margin-bottom: 0.8rem; }
-    .col-subtitle { font-size: 0.95rem; color: var(--text-secondary); margin-bottom: 1.8rem; line-height: 1.5; }
-
-    .biz-form { display: flex; flex-direction: column; gap: 1rem; }
-    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-    @media (max-width: 480px) { .form-row { grid-template-columns: 1fr; } }
 
     .biz-form input,
     .biz-form select,
@@ -178,267 +74,15 @@
     .biz-form textarea { resize: vertical; }
     .biz-form select option { background: var(--surface2); }
 
-    /* ── Right info column ── */
-    .biz-info { display: flex; flex-direction: column; gap: 1rem; }
-    .info-card {
-      background: var(--surface2);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-lg);
-      padding: 1.1rem 1.3rem;
-      display: flex;
-      gap: 0.9rem;
-      align-items: flex-start;
-      transition: border-color 0.2s;
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
     }
-    .info-card:hover { border-color: var(--border-light); }
-    .info-card .info-icon { font-size: 1.3rem; flex-shrink: 0; margin-top: 0.1rem; }
-    .info-card h3 { font-size: 0.92rem; font-weight: 700; color: var(--text); margin-bottom: 0.2rem; }
-    .info-card p { font-size: 0.82rem; color: var(--muted); line-height: 1.5; }
-
-    .contact-direct {
-      background: var(--surface2);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-lg);
-      padding: 1.1rem 1.3rem;
-    }
-    .contact-direct h3 { font-size: 0.92rem; font-weight: 700; margin-bottom: 0.6rem; color: var(--text); }
-    .contact-direct p { font-size: 0.83rem; color: var(--muted); margin-bottom: 0.35rem; }
-
-    /* ── Section heading ── */
-    .biz-section-heading {
-      font-size: 1.4rem;
-      font-weight: 800;
-      color: var(--text);
-      margin-bottom: 0.3rem;
-    }
-    .biz-section-heading span { color: var(--primary-light); }
-    .biz-section-sub { font-size: 0.9rem; color: var(--muted); margin-bottom: 1.5rem; }
-
-    /* ══════════════════════════════════════════
-       MOBILE FORM — light card style (≤480px)
-    ══════════════════════════════════════════ */
-    @media (max-width: 480px) {
-
-      /* Hide desktop form, show mobile form */
-      .desktop-form-col { display: none; }
-      .mobile-form-wrap { display: block; }
-
-      /* Full-width light card */
-      .mobile-form-wrap {
-        background: #f0f4ff;
-        border-radius: 20px;
-        overflow: hidden;
-        margin-bottom: 2rem;
-      }
-
-      /* Top header card */
-      .mf-header {
-        background: #fff;
-        padding: 1.4rem 1.2rem 1.2rem;
-        display: flex;
-        gap: 1rem;
-        align-items: center;
-        border-bottom: 1px solid #e2e8f0;
-      }
-      .mf-header-img {
-        width: 80px;
-        height: 80px;
-        background: linear-gradient(135deg, #dbeafe, #ede9fe);
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 2.4rem;
-        flex-shrink: 0;
-      }
-      .mf-header-text h2 {
-        font-size: 1rem;
-        font-weight: 800;
-        color: #1e293b;
-        line-height: 1.3;
-        margin-bottom: 0.4rem;
-      }
-      .mf-header-text p {
-        font-size: 0.78rem;
-        color: #64748b;
-        line-height: 1.5;
-      }
-
-      /* Trust badges row */
-      .mf-badges {
-        background: #fff;
-        display: flex;
-        justify-content: space-around;
-        padding: 0.9rem 0.5rem;
-        border-bottom: 1px solid #e2e8f0;
-        gap: 0.3rem;
-      }
-      .mf-badge-item {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 0.3rem;
-        font-size: 0.7rem;
-        color: #475569;
-        font-weight: 600;
-        text-align: center;
-        flex: 1;
-      }
-      .mf-badge-item .mf-badge-icon {
-        width: 32px;
-        height: 32px;
-        background: #eff6ff;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 1rem;
-        color: #3b82f6;
-      }
-
-      /* Form body */
-      .mf-body { padding: 1.2rem; display: flex; flex-direction: column; gap: 0; }
-
-      /* Section label */
-      .mf-section-label {
-        font-size: 1rem;
-        font-weight: 800;
-        color: #1e293b;
-        margin: 1rem 0 0.8rem;
-      }
-
-      /* Field group */
-      .mf-field { margin-bottom: 0.9rem; }
-      .mf-field label {
-        display: block;
-        font-size: 0.8rem;
-        font-weight: 600;
-        color: #374151;
-        margin-bottom: 0.35rem;
-      }
-      .mf-input-wrap {
-        position: relative;
-        display: flex;
-        align-items: center;
-      }
-      .mf-input-wrap .mf-icon {
-        position: absolute;
-        left: 0.9rem;
-        font-size: 1rem;
-        color: #94a3b8;
-        pointer-events: none;
-        line-height: 1;
-      }
-      .mf-input-wrap input,
-      .mf-input-wrap select,
-      .mf-input-wrap textarea {
-        width: 100%;
-        padding: 0.85rem 1rem 0.85rem 2.6rem;
-        background: #fff;
-        border: 1.5px solid #e2e8f0;
-        border-radius: 12px;
-        font-size: 0.9rem;
-        color: #1e293b;
-        font-family: inherit;
-        transition: border-color 0.2s, box-shadow 0.2s;
-        appearance: none;
-        -webkit-appearance: none;
-      }
-      .mf-input-wrap input::placeholder,
-      .mf-input-wrap textarea::placeholder { color: #94a3b8; }
-      .mf-input-wrap input:focus,
-      .mf-input-wrap select:focus,
-      .mf-input-wrap textarea:focus {
-        outline: none;
-        border-color: #3b82f6;
-        box-shadow: 0 0 0 3px rgba(59,130,246,0.12);
-      }
-      .mf-input-wrap textarea { resize: vertical; padding-top: 0.85rem; }
-      /* Dropdown arrow */
-      .mf-input-wrap.has-arrow::after {
-        content: '▾';
-        position: absolute;
-        right: 1rem;
-        color: #94a3b8;
-        pointer-events: none;
-        font-size: 0.9rem;
-      }
-
-      /* Business Type toggle */
-      .mf-type-toggle {
-        display: flex;
-        gap: 0.6rem;
-      }
-      .mf-type-btn {
-        flex: 1;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 0.5rem;
-        padding: 0.75rem 0.5rem;
-        background: #fff;
-        border: 1.5px solid #e2e8f0;
-        border-radius: 12px;
-        font-size: 0.88rem;
-        font-weight: 600;
-        color: #475569;
-        cursor: pointer;
-        transition: all 0.2s;
-      }
-      .mf-type-btn.active {
-        border-color: #3b82f6;
-        background: #eff6ff;
-        color: #2563eb;
-      }
-      .mf-type-btn .mf-type-icon { font-size: 1.1rem; }
-
-      /* Upload reference box */
-      .mf-upload-box {
-        background: #fff;
-        border: 1.5px dashed #93c5fd;
-        border-radius: 12px;
-        padding: 1.2rem;
-        text-align: center;
-        cursor: pointer;
-      }
-      .mf-upload-box .mf-upload-icon { font-size: 1.6rem; color: #3b82f6; margin-bottom: 0.4rem; }
-      .mf-upload-box .mf-upload-title { font-size: 0.88rem; font-weight: 700; color: #2563eb; }
-      .mf-upload-box .mf-upload-sub { font-size: 0.72rem; color: #94a3b8; margin-top: 0.2rem; }
-      .mf-upload-box input[type="text"] {
-        width: 100%;
-        margin-top: 0.7rem;
-        padding: 0.6rem 0.8rem;
-        border: 1px solid #e2e8f0;
-        border-radius: 8px;
-        font-size: 0.82rem;
-        color: #1e293b;
-        font-family: inherit;
-      }
-      .mf-upload-box input[type="text"]::placeholder { color: #94a3b8; }
-      .mf-upload-box input[type="text"]:focus { outline: none; border-color: #3b82f6; }
-
-      /* Submit button */
-      .mf-submit {
-        width: 100%;
-        padding: 1rem;
-        background: linear-gradient(135deg, #3b82f6, #6366f1);
-        color: #fff;
-        border: none;
-        border-radius: 14px;
-        font-size: 1rem;
-        font-weight: 700;
-        cursor: pointer;
-        margin-top: 1.2rem;
-        box-shadow: 0 4px 14px rgba(59,130,246,0.35);
-        transition: opacity 0.2s;
-      }
-      .mf-submit:active { opacity: 0.85; }
-    }
-
-    /* On desktop/tablet: hide mobile form, show desktop form */
-    @media (min-width: 481px) {
-      .mobile-form-wrap { display: none; }
-      .desktop-form-col { display: block; }
+    @media (max-width: 540px) {
+      .form-row { grid-template-columns: 1fr; }
+      .biz-page { padding: 2rem 1rem 3rem; }
+      .biz-title { font-size: 1.3rem; }
     }
   </style>
 </head>
@@ -461,333 +105,81 @@
 </nav>
 
 <div class="biz-page">
+  <div class="biz-title">Get Your Business <span>Online</span></div>
+  <div class="biz-subtitle">Tell us about your business. We'll reply within 24 hours with a plan and price.</div>
 
-  <!-- Hero -->
-  <div class="biz-hero">
-    <div class="badge">🏪 For Local Businesses</div>
-    <h1>Get Your Business <span>Online</span><br/>Fast & Affordable</h1>
-    <p>We build professional websites and apps for restaurants, salons, clinics, shops, and any physical business — so your customers can find you online.</p>
-    <div class="biz-hero-btns">
-      <a href="#get-quote" class="btn btn-primary btn-lg">Get a Free Quote</a>
-      <a href="contact.html" class="btn btn-secondary btn-lg">Talk to Us</a>
-    </div>
-  </div>
-
-  <!-- Business types we serve -->
-  <div class="biz-section-heading">Who We <span>Work With</span></div>
-  <div class="biz-section-sub">Any physical business that wants to grow online.</div>
-  <div class="biz-types-grid">
-    <div class="biz-type-card"><span class="biz-icon">🍽️</span><div class="biz-label">Restaurant</div></div>
-    <div class="biz-type-card"><span class="biz-icon">💇</span><div class="biz-label">Salon & Spa</div></div>
-    <div class="biz-type-card"><span class="biz-icon">🏥</span><div class="biz-label">Clinic & Doctor</div></div>
-    <div class="biz-type-card"><span class="biz-icon">🛍️</span><div class="biz-label">Retail Shop</div></div>
-    <div class="biz-type-card"><span class="biz-icon">🏋️</span><div class="biz-label">Gym & Fitness</div></div>
-    <div class="biz-type-card"><span class="biz-icon">🏨</span><div class="biz-label">Hotel & Stay</div></div>
-    <div class="biz-type-card"><span class="biz-icon">🎓</span><div class="biz-label">Coaching & Tutor</div></div>
-    <div class="biz-type-card"><span class="biz-icon">🔧</span><div class="biz-label">Repair & Service</div></div>
-    <div class="biz-type-card"><span class="biz-icon">🚗</span><div class="biz-label">Auto & Garage</div></div>
-    <div class="biz-type-card"><span class="biz-icon">📦</span><div class="biz-label">Any Business</div></div>
-  </div>
-
-  <!-- What we build -->
-  <div class="biz-section-heading">What We <span>Build</span></div>
-  <div class="biz-section-sub">Pick what fits your business — or ask for something custom.</div>
-  <div class="services-grid">
-    <div class="service-card">
-      <span class="s-icon">🌐</span>
-      <h3>Business Website</h3>
-      <p>A clean, mobile-friendly website showing your services, location, hours, gallery, and contact info.</p>
-      <span class="s-price">Starting ₹2,000</span>
-    </div>
-    <div class="service-card">
-      <span class="s-icon">🛒</span>
-      <h3>Online Store</h3>
-      <p>Sell your products online with a product catalog, cart, and payment integration (Razorpay / UPI).</p>
-      <span class="s-price">Starting ₹5,000</span>
-    </div>
-    <div class="service-card">
-      <span class="s-icon">📅</span>
-      <h3>Booking & Appointments</h3>
-      <p>Let customers book slots online — perfect for salons, clinics, gyms, and coaching centers.</p>
-      <span class="s-price">Starting ₹4,000</span>
-    </div>
-    <div class="service-card">
-      <span class="s-icon">📱</span>
-      <h3>Mobile App</h3>
-      <p>An Android or iOS app for your customers to order, book, or stay updated with your business.</p>
-      <span class="s-price">Starting ₹8,000</span>
-    </div>
-    <div class="service-card">
-      <span class="s-icon">🍕</span>
-      <h3>Food Ordering System</h3>
-      <p>Online menu with ordering and delivery tracking — ideal for restaurants, cafes, and cloud kitchens.</p>
-      <span class="s-price">Starting ₹6,000</span>
-    </div>
-    <div class="service-card">
-      <span class="s-icon">📊</span>
-      <h3>Admin Dashboard</h3>
-      <p>Manage orders, bookings, customers, and inventory from a simple dashboard built for you.</p>
-      <span class="s-price">Starting ₹5,000</span>
-    </div>
-  </div>
-
-  <!-- Quote form + info -->
-  <div id="get-quote" class="biz-form-grid">
-
-    <!-- Left: Desktop Form -->
-    <div class="desktop-form-col">
-      <div class="col-heading">Get a <span>Free Quote</span></div>
-      <div class="col-heading-bar"></div>
-      <div class="col-subtitle">Tell us about your business and what you need. We'll reply within 24 hours with a price and plan.</div>
-
-      <form id="bizForm" class="biz-form">
-        <div class="form-row">
-          <input type="text" name="from_name" placeholder="Your Name" required />
-          <input type="tel" name="phone" placeholder="Phone / WhatsApp" required />
-        </div>
-        <div class="form-row">
-          <input type="email" name="from_email" placeholder="Email Address" required />
-          <input type="text" name="business_name" placeholder="Business Name" required />
-        </div>
-        <div class="form-row">
-          <input type="text" name="business_type" placeholder="Type of Business (e.g. Salon, Clinic)" required />
-          <select name="service_needed">
-            <option value="">What do you need?</option>
-            <option>Business Website</option>
-            <option>Online Store</option>
-            <option>Booking / Appointment System</option>
-            <option>Mobile App</option>
-            <option>Food Ordering System</option>
-            <option>Admin Dashboard</option>
-            <option>Something Else</option>
-          </select>
-        </div>
-        <div class="form-row">
-          <select name="budget">
-            <option value="">Your Budget</option>
-            <option>₹2,000 – ₹5,000</option>
-            <option>₹5,000 – ₹10,000</option>
-            <option>₹10,000 – ₹20,000</option>
-            <option>₹20,000+</option>
-          </select>
-          <select name="timeline">
-            <option value="">When do you need it?</option>
-            <option>As soon as possible</option>
-            <option>Within 1 week</option>
-            <option>Within 2 weeks</option>
-            <option>Within a month</option>
-            <option>No rush</option>
-          </select>
-        </div>
-        <textarea name="message" rows="5" placeholder="Describe your business and what you want — e.g. show menu, take online orders, let customers book appointments..." required></textarea>
-        <button type="submit" class="btn btn-primary" style="width:100%;">Send My Request →</button>
-      </form>
-    </div>
-
-    <!-- Mobile Form (shown only on ≤480px) -->
-    <div class="mobile-form-wrap">
-      <!-- Header -->
-      <div class="mf-header">
-        <div class="mf-header-img">🏪</div>
-        <div class="mf-header-text">
-          <h2>Get Your Website or App<br/>for Your Business</h2>
-          <p>Tell us about your business and requirements. We'll build the perfect website or app for you.</p>
-        </div>
+  <form id="bizForm" class="biz-form">
+    <div class="form-row">
+      <div>
+        <label>Full Name</label>
+        <input type="text" name="from_name" placeholder="Your name" required />
       </div>
-      <!-- Trust badges -->
-      <div class="mf-badges">
-        <div class="mf-badge-item">
-          <div class="mf-badge-icon">🏆</div>
-          Professional<br/>Design
-        </div>
-        <div class="mf-badge-item">
-          <div class="mf-badge-icon">🛡️</div>
-          Secure &<br/>Reliable
-        </div>
-        <div class="mf-badge-item">
-          <div class="mf-badge-icon">🎧</div>
-          Ongoing<br/>Support
-        </div>
-      </div>
-      <!-- Form body -->
-      <form id="bizFormMobile" class="mf-body">
-        <div class="mf-section-label">Business Information</div>
-
-        <div class="mf-field">
-          <label>Full Name</label>
-          <div class="mf-input-wrap">
-            <span class="mf-icon">👤</span>
-            <input type="text" name="from_name" placeholder="Enter your full name" required />
-          </div>
-        </div>
-
-        <div class="mf-field">
-          <label>Business Name</label>
-          <div class="mf-input-wrap">
-            <span class="mf-icon">🏢</span>
-            <input type="text" name="business_name" placeholder="Enter your business name" required />
-          </div>
-        </div>
-
-        <div class="mf-field">
-          <label>Business Category</label>
-          <div class="mf-input-wrap has-arrow">
-            <span class="mf-icon">🗂️</span>
-            <select name="business_category" required>
-              <option value="">Select your business category</option>
-              <option>Restaurant / Cafe</option>
-              <option>Salon & Spa</option>
-              <option>Clinic & Doctor</option>
-              <option>Retail Shop</option>
-              <option>Gym & Fitness</option>
-              <option>Hotel & Stay</option>
-              <option>Coaching & Tutor</option>
-              <option>Repair & Service</option>
-              <option>Auto & Garage</option>
-              <option>Other</option>
-            </select>
-          </div>
-        </div>
-
-        <div class="mf-field">
-          <label>Business Type</label>
-          <div class="mf-type-toggle">
-            <button type="button" class="mf-type-btn active" data-type="website" onclick="selectMfType(this)">
-              <span class="mf-type-icon">🌐</span> Website
-            </button>
-            <button type="button" class="mf-type-btn" data-type="app" onclick="selectMfType(this)">
-              <span class="mf-type-icon">📱</span> Mobile App
-            </button>
-          </div>
-          <input type="hidden" name="service_needed" id="mfServiceType" value="Website" />
-        </div>
-
-        <div class="mf-field">
-          <label>Email Address</label>
-          <div class="mf-input-wrap">
-            <span class="mf-icon">✉️</span>
-            <input type="email" name="from_email" placeholder="Enter your email address" required />
-          </div>
-        </div>
-
-        <div class="mf-field">
-          <label>Phone Number</label>
-          <div class="mf-input-wrap">
-            <span class="mf-icon">📞</span>
-            <input type="tel" name="phone" placeholder="Enter your phone number" required />
-          </div>
-        </div>
-
-        <div class="mf-section-label">Project Details</div>
-
-        <div class="mf-field">
-          <label>Tell us about your business</label>
-          <div class="mf-input-wrap">
-            <span class="mf-icon" style="top:0.9rem;align-self:flex-start;">✏️</span>
-            <textarea name="message" rows="4" placeholder="Write a brief description about your business, services and goals..." required></textarea>
-          </div>
-        </div>
-
-        <div class="mf-field">
-          <label>What features do you need?</label>
-          <div class="mf-input-wrap has-arrow">
-            <span class="mf-icon">☰</span>
-            <select name="features">
-              <option value="">Select required features</option>
-              <option>Online Booking / Appointments</option>
-              <option>Product Catalog / Menu</option>
-              <option>Online Payments (UPI / Razorpay)</option>
-              <option>Customer Login / Accounts</option>
-              <option>Admin Dashboard</option>
-              <option>WhatsApp / Chat Integration</option>
-              <option>Google Maps Integration</option>
-              <option>Photo / Video Gallery</option>
-              <option>All of the above</option>
-            </select>
-          </div>
-        </div>
-
-        <div class="mf-field">
-          <label>Any specific design reference? (Optional)</label>
-          <div class="mf-upload-box">
-            <div class="mf-upload-icon">⬆️</div>
-            <div class="mf-upload-title">Upload Reference (Image or Link)</div>
-            <div class="mf-upload-sub">jpg, png or paste link</div>
-            <input type="text" name="design_reference" placeholder="Paste image link or website URL" />
-          </div>
-        </div>
-
-        <button type="submit" class="mf-submit">Send My Request →</button>
-      </form>
-    </div>
-
-    <!-- Right: Info -->
-    <div class="biz-info">
-      <div class="col-heading">Why Choose <span>Us?</span></div>
-      <div class="col-heading-bar"></div>
-      <div class="col-subtitle">We understand local businesses and build exactly what you need — nothing more, nothing less.</div>
-
-      <div class="info-card">
-        <div class="info-icon">⚡</div>
-        <div>
-          <h3>Ready in 3–7 Days</h3>
-          <p>We work fast so your business can start getting online customers without long waits.</p>
-        </div>
-      </div>
-      <div class="info-card">
-        <div class="info-icon">📱</div>
-        <div>
-          <h3>Works on All Devices</h3>
-          <p>Your site looks great on phones, tablets, and desktops — most customers browse on mobile.</p>
-        </div>
-      </div>
-      <div class="info-card">
-        <div class="info-icon">💰</div>
-        <div>
-          <h3>Affordable Pricing</h3>
-          <p>No hidden charges. You get a clear price upfront before we start any work.</p>
-        </div>
-      </div>
-      <div class="info-card">
-        <div class="info-icon">🔑</div>
-        <div>
-          <h3>You Own Everything</h3>
-          <p>Full ownership of your website and code. No monthly fees, no lock-in.</p>
-        </div>
-      </div>
-      <div class="info-card">
-        <div class="info-icon">🛡️</div>
-        <div>
-          <h3>Free Revisions</h3>
-          <p>Up to 2 free revisions after delivery — we make sure you're happy before we close.</p>
-        </div>
-      </div>
-      <div class="contact-direct">
-        <h3>Prefer to Talk Directly?</h3>
-        <p>📧 niksprojectss@gmail.com</p>
-        <p>💬 WhatsApp / Chat — Mon–Fri, 9AM–6PM IST</p>
+      <div>
+        <label>Phone / WhatsApp</label>
+        <input type="tel" name="phone" placeholder="Your number" required />
       </div>
     </div>
 
-  </div>
+    <div>
+      <label>Email Address</label>
+      <input type="email" name="from_email" placeholder="your@email.com" required />
+    </div>
+
+    <div class="form-row">
+      <div>
+        <label>Business Name</label>
+        <input type="text" name="business_name" placeholder="e.g. Raj Salon" required />
+      </div>
+      <div>
+        <label>Business Type</label>
+        <input type="text" name="business_type" placeholder="e.g. Salon, Clinic, Shop" required />
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div>
+        <label>What do you need?</label>
+        <select name="service_needed">
+          <option value="">Select a service</option>
+          <option>Business Website</option>
+          <option>Online Store</option>
+          <option>Booking / Appointment System</option>
+          <option>Mobile App</option>
+          <option>Food Ordering System</option>
+          <option>Admin Dashboard</option>
+          <option>Something Else</option>
+        </select>
+      </div>
+      <div>
+        <label>Budget</label>
+        <select name="budget">
+          <option value="">Select budget</option>
+          <option>₹2,000 – ₹5,000</option>
+          <option>₹5,000 – ₹10,000</option>
+          <option>₹10,000 – ₹20,000</option>
+          <option>₹20,000+</option>
+        </select>
+      </div>
+    </div>
+
+    <div>
+      <label>Describe your requirements</label>
+      <textarea name="message" rows="5" placeholder="What do you want on your website or app? e.g. show menu, take online orders, let customers book appointments..." required></textarea>
+    </div>
+
+    <button type="submit" class="btn btn-primary" style="width:100%;">Send My Request →</button>
+  </form>
 </div>
 
 <!-- Success Modal -->
 <div class="modal-overlay" id="successModal">
-  <div class="modal" style="max-width:460px; text-align:center;">
-    <div style="width:72px;height:72px;background:linear-gradient(135deg,var(--primary),var(--secondary));border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:2rem;margin:0 auto 1.4rem;box-shadow:0 8px 24px rgba(99,102,241,0.4);">✅</div>
-    <h2 style="font-size:1.5rem;font-weight:800;margin-bottom:0.6rem;color:var(--text);">Request Received!</h2>
-    <p style="color:var(--text-secondary);font-size:0.95rem;line-height:1.6;margin-bottom:0.5rem;">
-      We've got your details and will prepare a free quote for your business.
+  <div class="modal" style="max-width:420px; text-align:center;">
+    <div style="width:64px;height:64px;background:linear-gradient(135deg,var(--primary),var(--secondary));border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.8rem;margin:0 auto 1.2rem;">✅</div>
+    <h2 style="font-size:1.3rem;font-weight:800;margin-bottom:0.5rem;color:var(--text);">Request Received!</h2>
+    <p style="color:var(--text-secondary);font-size:0.9rem;line-height:1.6;margin-bottom:1.5rem;">
+      We'll review your details and get back to you within <strong style="color:var(--primary-light);">24 hours</strong>.
     </p>
-    <p style="color:var(--muted);font-size:0.85rem;margin-bottom:2rem;">
-      Expect a reply within <strong style="color:var(--primary-light);">24 hours</strong> on WhatsApp or email.
-    </p>
-    <div style="background:var(--surface2);border:1px solid var(--border);border-radius:var(--radius);padding:0.9rem 1.2rem;margin-bottom:1.8rem;font-size:0.83rem;color:var(--muted);text-align:left;display:flex;flex-direction:column;gap:0.4rem;">
-      <span>📧 Confirmation sent to your email</span>
-      <span>💬 We may reach out via WhatsApp for details</span>
-    </div>
-    <button class="btn btn-primary" onclick="closeModal()" style="width:100%;">Got it, thanks!</button>
+    <button class="btn btn-primary" onclick="closeModal()" style="width:100%;">Got it!</button>
   </div>
 </div>
 
@@ -849,7 +241,6 @@
 <script>
   emailjs.init("M32vbh7w5hLMGs2Tz");
 
-  // Desktop form
   document.getElementById('bizForm').addEventListener('submit', function(e) {
     e.preventDefault();
     emailjs.sendForm('service_mohcq8k', 'template_0sywgue', this)
@@ -857,39 +248,16 @@
         this.reset();
         document.getElementById('successModal').classList.add('active');
       })
-      .catch(error => {
-        console.error('EmailJS error:', error);
+      .catch(err => {
+        console.error(err);
         alert('Failed to send. Please try again or contact us directly.');
       });
   });
 
-  // Mobile form
-  document.getElementById('bizFormMobile').addEventListener('submit', function(e) {
-    e.preventDefault();
-    emailjs.sendForm('service_mohcq8k', 'template_0sywgue', this)
-      .then(() => {
-        this.reset();
-        // reset type toggle
-        document.querySelectorAll('.mf-type-btn').forEach(b => b.classList.remove('active'));
-        document.querySelector('.mf-type-btn[data-type="website"]').classList.add('active');
-        document.getElementById('mfServiceType').value = 'Website';
-        document.getElementById('successModal').classList.add('active');
-      })
-      .catch(error => {
-        console.error('EmailJS error:', error);
-        alert('Failed to send. Please try again or contact us directly.');
-      });
-  });
-
-  // Business type toggle (mobile form)
-  function selectMfType(btn) {
-    document.querySelectorAll('.mf-type-btn').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    document.getElementById('mfServiceType').value =
-      btn.dataset.type === 'website' ? 'Website' : 'Mobile App';
+  function closeModal() {
+    document.getElementById('successModal').classList.remove('active');
   }
 
-  // Mobile menu toggle
   const menuBtn = document.getElementById('mobileMenuBtn');
   const navLinks = document.getElementById('navLinks');
   if (menuBtn) {
@@ -897,10 +265,6 @@
       navLinks.classList.toggle('mobile-open');
       menuBtn.textContent = navLinks.classList.contains('mobile-open') ? '✕' : '☰';
     });
-  }
-
-  function closeModal() {
-    document.getElementById('successModal').classList.remove('active');
   }
 </script>
 </body>
