@@ -213,6 +213,233 @@
     }
     .biz-section-heading span { color: var(--primary-light); }
     .biz-section-sub { font-size: 0.9rem; color: var(--muted); margin-bottom: 1.5rem; }
+
+    /* ══════════════════════════════════════════
+       MOBILE FORM — light card style (≤480px)
+    ══════════════════════════════════════════ */
+    @media (max-width: 480px) {
+
+      /* Hide desktop form, show mobile form */
+      .desktop-form-col { display: none; }
+      .mobile-form-wrap { display: block; }
+
+      /* Full-width light card */
+      .mobile-form-wrap {
+        background: #f0f4ff;
+        border-radius: 20px;
+        overflow: hidden;
+        margin-bottom: 2rem;
+      }
+
+      /* Top header card */
+      .mf-header {
+        background: #fff;
+        padding: 1.4rem 1.2rem 1.2rem;
+        display: flex;
+        gap: 1rem;
+        align-items: center;
+        border-bottom: 1px solid #e2e8f0;
+      }
+      .mf-header-img {
+        width: 80px;
+        height: 80px;
+        background: linear-gradient(135deg, #dbeafe, #ede9fe);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 2.4rem;
+        flex-shrink: 0;
+      }
+      .mf-header-text h2 {
+        font-size: 1rem;
+        font-weight: 800;
+        color: #1e293b;
+        line-height: 1.3;
+        margin-bottom: 0.4rem;
+      }
+      .mf-header-text p {
+        font-size: 0.78rem;
+        color: #64748b;
+        line-height: 1.5;
+      }
+
+      /* Trust badges row */
+      .mf-badges {
+        background: #fff;
+        display: flex;
+        justify-content: space-around;
+        padding: 0.9rem 0.5rem;
+        border-bottom: 1px solid #e2e8f0;
+        gap: 0.3rem;
+      }
+      .mf-badge-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.3rem;
+        font-size: 0.7rem;
+        color: #475569;
+        font-weight: 600;
+        text-align: center;
+        flex: 1;
+      }
+      .mf-badge-item .mf-badge-icon {
+        width: 32px;
+        height: 32px;
+        background: #eff6ff;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1rem;
+        color: #3b82f6;
+      }
+
+      /* Form body */
+      .mf-body { padding: 1.2rem; display: flex; flex-direction: column; gap: 0; }
+
+      /* Section label */
+      .mf-section-label {
+        font-size: 1rem;
+        font-weight: 800;
+        color: #1e293b;
+        margin: 1rem 0 0.8rem;
+      }
+
+      /* Field group */
+      .mf-field { margin-bottom: 0.9rem; }
+      .mf-field label {
+        display: block;
+        font-size: 0.8rem;
+        font-weight: 600;
+        color: #374151;
+        margin-bottom: 0.35rem;
+      }
+      .mf-input-wrap {
+        position: relative;
+        display: flex;
+        align-items: center;
+      }
+      .mf-input-wrap .mf-icon {
+        position: absolute;
+        left: 0.9rem;
+        font-size: 1rem;
+        color: #94a3b8;
+        pointer-events: none;
+        line-height: 1;
+      }
+      .mf-input-wrap input,
+      .mf-input-wrap select,
+      .mf-input-wrap textarea {
+        width: 100%;
+        padding: 0.85rem 1rem 0.85rem 2.6rem;
+        background: #fff;
+        border: 1.5px solid #e2e8f0;
+        border-radius: 12px;
+        font-size: 0.9rem;
+        color: #1e293b;
+        font-family: inherit;
+        transition: border-color 0.2s, box-shadow 0.2s;
+        appearance: none;
+        -webkit-appearance: none;
+      }
+      .mf-input-wrap input::placeholder,
+      .mf-input-wrap textarea::placeholder { color: #94a3b8; }
+      .mf-input-wrap input:focus,
+      .mf-input-wrap select:focus,
+      .mf-input-wrap textarea:focus {
+        outline: none;
+        border-color: #3b82f6;
+        box-shadow: 0 0 0 3px rgba(59,130,246,0.12);
+      }
+      .mf-input-wrap textarea { resize: vertical; padding-top: 0.85rem; }
+      /* Dropdown arrow */
+      .mf-input-wrap.has-arrow::after {
+        content: '▾';
+        position: absolute;
+        right: 1rem;
+        color: #94a3b8;
+        pointer-events: none;
+        font-size: 0.9rem;
+      }
+
+      /* Business Type toggle */
+      .mf-type-toggle {
+        display: flex;
+        gap: 0.6rem;
+      }
+      .mf-type-btn {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        padding: 0.75rem 0.5rem;
+        background: #fff;
+        border: 1.5px solid #e2e8f0;
+        border-radius: 12px;
+        font-size: 0.88rem;
+        font-weight: 600;
+        color: #475569;
+        cursor: pointer;
+        transition: all 0.2s;
+      }
+      .mf-type-btn.active {
+        border-color: #3b82f6;
+        background: #eff6ff;
+        color: #2563eb;
+      }
+      .mf-type-btn .mf-type-icon { font-size: 1.1rem; }
+
+      /* Upload reference box */
+      .mf-upload-box {
+        background: #fff;
+        border: 1.5px dashed #93c5fd;
+        border-radius: 12px;
+        padding: 1.2rem;
+        text-align: center;
+        cursor: pointer;
+      }
+      .mf-upload-box .mf-upload-icon { font-size: 1.6rem; color: #3b82f6; margin-bottom: 0.4rem; }
+      .mf-upload-box .mf-upload-title { font-size: 0.88rem; font-weight: 700; color: #2563eb; }
+      .mf-upload-box .mf-upload-sub { font-size: 0.72rem; color: #94a3b8; margin-top: 0.2rem; }
+      .mf-upload-box input[type="text"] {
+        width: 100%;
+        margin-top: 0.7rem;
+        padding: 0.6rem 0.8rem;
+        border: 1px solid #e2e8f0;
+        border-radius: 8px;
+        font-size: 0.82rem;
+        color: #1e293b;
+        font-family: inherit;
+      }
+      .mf-upload-box input[type="text"]::placeholder { color: #94a3b8; }
+      .mf-upload-box input[type="text"]:focus { outline: none; border-color: #3b82f6; }
+
+      /* Submit button */
+      .mf-submit {
+        width: 100%;
+        padding: 1rem;
+        background: linear-gradient(135deg, #3b82f6, #6366f1);
+        color: #fff;
+        border: none;
+        border-radius: 14px;
+        font-size: 1rem;
+        font-weight: 700;
+        cursor: pointer;
+        margin-top: 1.2rem;
+        box-shadow: 0 4px 14px rgba(59,130,246,0.35);
+        transition: opacity 0.2s;
+      }
+      .mf-submit:active { opacity: 0.85; }
+    }
+
+    /* On desktop/tablet: hide mobile form, show desktop form */
+    @media (min-width: 481px) {
+      .mobile-form-wrap { display: none; }
+      .desktop-form-col { display: block; }
+    }
   </style>
 </head>
 <body>
@@ -307,8 +534,8 @@
   <!-- Quote form + info -->
   <div id="get-quote" class="biz-form-grid">
 
-    <!-- Left: Form -->
-    <div>
+    <!-- Left: Desktop Form -->
+    <div class="desktop-form-col">
       <div class="col-heading">Get a <span>Free Quote</span></div>
       <div class="col-heading-bar"></div>
       <div class="col-subtitle">Tell us about your business and what you need. We'll reply within 24 hours with a price and plan.</div>
@@ -354,6 +581,143 @@
         </div>
         <textarea name="message" rows="5" placeholder="Describe your business and what you want — e.g. show menu, take online orders, let customers book appointments..." required></textarea>
         <button type="submit" class="btn btn-primary" style="width:100%;">Send My Request →</button>
+      </form>
+    </div>
+
+    <!-- Mobile Form (shown only on ≤480px) -->
+    <div class="mobile-form-wrap">
+      <!-- Header -->
+      <div class="mf-header">
+        <div class="mf-header-img">🏪</div>
+        <div class="mf-header-text">
+          <h2>Get Your Website or App<br/>for Your Business</h2>
+          <p>Tell us about your business and requirements. We'll build the perfect website or app for you.</p>
+        </div>
+      </div>
+      <!-- Trust badges -->
+      <div class="mf-badges">
+        <div class="mf-badge-item">
+          <div class="mf-badge-icon">🏆</div>
+          Professional<br/>Design
+        </div>
+        <div class="mf-badge-item">
+          <div class="mf-badge-icon">🛡️</div>
+          Secure &<br/>Reliable
+        </div>
+        <div class="mf-badge-item">
+          <div class="mf-badge-icon">🎧</div>
+          Ongoing<br/>Support
+        </div>
+      </div>
+      <!-- Form body -->
+      <form id="bizFormMobile" class="mf-body">
+        <div class="mf-section-label">Business Information</div>
+
+        <div class="mf-field">
+          <label>Full Name</label>
+          <div class="mf-input-wrap">
+            <span class="mf-icon">👤</span>
+            <input type="text" name="from_name" placeholder="Enter your full name" required />
+          </div>
+        </div>
+
+        <div class="mf-field">
+          <label>Business Name</label>
+          <div class="mf-input-wrap">
+            <span class="mf-icon">🏢</span>
+            <input type="text" name="business_name" placeholder="Enter your business name" required />
+          </div>
+        </div>
+
+        <div class="mf-field">
+          <label>Business Category</label>
+          <div class="mf-input-wrap has-arrow">
+            <span class="mf-icon">🗂️</span>
+            <select name="business_category" required>
+              <option value="">Select your business category</option>
+              <option>Restaurant / Cafe</option>
+              <option>Salon & Spa</option>
+              <option>Clinic & Doctor</option>
+              <option>Retail Shop</option>
+              <option>Gym & Fitness</option>
+              <option>Hotel & Stay</option>
+              <option>Coaching & Tutor</option>
+              <option>Repair & Service</option>
+              <option>Auto & Garage</option>
+              <option>Other</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="mf-field">
+          <label>Business Type</label>
+          <div class="mf-type-toggle">
+            <button type="button" class="mf-type-btn active" data-type="website" onclick="selectMfType(this)">
+              <span class="mf-type-icon">🌐</span> Website
+            </button>
+            <button type="button" class="mf-type-btn" data-type="app" onclick="selectMfType(this)">
+              <span class="mf-type-icon">📱</span> Mobile App
+            </button>
+          </div>
+          <input type="hidden" name="service_needed" id="mfServiceType" value="Website" />
+        </div>
+
+        <div class="mf-field">
+          <label>Email Address</label>
+          <div class="mf-input-wrap">
+            <span class="mf-icon">✉️</span>
+            <input type="email" name="from_email" placeholder="Enter your email address" required />
+          </div>
+        </div>
+
+        <div class="mf-field">
+          <label>Phone Number</label>
+          <div class="mf-input-wrap">
+            <span class="mf-icon">📞</span>
+            <input type="tel" name="phone" placeholder="Enter your phone number" required />
+          </div>
+        </div>
+
+        <div class="mf-section-label">Project Details</div>
+
+        <div class="mf-field">
+          <label>Tell us about your business</label>
+          <div class="mf-input-wrap">
+            <span class="mf-icon" style="top:0.9rem;align-self:flex-start;">✏️</span>
+            <textarea name="message" rows="4" placeholder="Write a brief description about your business, services and goals..." required></textarea>
+          </div>
+        </div>
+
+        <div class="mf-field">
+          <label>What features do you need?</label>
+          <div class="mf-input-wrap has-arrow">
+            <span class="mf-icon">☰</span>
+            <select name="features">
+              <option value="">Select required features</option>
+              <option>Online Booking / Appointments</option>
+              <option>Product Catalog / Menu</option>
+              <option>Online Payments (UPI / Razorpay)</option>
+              <option>Customer Login / Accounts</option>
+              <option>Admin Dashboard</option>
+              <option>WhatsApp / Chat Integration</option>
+              <option>Google Maps Integration</option>
+              <option>Photo / Video Gallery</option>
+              <option>All of the above</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="mf-field">
+          <label>Any specific design reference? (Optional)</label>
+          <div class="mf-upload-box">
+            <div class="mf-upload-icon">⬆️</div>
+            <div class="mf-upload-title">Upload Reference (Image or Link)</div>
+            <div class="mf-upload-sub">jpg, png or paste link</div>
+            <input type="text" name="design_reference" placeholder="Paste image link or website URL" />
+          </div>
+        </div>
+
+        <button type="submit" class="mf-submit">Send My Request →</button>
       </form>
     </div>
 
@@ -485,6 +849,7 @@
 <script>
   emailjs.init("M32vbh7w5hLMGs2Tz");
 
+  // Desktop form
   document.getElementById('bizForm').addEventListener('submit', function(e) {
     e.preventDefault();
     emailjs.sendForm('service_mohcq8k', 'template_0sywgue', this)
@@ -497,6 +862,32 @@
         alert('Failed to send. Please try again or contact us directly.');
       });
   });
+
+  // Mobile form
+  document.getElementById('bizFormMobile').addEventListener('submit', function(e) {
+    e.preventDefault();
+    emailjs.sendForm('service_mohcq8k', 'template_0sywgue', this)
+      .then(() => {
+        this.reset();
+        // reset type toggle
+        document.querySelectorAll('.mf-type-btn').forEach(b => b.classList.remove('active'));
+        document.querySelector('.mf-type-btn[data-type="website"]').classList.add('active');
+        document.getElementById('mfServiceType').value = 'Website';
+        document.getElementById('successModal').classList.add('active');
+      })
+      .catch(error => {
+        console.error('EmailJS error:', error);
+        alert('Failed to send. Please try again or contact us directly.');
+      });
+  });
+
+  // Business type toggle (mobile form)
+  function selectMfType(btn) {
+    document.querySelectorAll('.mf-type-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById('mfServiceType').value =
+      btn.dataset.type === 'website' ? 'Website' : 'Mobile App';
+  }
 
   // Mobile menu toggle
   const menuBtn = document.getElementById('mobileMenuBtn');
