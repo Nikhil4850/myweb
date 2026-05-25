@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5TBK5FML');</script>
+  <!-- End Google Tag Manager -->
+  <meta charset="UTF-8" />
+  <meta name="google-adsense-account" content="ca-pub-9595610341128742">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Get Your Business Online - Niksprojects</title>
+  <meta name="description" content="We build websites and apps for local businesses — restaurants, salons, clinics, shops and more. Fast, affordable, mobile-friendly." />
+  <link rel="stylesheet" href="css/style.css" />
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9595610341128742"crossorigin="anonymous"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    /* ── Page layout ── */
+    .biz-page { max-width: 1100px; margin: 0 auto; padding: 3.5rem 2rem 5rem; }
+
+    /* Hide hamburger on desktop, show on mobile */
+    #mobileMenuBtn { display: none; }
+    @media (max-width: 480px) {
+      #mobileMenuBtn { display: flex; }
+    }
+
+    /* ── Hero ── */
+    .biz-hero {
+      text-align: center;
+      padding: 3rem 1rem 2.5rem;
+      background: linear-gradient(135deg, rgba(99,102,241,0.08) 0%, rgba(168,85,247,0.06) 100%);
+      border-radius: var(--radius-lg);
+      margin-bottom: 3rem;
+      border: 1px solid var(--border);
+    }
+    .biz-hero .badge {
+      display: inline-block;
+      background: rgba(99,102,241,0.15);
+      color: var(--primary-light);
+      font-size: 0.8rem;
+      font-weight: 700;
+      padding: 0.35rem 1rem;
+      border-radius: 999px;
+      margin-bottom: 1.2rem;
+      letter-spacing: 0.05em;
+    }
+    .biz-hero h1 { font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 800; color: var(--text); line-height: 1.2; margin-bottom: 1rem; }
+    .biz-hero h1 span { color: var(--primary-light); }
+    .biz-hero p { font-size: 1.05rem; color: var(--text-secondary); max-width: 560px; margin: 0 auto 2rem; line-height: 1.6; }
+    .biz-hero-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+
+    /* ── Business type cards ── */
+    .section-label {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 1rem;
+    }
+    .biz-types-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      gap: 1rem;
+      margin-bottom: 3rem;
+    }
+    .biz-type-card {
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 1.4rem 0.8rem 1.2rem;
+      text-align: center;
+      transition: all 0.2s ease;
+      cursor: default;
+    }
+    .biz-type-card:hover { border-color: var(--primary); background: rgba(99,102,241,0.07); transform: translateY(-2px); }
+    .biz-type-card .biz-icon { font-size: 2rem; margin-bottom: 0.6rem; display: block; }
+    .biz-type-card .biz-label { font-size: 0.88rem; font-weight: 700; color: var(--text); }
+
+    /* ── What we build section ── */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 1.2rem;
+      margin-bottom: 3rem;
+    }
+    .service-card {
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem 1.3rem;
+      transition: border-color 0.2s;
+    }
+    .service-card:hover { border-color: var(--border-light); }
+    .service-card .s-icon { font-size: 1.8rem; margin-bottom: 0.8rem; display: block; }
+    .service-card h3 { font-size: 1rem; font-weight: 700; color: var(--text); margin-bottom: 0.4rem; }
+    .service-card p { font-size: 0.83rem; color: var(--muted); line-height: 1.5; }
+    .service-card .s-price {
+      display: inline-block;
+      margin-top: 0.8rem;
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--primary-light);
+      background: rgba(99,102,241,0.12);
+      padding: 0.2rem 0.7rem;
+      border-radius: 999px;
+    }
+
+    /* ── Two-col layout for form + info ── */
+    .biz-form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: start;
+    }
+
+    @media (max-width: 768px) {
+      .biz-form-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .biz-hero { padding: 2rem 1rem 2rem; }
+      .biz-page { padding: 2rem 1rem 3rem; }
+      .biz-types-grid { grid-template-columns: repeat(3, 1fr); gap: 0.75rem; }
+      .services-grid { grid-template-columns: 1fr 1fr; gap: 1rem; }
+      .biz-hero-btns { flex-direction: column; align-items: center; }
+    }
+
+    @media (max-width: 480px) {
+      .biz-page { padding: 1.5rem 0.75rem 2.5rem; }
+      .biz-hero { padding: 1.8rem 1rem 1.8rem; }
+      .biz-hero h1 { font-size: 1.6rem; }
+      .biz-hero p { font-size: 0.92rem; }
+      .biz-types-grid { grid-template-columns: repeat(2, 1fr); gap: 0.6rem; }
+      .biz-type-card { padding: 1rem 0.5rem 0.9rem; }
+      .biz-type-card .biz-icon { font-size: 1.6rem; margin-bottom: 0.4rem; }
+      .biz-type-card .biz-label { font-size: 0.78rem; }
+      .services-grid { grid-template-columns: 1fr; gap: 0.9rem; }
+      .service-card { padding: 1.2rem 1rem; }
+      .service-card .s-icon { font-size: 1.5rem; margin-bottom: 0.5rem; }
+      .form-row { grid-template-columns: 1fr; }
+      .biz-form input,
+      .biz-form select,
+      .biz-form textarea { font-size: 1rem; padding: 0.9rem; }
+      .col-heading { font-size: 1.3rem; }
+      .biz-section-heading { font-size: 1.2rem; }
+      .info-card { padding: 0.9rem 1rem; }
+      .info-card .info-icon { font-size: 1.1rem; }
+    }
+
+    /* ── Form ── */
+    .col-heading { font-size: 1.5rem; font-weight: 800; color: var(--text); margin-bottom: 0.4rem; }
+    .col-heading span { color: var(--primary-light); }
+    .col-heading-bar { width: 60px; height: 3px; background: linear-gradient(90deg, var(--primary), var(--secondary)); border-radius: 2px; margin-bottom: 0.8rem; }
+    .col-subtitle { font-size: 0.95rem; color: var(--text-secondary); margin-bottom: 1.8rem; line-height: 1.5; }
+
+    .biz-form { display: flex; flex-direction: column; gap: 1rem; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    @media (max-width: 480px) { .form-row { grid-template-columns: 1fr; } }
+
+    .biz-form input,
+    .biz-form select,
+    .biz-form textarea {
+      width: 100%;
+      padding: 0.85rem 1rem;
+      background: var(--surface2);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius);
+      color: var(--text);
+      font-size: 0.95rem;
+      font-family: inherit;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .biz-form input:focus,
+    .biz-form select:focus,
+    .biz-form textarea:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(99,102,241,0.15);
+    }
+    .biz-form input::placeholder,
+    .biz-form textarea::placeholder { color: var(--muted); }
+    .biz-form textarea { resize: vertical; }
+    .biz-form select option { background: var(--surface2); }
+
+    /* ── Right info column ── */
+    .biz-info { display: flex; flex-direction: column; gap: 1rem; }
+    .info-card {
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 1.1rem 1.3rem;
+      display: flex;
+      gap: 0.9rem;
+      align-items: flex-start;
+      transition: border-color 0.2s;
+    }
+    .info-card:hover { border-color: var(--border-light); }
+    .info-card .info-icon { font-size: 1.3rem; flex-shrink: 0; margin-top: 0.1rem; }
+    .info-card h3 { font-size: 0.92rem; font-weight: 700; color: var(--text); margin-bottom: 0.2rem; }
+    .info-card p { font-size: 0.82rem; color: var(--muted); line-height: 1.5; }
+
+    .contact-direct {
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 1.1rem 1.3rem;
+    }
+    .contact-direct h3 { font-size: 0.92rem; font-weight: 700; margin-bottom: 0.6rem; color: var(--text); }
+    .contact-direct p { font-size: 0.83rem; color: var(--muted); margin-bottom: 0.35rem; }
+
+    /* ── Section heading ── */
+    .biz-section-heading {
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: var(--text);
+      margin-bottom: 0.3rem;
+    }
+    .biz-section-heading span { color: var(--primary-light); }
+    .biz-section-sub { font-size: 0.9rem; color: var(--muted); margin-bottom: 1.5rem; }
+  </style>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5TBK5FML" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+<nav>
+  <a href="index.html" class="nav-logo">Niks<span>projects</span></a>
+  <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle menu" style="background:none;border:1px solid var(--border-light);color:var(--text);padding:0.5rem 0.75rem;border-radius:8px;font-size:1.2rem;cursor:pointer;">☰</button>
+  <div class="nav-links" id="navLinks">
+    <a href="index.html#projects">Projects</a>
+    <a href="learn.html">Learn</a>
+    <a href="custom-order.html">Custom Orders</a>
+    <a href="business.html" class="active">For Business</a>
+    <a href="about.html">About Us</a>
+    <a href="contact.html">Contact</a>
+  </div>
+</nav>
+
+<div class="biz-page">
+
+  <!-- Hero -->
+  <div class="biz-hero">
+    <div class="badge">🏪 For Local Businesses</div>
+    <h1>Get Your Business <span>Online</span><br/>Fast & Affordable</h1>
+    <p>We build professional websites and apps for restaurants, salons, clinics, shops, and any physical business — so your customers can find you online.</p>
+    <div class="biz-hero-btns">
+      <a href="#get-quote" class="btn btn-primary btn-lg">Get a Free Quote</a>
+      <a href="contact.html" class="btn btn-secondary btn-lg">Talk to Us</a>
+    </div>
+  </div>
+
+  <!-- Business types we serve -->
+  <div class="biz-section-heading">Who We <span>Work With</span></div>
+  <div class="biz-section-sub">Any physical business that wants to grow online.</div>
+  <div class="biz-types-grid">
+    <div class="biz-type-card"><span class="biz-icon">🍽️</span><div class="biz-label">Restaurant</div></div>
+    <div class="biz-type-card"><span class="biz-icon">💇</span><div class="biz-label">Salon & Spa</div></div>
+    <div class="biz-type-card"><span class="biz-icon">🏥</span><div class="biz-label">Clinic & Doctor</div></div>
+    <div class="biz-type-card"><span class="biz-icon">🛍️</span><div class="biz-label">Retail Shop</div></div>
+    <div class="biz-type-card"><span class="biz-icon">🏋️</span><div class="biz-label">Gym & Fitness</div></div>
+    <div class="biz-type-card"><span class="biz-icon">🏨</span><div class="biz-label">Hotel & Stay</div></div>
+    <div class="biz-type-card"><span class="biz-icon">🎓</span><div class="biz-label">Coaching & Tutor</div></div>
+    <div class="biz-type-card"><span class="biz-icon">🔧</span><div class="biz-label">Repair & Service</div></div>
+    <div class="biz-type-card"><span class="biz-icon">🚗</span><div class="biz-label">Auto & Garage</div></div>
+    <div class="biz-type-card"><span class="biz-icon">📦</span><div class="biz-label">Any Business</div></div>
+  </div>
+
+  <!-- What we build -->
+  <div class="biz-section-heading">What We <span>Build</span></div>
+  <div class="biz-section-sub">Pick what fits your business — or ask for something custom.</div>
+  <div class="services-grid">
+    <div class="service-card">
+      <span class="s-icon">🌐</span>
+      <h3>Business Website</h3>
+      <p>A clean, mobile-friendly website showing your services, location, hours, gallery, and contact info.</p>
+      <span class="s-price">Starting ₹2,000</span>
+    </div>
+    <div class="service-card">
+      <span class="s-icon">🛒</span>
+      <h3>Online Store</h3>
+      <p>Sell your products online with a product catalog, cart, and payment integration (Razorpay / UPI).</p>
+      <span class="s-price">Starting ₹5,000</span>
+    </div>
+    <div class="service-card">
+      <span class="s-icon">📅</span>
+      <h3>Booking & Appointments</h3>
+      <p>Let customers book slots online — perfect for salons, clinics, gyms, and coaching centers.</p>
+      <span class="s-price">Starting ₹4,000</span>
+    </div>
+    <div class="service-card">
+      <span class="s-icon">📱</span>
+      <h3>Mobile App</h3>
+      <p>An Android or iOS app for your customers to order, book, or stay updated with your business.</p>
+      <span class="s-price">Starting ₹8,000</span>
+    </div>
+    <div class="service-card">
+      <span class="s-icon">🍕</span>
+      <h3>Food Ordering System</h3>
+      <p>Online menu with ordering and delivery tracking — ideal for restaurants, cafes, and cloud kitchens.</p>
+      <span class="s-price">Starting ₹6,000</span>
+    </div>
+    <div class="service-card">
+      <span class="s-icon">📊</span>
+      <h3>Admin Dashboard</h3>
+      <p>Manage orders, bookings, customers, and inventory from a simple dashboard built for you.</p>
+      <span class="s-price">Starting ₹5,000</span>
+    </div>
+  </div>
+
+  <!-- Quote form + info -->
+  <div id="get-quote" class="biz-form-grid">
+
+    <!-- Left: Form -->
+    <div>
+      <div class="col-heading">Get a <span>Free Quote</span></div>
+      <div class="col-heading-bar"></div>
+      <div class="col-subtitle">Tell us about your business and what you need. We'll reply within 24 hours with a price and plan.</div>
+
+      <form id="bizForm" class="biz-form">
+        <div class="form-row">
+          <input type="text" name="from_name" placeholder="Your Name" required />
+          <input type="tel" name="phone" placeholder="Phone / WhatsApp" required />
+        </div>
+        <div class="form-row">
+          <input type="email" name="from_email" placeholder="Email Address" required />
+          <input type="text" name="business_name" placeholder="Business Name" required />
+        </div>
+        <div class="form-row">
+          <input type="text" name="business_type" placeholder="Type of Business (e.g. Salon, Clinic)" required />
+          <select name="service_needed">
+            <option value="">What do you need?</option>
+            <option>Business Website</option>
+            <option>Online Store</option>
+            <option>Booking / Appointment System</option>
+            <option>Mobile App</option>
+            <option>Food Ordering System</option>
+            <option>Admin Dashboard</option>
+            <option>Something Else</option>
+          </select>
+        </div>
+        <div class="form-row">
+          <select name="budget">
+            <option value="">Your Budget</option>
+            <option>₹2,000 – ₹5,000</option>
+            <option>₹5,000 – ₹10,000</option>
+            <option>₹10,000 – ₹20,000</option>
+            <option>₹20,000+</option>
+          </select>
+          <select name="timeline">
+            <option value="">When do you need it?</option>
+            <option>As soon as possible</option>
+            <option>Within 1 week</option>
+            <option>Within 2 weeks</option>
+            <option>Within a month</option>
+            <option>No rush</option>
+          </select>
+        </div>
+        <textarea name="message" rows="5" placeholder="Describe your business and what you want — e.g. show menu, take online orders, let customers book appointments..." required></textarea>
+        <button type="submit" class="btn btn-primary" style="width:100%;">Send My Request →</button>
+      </form>
+    </div>
+
+    <!-- Right: Info -->
+    <div class="biz-info">
+      <div class="col-heading">Why Choose <span>Us?</span></div>
+      <div class="col-heading-bar"></div>
+      <div class="col-subtitle">We understand local businesses and build exactly what you need — nothing more, nothing less.</div>
+
+      <div class="info-card">
+        <div class="info-icon">⚡</div>
+        <div>
+          <h3>Ready in 3–7 Days</h3>
+          <p>We work fast so your business can start getting online customers without long waits.</p>
+        </div>
+      </div>
+      <div class="info-card">
+        <div class="info-icon">📱</div>
+        <div>
+          <h3>Works on All Devices</h3>
+          <p>Your site looks great on phones, tablets, and desktops — most customers browse on mobile.</p>
+        </div>
+      </div>
+      <div class="info-card">
+        <div class="info-icon">💰</div>
+        <div>
+          <h3>Affordable Pricing</h3>
+          <p>No hidden charges. You get a clear price upfront before we start any work.</p>
+        </div>
+      </div>
+      <div class="info-card">
+        <div class="info-icon">🔑</div>
+        <div>
+          <h3>You Own Everything</h3>
+          <p>Full ownership of your website and code. No monthly fees, no lock-in.</p>
+        </div>
+      </div>
+      <div class="info-card">
+        <div class="info-icon">🛡️</div>
+        <div>
+          <h3>Free Revisions</h3>
+          <p>Up to 2 free revisions after delivery — we make sure you're happy before we close.</p>
+        </div>
+      </div>
+      <div class="contact-direct">
+        <h3>Prefer to Talk Directly?</h3>
+        <p>📧 niksprojectss@gmail.com</p>
+        <p>💬 WhatsApp / Chat — Mon–Fri, 9AM–6PM IST</p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- Success Modal -->
+<div class="modal-overlay" id="successModal">
+  <div class="modal" style="max-width:460px; text-align:center;">
+    <div style="width:72px;height:72px;background:linear-gradient(135deg,var(--primary),var(--secondary));border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:2rem;margin:0 auto 1.4rem;box-shadow:0 8px 24px rgba(99,102,241,0.4);">✅</div>
+    <h2 style="font-size:1.5rem;font-weight:800;margin-bottom:0.6rem;color:var(--text);">Request Received!</h2>
+    <p style="color:var(--text-secondary);font-size:0.95rem;line-height:1.6;margin-bottom:0.5rem;">
+      We've got your details and will prepare a free quote for your business.
+    </p>
+    <p style="color:var(--muted);font-size:0.85rem;margin-bottom:2rem;">
+      Expect a reply within <strong style="color:var(--primary-light);">24 hours</strong> on WhatsApp or email.
+    </p>
+    <div style="background:var(--surface2);border:1px solid var(--border);border-radius:var(--radius);padding:0.9rem 1.2rem;margin-bottom:1.8rem;font-size:0.83rem;color:var(--muted);text-align:left;display:flex;flex-direction:column;gap:0.4rem;">
+      <span>📧 Confirmation sent to your email</span>
+      <span>💬 We may reach out via WhatsApp for details</span>
+    </div>
+    <button class="btn btn-primary" onclick="closeModal()" style="width:100%;">Got it, thanks!</button>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-content">
+    <div class="footer-grid">
+      <div class="footer-section">
+        <div class="footer-logo">Niks<span>projects</span></div>
+        <p class="footer-description">We help students and local businesses build their digital presence with quality web and app development.</p>
+        <div class="social-links">
+          <a href="#" aria-label="Twitter">𝕏</a>
+          <a href="#" aria-label="GitHub">⚡</a>
+          <a href="#" aria-label="LinkedIn">in</a>
+          <a href="#" aria-label="YouTube">▶</a>
+        </div>
+      </div>
+      <div class="footer-section">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="index.html#projects">Browse Projects</a></li>
+          <li><a href="learn.html">Video Tutorials</a></li>
+          <li><a href="custom-order.html">Custom Orders</a></li>
+          <li><a href="contact.html">Contact Support</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h3>Company</h3>
+        <ul>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="business.html">For Business</a></li>
+          <li><a href="#">FAQ</a></li>
+          <li><a href="#">Setup Guides</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h3>Legal</h3>
+        <ul>
+          <li><a href="privacy.html">Privacy Policy</a></li>
+          <li><a href="#">Terms of Service</a></li>
+          <li><a href="#">Refund Policy</a></li>
+          <li><a href="#">License Agreement</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-bottom-content">
+        <p>&copy; 2026 Niksprojects Store. All rights reserved.</p>
+        <div class="footer-bottom-links">
+          <span>🔒 Payments secured by Razorpay</span>
+          <span>•</span>
+          <span>🛡️ SSL Encrypted</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script>
+  emailjs.init("M32vbh7w5hLMGs2Tz");
+
+  document.getElementById('bizForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    emailjs.sendForm('service_mohcq8k', 'template_0sywgue', this)
+      .then(() => {
+        this.reset();
+        document.getElementById('successModal').classList.add('active');
+      })
+      .catch(error => {
+        console.error('EmailJS error:', error);
+        alert('Failed to send. Please try again or contact us directly.');
+      });
+  });
+
+  // Mobile menu toggle
+  const menuBtn = document.getElementById('mobileMenuBtn');
+  const navLinks = document.getElementById('navLinks');
+  if (menuBtn) {
+    menuBtn.addEventListener('click', () => {
+      navLinks.classList.toggle('mobile-open');
+      menuBtn.textContent = navLinks.classList.contains('mobile-open') ? '✕' : '☰';
+    });
+  }
+
+  function closeModal() {
+    document.getElementById('successModal').classList.remove('active');
+  }
+</script>
+</body>
+</html>

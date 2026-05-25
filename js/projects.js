@@ -38,7 +38,7 @@ const projects = [
     originalPrice: 899,
     discount: 44,
     demoUrl: 'https://your-demo-link.com/jobs',
-    thumbnail: 'https://images.unsplash.com/photo-1506905925346-21e2e3020485?w=600&h=340&fit=crop&auto=format',
+    thumbnail: 'https://tse2.mm.bing.net/th/id/OIP.rHELcP3lV86n6gZ_vxXhsQHaE0?cb=thfc1falcon&rs=1&pid=ImgDetMain&o=7&rm=3',
     features: ['Job Listings', 'Application Tracking', 'Company Profiles', 'Resume Upload', 'Email Alerts'],
   },
   {
