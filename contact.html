@@ -239,7 +239,14 @@
     submitBtn.innerHTML = '<span>⚡</span> Sending...';
     submitBtn.disabled = true;
 
-    emailjs.sendForm('service_mohcq8k', 'template_4k9t5el', this)
+    const templateParams = {
+      from_name:  this.querySelector('[name="from_name"]').value.trim(),
+      from_email: this.querySelector('[name="from_email"]').value.trim(),
+      subject:    this.querySelector('[name="subject"]').value,
+      message:    this.querySelector('[name="message"]').value.trim(),
+    };
+
+    emailjs.send('service_mohcq8k', 'template_4k9t5el', templateParams)
       .then(() => {
         this.reset();
         submitBtn.innerHTML = originalHTML;
@@ -247,10 +254,10 @@
         document.getElementById('successModal').classList.add('active');
       })
       .catch(err => {
-        console.error(err);
+        console.error('EmailJS error:', err);
         submitBtn.innerHTML = originalHTML;
         submitBtn.disabled = false;
-        alert('Failed to send. Please email us directly at niksprojectss@gmail.com');
+        alert('EmailJS Error ' + (err.status || '') + ': ' + (err.text || JSON.stringify(err)));
       });
   });
 
