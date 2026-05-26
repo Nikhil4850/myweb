@@ -248,7 +248,19 @@
     const orig = btn.textContent;
     btn.disabled = true;
     btn.textContent = 'Sending...';
-    emailjs.sendForm('service_dv9ejv6', 'template_2b7wbx9', this)
+
+    const templateParams = {
+      from_name:     this.querySelector('[name="from_name"]').value.trim(),
+      from_email:    this.querySelector('[name="from_email"]').value.trim(),
+      phone:         this.querySelector('[name="phone"]').value.trim(),
+      business_name: this.querySelector('[name="business_name"]').value.trim(),
+      business_type: this.querySelector('[name="business_type"]').value.trim(),
+      service_needed:this.querySelector('[name="service_needed"]').value,
+      budget:        this.querySelector('[name="budget"]').value,
+      message:       this.querySelector('[name="message"]').value.trim(),
+    };
+
+    emailjs.send('service_dv9ejv6', 'template_2b7wbx9', templateParams)
       .then(() => {
         this.reset();
         btn.disabled = false;
@@ -256,10 +268,10 @@
         document.getElementById('successModal').classList.add('active');
       })
       .catch(err => {
-        console.error(err);
+        console.error('EmailJS error:', JSON.stringify(err));
         btn.disabled = false;
         btn.textContent = orig;
-        alert('Failed to send. Please try again or contact us directly.');
+        alert('Error: ' + (err.text || JSON.stringify(err)));
       });
   });
 
