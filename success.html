@@ -26,33 +26,53 @@
   <p style="color:var(--muted)">Loading...</p>
 </div>
 
+<script src="js/projects.js"></script>
 <script>
-  const data = sessionStorage.getItem('downloadData');
   const container = document.getElementById('successContent');
 
-  if (!data) {
+  // Try to get project id from URL param first (?pid=proj_001)
+  const urlParams = new URLSearchParams(window.location.search);
+  const pidFromUrl = urlParams.get('pid');
+
+  // Then try localStorage
+  const raw = localStorage.getItem('downloadData');
+  let projectName = '', zipUrl = '';
+
+  if (pidFromUrl && typeof projects !== 'undefined') {
+    // Recover from URL param — most reliable after Cashfree redirect
+    const proj = projects.find(p => p.id === pidFromUrl);
+    if (proj) {
+      projectName = proj.title;
+      zipUrl = proj.githubZip || '';
+    }
+  } else if (raw) {
+    const saved = JSON.parse(raw);
+    projectName = saved.projectName;
+    zipUrl = saved.zipUrl;
+  }
+
+  localStorage.removeItem('downloadData');
+
+  if (!projectName || !zipUrl) {
     container.innerHTML = `
-      <p style="color:var(--text-secondary)">No purchase data found.</p>
-      <a href="index.html" class="btn btn-primary" style="margin-top:1rem">Browse Projects</a>
+      <div class="success-icon">⚠️</div>
+      <h1 style="font-size:1.8rem;font-weight:800;margin-bottom:0.5rem;">Session Expired</h1>
+      <p style="color:var(--text-secondary);margin-bottom:2rem;">We couldn't find your purchase data. If you completed payment, please contact us with your transaction details and we'll send the download link.</p>
+      <a href="index.html" class="btn btn-primary">Browse Projects</a>
+      <a href="contact.html" class="btn btn-outline" style="margin-left:0.75rem">Contact Support</a>
     `;
   } else {
-    const { projectName, txnId, zipUrl } = JSON.parse(data);
-    sessionStorage.removeItem('downloadData');
-
     container.innerHTML = `
       <div class="success-icon">🎉</div>
-      <h1 style="font-size:2rem;font-weight:800;margin-bottom:0.5rem;">Payment Submitted!</h1>
-      <p style="color:var(--text-secondary);margin-bottom:0.5rem;">Thank you for purchasing <strong style="color:var(--text)">${projectName}</strong>.</p>
-      <p style="color:var(--text-secondary);font-size:0.85rem;margin-bottom:2rem;">Transaction ID: <code style="color:var(--primary);background:var(--surface2);padding:0.2rem 0.5rem;border-radius:4px;">${txnId}</code></p>
-
+      <h1 style="font-size:2rem;font-weight:800;margin-bottom:0.5rem;">Payment Successful!</h1>
+      <p style="color:var(--text-secondary);margin-bottom:2rem;">Thank you for purchasing <strong style="color:var(--text)">${projectName}</strong>.</p>
       <div class="download-box">
         <div style="font-weight:700;margin-bottom:0.75rem;font-size:1.1rem;">📦 Download Your Project</div>
         <p style="color:var(--text-secondary);font-size:0.9rem;margin-bottom:1rem;">Click below to download the full source code ZIP.</p>
-        <a href="${zipUrl}" download class="btn btn-success btn-lg" style="width:100%;justify-content:center;">
+        <a href="${zipUrl}" class="btn btn-success btn-lg" style="width:100%;justify-content:center;" target="_blank">
           ⬇ Download Source Code (ZIP)
         </a>
       </div>
-
       <a href="index.html" class="btn btn-outline" style="margin-top:1rem">Browse More Projects</a>
     `;
   }

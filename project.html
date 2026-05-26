@@ -109,13 +109,16 @@
   function goToPayment() {
     const link = paymentLinks[project.price];
     if (!link) { alert('Payment link not available for this project.'); return; }
-    // Store project info so success page can show download
-    sessionStorage.setItem('downloadData', JSON.stringify({
+    // Store in localStorage AND encode project id in return URL via hash
+    localStorage.setItem('downloadData', JSON.stringify({
       projectName: project.title,
       projectId: project.id,
-      zipUrl: project.githubZip || `downloads/${project.id}.zip`,
+      zipUrl: project.githubZip || '',
     }));
-    window.location.href = link;
+    // Append project id to the Cashfree form URL as a query param
+    // Cashfree will preserve and pass it back in the return URL
+    window.location.href = link + '?order_meta_return_url=' +
+      encodeURIComponent('https://nikhil4850.github.io/myweb/success.html?pid=' + project.id);
   }
 </script>
 
