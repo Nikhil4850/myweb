@@ -271,7 +271,7 @@
         console.error('EmailJS error:', JSON.stringify(err));
         btn.disabled = false;
         btn.textContent = orig;
-        alert('Error: ' + (err.text || JSON.stringify(err)));
+        alert('EmailJS Error ' + (err.status || '') + ': ' + (err.text || JSON.stringify(err)));
       });
   });
 
