@@ -34,35 +34,28 @@
 <!-- Payment Details Modal -->
 <div class="modal-overlay" id="payModal">
   <div class="modal pay-modal">
-    <h2 style="margin-bottom:0.4rem;">Enter Your Details</h2>
-    <p style="color:var(--muted);font-size:0.88rem;margin-bottom:1.4rem;">We'll send your download link after payment.</p>
-
-    <div style="display:flex;flex-direction:column;gap:0.9rem;">
-      <input type="text" id="payName" class="txn-input" placeholder="Full Name" />
-      <input type="email" id="payEmail" class="txn-input" placeholder="Email Address" />
-      <input type="tel" id="payPhone" class="txn-input" placeholder="Phone Number (10 digits)" maxlength="10" />
-    </div>
-
-    <p id="payError" style="color:#ef4444;font-size:0.82rem;margin-top:0.6rem;display:none;"></p>
-
-    <div class="modal-actions" style="margin-top:1.5rem;">
+    <h2 style="margin-bottom:0.4rem;">Complete Your Purchase</h2>
+    <p style="color:var(--muted);font-size:0.88rem;margin-bottom:1.4rem;">You'll be redirected to a secure Cashfree payment page.</p>
+    <p id="modalProjectName" style="font-weight:700;color:var(--text);margin-bottom:0.3rem;"></p>
+    <p id="modalPrice" style="font-size:1.6rem;font-weight:800;color:var(--primary-light);margin-bottom:1.5rem;"></p>
+    <div class="modal-actions">
       <button class="btn btn-outline" onclick="closeModal()">Cancel</button>
-      <button class="btn btn-primary" id="checkoutBtn" onclick="proceedToCheckout()">Pay ₹<span id="payAmount"></span></button>
+      <button class="btn btn-primary" id="checkoutBtn" onclick="goToPayment()">Pay Now →</button>
     </div>
   </div>
 </div>
 
-<!-- Cashfree JS SDK -->
-<script src="https://sdk.cashfree.com/js/v3/cashfree.js"></script>
-
 <script src="js/projects.js"></script>
 <script src="js/enhancements.js"></script>
 <script>
-  // ── Config ──────────────────────────────────────────────
-  const BACKEND_URL = 'https://niksprojects-backend.onrender.com'; // your Render URL
-  const cashfree = Cashfree({ mode: 'production' });
+  const paymentLinks = {
+    1:   'https://payments.cashfree.com/forms/onerupee',
+    199: 'https://payments.cashfree.com/forms/oneninenine',
+    299: 'https://payments.cashfree.com/forms/twoninenine',
+    399: 'https://payments.cashfree.com/forms/threeninenine',
+    499: 'https://payments.cashfree.com/forms/fourninenine',
+  };
 
-  // ── Load project ─────────────────────────────────────────
   const params = new URLSearchParams(window.location.search);
   const projectId = params.get('id');
   const project = projects.find(p => p.id === projectId);
@@ -87,7 +80,7 @@
         <div class="detail-sidebar">
           <div class="detail-price">₹${project.price}</div>
           <div style="color:var(--muted);font-size:0.85rem;margin-bottom:1rem;">One-time payment. Instant access.</div>
-          <button class="btn btn-primary btn-lg" id="buyBtn" style="width:100%" onclick="startPayment()">Buy Now</button>
+          <button class="btn btn-primary btn-lg" style="width:100%" onclick="openModal()">Buy Now</button>
           <hr class="divider" />
           <div style="font-weight:600;margin-bottom:0.5rem;">What you get:</div>
           <ul class="feature-list">
@@ -102,81 +95,26 @@
     `;
   }
 
-  // ── Payment details modal ─────────────────────────────────
   function openModal() {
+    document.getElementById('modalProjectName').textContent = project.title;
+    document.getElementById('modalPrice').textContent = `₹${project.price}`;
     document.getElementById('payModal').classList.add('active');
   }
+
   function closeModal() {
     document.getElementById('payModal').classList.remove('active');
   }
 
-  // ── Collect details then create order ────────────────────
-  async function startPayment() {
-    document.getElementById('payAmount').textContent = project.price;
-    openModal();
-  }
-
-  async function proceedToCheckout() {
-    const name  = document.getElementById('payName').value.trim();
-    const email = document.getElementById('payEmail').value.trim();
-    const phone = document.getElementById('payPhone').value.trim();
-
-    if (!name || !email || !phone) {
-      document.getElementById('payError').textContent = 'Please fill all fields.';
-      document.getElementById('payError').style.display = 'block';
-      return;
-    }
-    if (!/^\d{10}$/.test(phone)) {
-      document.getElementById('payError').textContent = 'Enter a valid 10-digit phone number.';
-      document.getElementById('payError').style.display = 'block';
-      return;
-    }
-
-    document.getElementById('payError').style.display = 'none';
-    const btn = document.getElementById('checkoutBtn');
-    btn.disabled = true;
-    btn.textContent = 'Creating order…';
-
-    const orderId = `ORD_${project.id}_${Date.now()}`;
-
-    try {
-      const res = await fetch(`${BACKEND_URL}/create-order`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          orderId,
-          amount: project.price,
-          customerName: name,
-          customerEmail: email,
-          customerPhone: phone,
-        }),
-      });
-
-      const data = await res.json();
-      if (!res.ok) throw new Error(data.error || 'Failed to create order');
-
-      // Store project info for success page
-      sessionStorage.setItem('downloadData', JSON.stringify({
-        projectName: project.title,
-        projectId: project.id,
-        zipUrl: project.githubZip || `downloads/${project.id}.zip`,
-      }));
-
-      closeModal();
-
-      // Launch Cashfree checkout
-      cashfree.checkout({
-        paymentSessionId: data.payment_session_id,
-        redirectTarget: '_self',
-      });
-
-    } catch (err) {
-      console.error(err);
-      document.getElementById('payError').textContent = err.message || 'Something went wrong. Try again.';
-      document.getElementById('payError').style.display = 'block';
-      btn.disabled = false;
-      btn.textContent = 'Pay ₹' + project.price;
-    }
+  function goToPayment() {
+    const link = paymentLinks[project.price];
+    if (!link) { alert('Payment link not available for this project.'); return; }
+    // Store project info so success page can show download
+    sessionStorage.setItem('downloadData', JSON.stringify({
+      projectName: project.title,
+      projectId: project.id,
+      zipUrl: project.githubZip || `downloads/${project.id}.zip`,
+    }));
+    window.location.href = link;
   }
 </script>
 
