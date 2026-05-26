@@ -1,7 +1,7 @@
 // Enhanced main.js with loading states, filtering, and sorting
 const grid = document.getElementById('projectsGrid');
 let currentFilter = 'all';
-let currentSort = 'default';
+let currentSort = 'price-low-high';
 
 // Ensure projects are loaded
 let filteredProjects = [];
@@ -19,8 +19,12 @@ function initializeProjects() {
   if (typeof projects !== 'undefined' && projects && projects.length > 0) {
     console.log('Projects loaded:', projects.length, 'projects');
     filteredProjects = [...projects];
+    filteredProjects.sort((a, b) => a.price - b.price);
     renderProjects();
     setupEventListeners();
+    // Set sort dropdown to match default
+    const sortSelect = document.getElementById('sortSelect');
+    if (sortSelect) sortSelect.value = 'price-low-high';
   } else {
     console.error('Projects not available - check if projects.js loaded correctly');
     // Fallback: Show error message
@@ -110,10 +114,8 @@ function sortProjects(sortOption) {
   } else if (sortOption === 'price-high-low') {
     filteredProjects.sort((a, b) => b.price - a.price);
   } else {
-    // Default order - restore original order
-    if (currentFilter === 'all') {
-      filteredProjects = [...projects];
-    }
+    // Default order - sort by price low to high
+    filteredProjects.sort((a, b) => a.price - b.price);
   }
   
   renderProjects();
