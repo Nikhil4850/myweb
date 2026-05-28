@@ -126,46 +126,9 @@
       <input type="email" name="from_email" placeholder="your@email.com" required />
     </div>
 
-    <div class="form-row">
-      <div>
-        <label>Business Name</label>
-        <input type="text" name="business_name" placeholder="e.g. Raj Salon" required />
-      </div>
-      <div>
-        <label>Business Type</label>
-        <input type="text" name="business_type" placeholder="e.g. Salon, Clinic, Shop" required />
-      </div>
-    </div>
-
-    <div class="form-row">
-      <div>
-        <label>What do you need?</label>
-        <select name="service_needed">
-          <option value="">Select a service</option>
-          <option>Business Website</option>
-          <option>Online Store</option>
-          <option>Booking / Appointment System</option>
-          <option>Mobile App</option>
-          <option>Food Ordering System</option>
-          <option>Admin Dashboard</option>
-          <option>Something Else</option>
-        </select>
-      </div>
-      <div>
-        <label>Budget</label>
-        <select name="budget">
-          <option value="">Select budget</option>
-          <option>₹2,000 – ₹5,000</option>
-          <option>₹5,000 – ₹10,000</option>
-          <option>₹10,000 – ₹20,000</option>
-          <option>₹20,000+</option>
-        </select>
-      </div>
-    </div>
-
     <div>
-      <label>Describe your requirements</label>
-      <textarea name="message" rows="5" placeholder="What do you want on your website or app? e.g. show menu, take online orders, let customers book appointments..." required></textarea>
+      <label>Business Type <span style="color:var(--muted);font-weight:400;">(optional)</span></label>
+      <input type="text" name="business_type" placeholder="e.g. Salon, Clinic, Restaurant" />
     </div>
 
     <button type="submit" class="btn btn-primary" style="width:100%;">Send My Request →</button>
@@ -253,11 +216,7 @@
       from_name:     this.querySelector('[name="from_name"]').value.trim(),
       from_email:    this.querySelector('[name="from_email"]').value.trim(),
       phone:         this.querySelector('[name="phone"]').value.trim(),
-      business_name: this.querySelector('[name="business_name"]').value.trim(),
       business_type: this.querySelector('[name="business_type"]').value.trim(),
-      service_needed:this.querySelector('[name="service_needed"]').value,
-      budget:        this.querySelector('[name="budget"]').value,
-      message:       this.querySelector('[name="message"]').value.trim(),
     };
 
     emailjs.send('service_dv9ejv6', 'template_2b7wbx9', templateParams)
