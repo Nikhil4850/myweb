@@ -148,12 +148,12 @@
 <!-- End Google Tag Manager (noscript) -->
 
 <nav>
-  <div class="nav-logo">Niks<span>projects</span></div>
+  <a href="index.html" class="nav-logo">Niks<span>projects</span></a>
   <div class="nav-links">
     <a href="index.html#projects">Projects</a>
-    <a href="learn.html">Learn</a>
-    <a href="custom-order.html">Custom Orders</a>
+    <a href="blog.html" class="active">Blog</a>
     <a href="business.html">For Business</a>
+    <a href="custom-order.html">Custom Orders</a>
     <a href="about.html">About Us</a>
     <a href="contact.html">Contact</a>
   </div>
@@ -161,7 +161,7 @@
 
 <div class="blog-hero">
   <h1>Niksprojects Blog</h1>
-  <p>Tips, guides, and ideas for developers, students, and businesses.</p>
+  <p>Tips, guides, tutorials, and ideas for developers, students, and businesses.</p>
 </div>
 
 <section class="section" style="padding-top:1rem;">
@@ -328,6 +328,35 @@
   </div>
 </section>
 
+<!-- Video Tutorials Section -->
+<section class="section" style="padding-top:1rem;">
+  <div class="section-title">Video Tutorials</div>
+  <div class="section-sub">Learn by watching professionals build real projects</div>
+
+  <div class="video-filters">
+    <button class="filter-btn active" data-category="all">All Videos</button>
+    <button class="filter-btn" data-category="frontend">Frontend</button>
+    <button class="filter-btn" data-category="backend">Backend</button>
+    <button class="filter-btn" data-category="fullstack">Full Stack</button>
+    <button class="filter-btn" data-category="tools">Tools & Tips</button>
+  </div>
+
+  <div class="videos-grid" id="videosGrid"></div>
+</section>
+
+<!-- Video Modal -->
+<div class="modal-overlay" id="videoModal">
+  <div class="modal video-modal">
+    <div class="video-modal-header">
+      <span id="videoTitle">Video Title</span>
+      <button class="video-close-btn" onclick="closeVideoModal()">✕</button>
+    </div>
+    <div class="video-embed-wrap">
+      <iframe id="videoFrame" src="" allowfullscreen></iframe>
+    </div>
+  </div>
+</div>
+
 <footer>
   <div class="footer-content">
     <div class="footer-grid">
@@ -345,7 +374,7 @@
         <h3>Quick Links</h3>
         <ul>
           <li><a href="index.html#projects">Browse Projects</a></li>
-          <li><a href="learn.html">Video Tutorials</a></li>
+          <li><a href="blog.html">Blog & Tutorials</a></li>
           <li><a href="custom-order.html">Custom Orders</a></li>
           <li><a href="contact.html">Contact Support</a></li>
         </ul>
@@ -355,8 +384,8 @@
         <ul>
           <li><a href="about.html">About Us</a></li>
           <li><a href="blog.html">Blog</a></li>
-          <li><a href="#">FAQ</a></li>
-          <li><a href="#">Setup Guides</a></li>
+          <li><a href="faq.html">FAQ</a></li>
+          <li><a href="business.html">For Business</a></li>
         </ul>
       </div>
       <div class="footer-section">
@@ -415,6 +444,65 @@
     searchVal = e.target.value.toLowerCase().trim();
     filterCards();
   });
+
+  // Video tutorials
+  const videos = [
+    { id:'v1', title:'Web Development Tutorial', description:'Learn web development step by step', category:'fullstack', thumbnail:'https://img.youtube.com/vi/ZqkKNo-pSPQ/hqdefault.jpg', duration:'Tutorial', videoUrl:'https://www.youtube.com/embed/ZqkKNo-pSPQ' },
+    { id:'v2', title:'Advanced Web Development', description:'Master advanced concepts and techniques', category:'fullstack', thumbnail:'https://img.youtube.com/vi/Vx97HvV6W_Q/hqdefault.jpg', duration:'Advanced', videoUrl:'https://www.youtube.com/embed/Vx97HvV6W_Q' },
+    { id:'v3', title:'Web Development Masterclass', description:'Complete guide to modern web development', category:'fullstack', thumbnail:'https://img.youtube.com/vi/BPKiV6cGX9U/hqdefault.jpg', duration:'Masterclass', videoUrl:'https://www.youtube.com/embed/BPKiV6cGX9U' },
+    { id:'v4', title:'Professional Web Development', description:'Industry standards and best practices', category:'fullstack', thumbnail:'https://img.youtube.com/vi/7SOx4rGeCzQ/hqdefault.jpg', duration:'Professional', videoUrl:'https://www.youtube.com/embed/7SOx4rGeCzQ' },
+    { id:'v5', title:'Expert Web Development', description:'Expert-level techniques', category:'fullstack', thumbnail:'https://img.youtube.com/vi/HpOuO2RbPBU/hqdefault.jpg', duration:'Expert', videoUrl:'https://www.youtube.com/embed/HpOuO2RbPBU' },
+    { id:'v6', title:'Ultimate Web Development', description:'Ultimate guide to web mastery', category:'fullstack', thumbnail:'https://img.youtube.com/vi/QMaOa7naJSs/hqdefault.jpg', duration:'Ultimate', videoUrl:'https://www.youtube.com/embed/QMaOa7naJSs' },
+    { id:'v7', title:'Complete Web Development Course', description:'From start to finish', category:'fullstack', thumbnail:'https://img.youtube.com/vi/B1pepta904o/hqdefault.jpg', duration:'Complete', videoUrl:'https://www.youtube.com/embed/B1pepta904o' },
+  ];
+
+  let activeVideoCat = 'all';
+
+  function renderVideos(cat) {
+    const grid = document.getElementById('videosGrid');
+    const list = cat === 'all' ? videos : videos.filter(v => v.category === cat);
+    grid.innerHTML = list.map(v => `
+      <div class="video-card">
+        <div class="video-thumb-wrap" onclick="openVideoModal('${v.id}')">
+          <img class="video-thumb" src="${v.thumbnail}" alt="${v.title}" loading="lazy" />
+          <div class="play-btn">▶</div>
+          <div class="video-duration">${v.duration}</div>
+        </div>
+        <div class="video-info">
+          <div class="video-category">${v.category}</div>
+          <div class="video-title">${v.title}</div>
+          <div class="video-desc">${v.description}</div>
+        </div>
+      </div>
+    `).join('');
+  }
+
+  document.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      renderVideos(btn.dataset.category);
+    });
+  });
+
+  function openVideoModal(id) {
+    const v = videos.find(x => x.id === id);
+    if (!v) return;
+    document.getElementById('videoTitle').textContent = v.title;
+    document.getElementById('videoFrame').src = v.videoUrl;
+    document.getElementById('videoModal').classList.add('active');
+  }
+
+  function closeVideoModal() {
+    document.getElementById('videoModal').classList.remove('active');
+    document.getElementById('videoFrame').src = '';
+  }
+
+  document.getElementById('videoModal').addEventListener('click', e => {
+    if (e.target === document.getElementById('videoModal')) closeVideoModal();
+  });
+
+  renderVideos('all');
 </script>
 </body>
 </html>
