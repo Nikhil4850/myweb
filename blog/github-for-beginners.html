@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5TBK5FML');</script>
+  <meta charset="UTF-8" /><meta name="google-adsense-account" content="ca-pub-9595610341128742">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="GitHub for beginners — learn Git and GitHub from scratch. Understand commits, branches, pull requests, and how to collaborate on code with real examples." />
+  <title>GitHub for Beginners: Version Control Made Simple - Niksprojects Blog</title>
+  <link rel="stylesheet" href="../css/style.css" />
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9595610341128742" crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="icon" href="https://www.image2url.com/r2/default/images/1779624924249-8fddfa1a-b2c7-45f4-a6df-df81d01a2116.png" />
+  <style>
+    .article-page{max-width:780px;margin:0 auto;padding:3rem 1.5rem 5rem}.article-header{margin-bottom:2rem}.article-category{font-size:.8rem;font-weight:700;color:var(--primary-light);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.5rem}.article-title{font-size:clamp(1.6rem,4vw,2.4rem);font-weight:800;color:var(--text);line-height:1.2;margin-bottom:1rem}.article-meta{font-size:.85rem;color:var(--muted);margin-bottom:2rem}.article-body h2{font-size:1.4rem;font-weight:700;color:var(--text);margin:2rem 0 .75rem}.article-body h3{font-size:1.1rem;font-weight:700;color:var(--primary-light);margin:1.5rem 0 .5rem}.article-body p{color:var(--text-secondary);line-height:1.8;margin-bottom:1rem}.article-body ul,.article-body ol{color:var(--text-secondary);line-height:1.8;margin:.5rem 0 1rem 1.5rem}.article-body li{margin-bottom:.4rem}.article-body code{background:var(--surface2);color:var(--primary-light);padding:.15rem .4rem;border-radius:4px;font-size:.9em}.article-body pre{background:var(--surface2);border:1px solid var(--border);border-radius:var(--radius);padding:1.2rem;overflow-x:auto;margin:1rem 0}.article-body pre code{background:none;padding:0}.article-cta{background:linear-gradient(135deg,rgba(99,102,241,.1),rgba(139,92,246,.08));border:1px solid var(--border-light);border-radius:var(--radius-lg);padding:2rem;margin-top:3rem;text-align:center}.back-link{display:inline-flex;align-items:center;gap:.4rem;color:var(--muted);font-size:.9rem;margin-bottom:2rem;transition:color .2s}.back-link:hover{color:var(--primary)}@media(max-width:480px){.article-page{padding:1.5rem 1rem 3rem}}
+  </style>
+</head>
+<body>
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5TBK5FML" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<nav>
+  <div class="nav-logo">Niks<span>projects</span></div>
+  <div class="nav-links">
+    <a href="../index.html#projects">Projects</a><a href="../learn.html">Learn</a><a href="../custom-order.html">Custom Orders</a><a href="../business.html">For Business</a><a href="../about.html">About Us</a><a href="../contact.html">Contact</a>
+  </div>
+</nav>
+<div class="article-page">
+  <a href="../blog.html" class="back-link">← Back to Blog</a>
+  <div class="article-header">
+    <div class="article-category">Tools</div>
+    <h1 class="article-title">GitHub for Beginners: Version Control Made Simple</h1>
+    <div class="article-meta">📅 June 2026 &nbsp;•&nbsp; ⏱ 8 min read &nbsp;•&nbsp; ✍️ Niksprojects Team</div>
+  </div>
+  <div class="article-body">
+    <p>Every professional developer uses Git and GitHub. If you're not using version control, you're working without a safety net — one wrong delete and your work is gone. Git tracks every change you make to your code, lets you experiment safely, and makes collaboration with other developers possible. This guide explains everything from scratch.</p>
+
+    <h2>Git vs GitHub: What's the Difference?</h2>
+    <p><strong>Git</strong> is a version control system — software that runs on your computer and tracks changes to your files. It's free and open source.</p>
+    <p><strong>GitHub</strong> is a website that hosts Git repositories online. It's like Google Drive for code, but with powerful collaboration features. GitHub is where developers share code, contribute to open source, and showcase their work to employers.</p>
+    <p>Think of it this way: Git is the tool, GitHub is the platform. You can use Git without GitHub (storing repos locally), but you can't use GitHub without Git.</p>
+
+    <h2>Installing Git</h2>
+    <p>Download Git from git-scm.com. During installation, choose "Git Bash" on Windows. On Mac, Git comes pre-installed or install it via Homebrew: <code>brew install git</code>. On Linux: <code>sudo apt install git</code>.</p>
+    <p>After installing, configure your identity:</p>
+    <pre><code>git config --global user.name "Your Name"
+git config --global user.email "you@example.com"</code></pre>
+
+    <h2>Core Git Concepts</h2>
+
+    <h3>Repository (Repo)</h3>
+    <p>A repository is a folder that Git is tracking. It contains your project files plus a hidden <code>.git</code> folder where Git stores all the history.</p>
+
+    <h3>Commit</h3>
+    <p>A commit is a snapshot of your project at a specific point in time. Think of it like a save point in a video game. Each commit has a unique ID and a message describing what changed.</p>
+
+    <h3>Branch</h3>
+    <p>A branch is a parallel version of your code. The default branch is called <code>main</code>. You create branches to work on new features without affecting the main code. When the feature is ready, you merge it back.</p>
+
+    <h3>Remote</h3>
+    <p>A remote is a version of your repository stored on a server (like GitHub). You push your local commits to the remote to back them up and share with others.</p>
+
+    <h2>Your First Git Workflow</h2>
+    <pre><code># 1. Create a new project folder and initialize Git
+mkdir my-project
+cd my-project
+git init
+
+# 2. Create a file
+echo "# My Project" > README.md
+
+# 3. Check what Git sees
+git status
+
+# 4. Stage the file (tell Git to include it in the next commit)
+git add README.md
+# Or stage everything: git add .
+
+# 5. Commit with a message
+git commit -m "Initial commit: add README"
+
+# 6. Check the commit history
+git log --oneline</code></pre>
+
+    <h2>Connecting to GitHub</h2>
+    <pre><code># 1. Create a new repository on github.com (click the + button)
+# 2. Copy the repository URL
+
+# 3. Connect your local repo to GitHub
+git remote add origin https://github.com/yourusername/my-project.git
+
+# 4. Push your commits to GitHub
+git push -u origin main
+
+# After the first push, you can just use:
+git push</code></pre>
+
+    <h2>The Daily Git Workflow</h2>
+    <p>Once your project is set up, your daily workflow looks like this:</p>
+    <pre><code># 1. Pull latest changes (if working with others)
+git pull
+
+# 2. Make changes to your files...
+
+# 3. Check what changed
+git status
+git diff
+
+# 4. Stage your changes
+git add .
+
+# 5. Commit
+git commit -m "Add user authentication feature"
+
+# 6. Push to GitHub
+git push</code></pre>
+
+    <h2>Working with Branches</h2>
+    <pre><code># Create and switch to a new branch
+git checkout -b feature/login-page
+# Modern syntax: git switch -c feature/login-page
+
+# Make changes, commit them...
+git add .
+git commit -m "Add login form HTML and CSS"
+
+# Switch back to main
+git checkout main
+
+# Merge your feature branch into main
+git merge feature/login-page
+
+# Delete the branch (optional, after merging)
+git branch -d feature/login-page</code></pre>
+
+    <h2>Pull Requests (PRs)</h2>
+    <p>A pull request is a GitHub feature that lets you propose changes to a repository. Instead of merging directly, you create a PR and others can review your code, leave comments, and approve or request changes before merging.</p>
+    <p>The PR workflow:</p>
+    <ol>
+      <li>Create a branch and make your changes</li>
+      <li>Push the branch to GitHub: <code>git push origin feature/my-feature</code></li>
+      <li>Go to GitHub and click "Compare &amp; pull request"</li>
+      <li>Write a description of what you changed and why</li>
+      <li>Request reviewers if working in a team</li>
+      <li>After approval, merge the PR</li>
+    </ol>
+
+    <h2>Cloning an Existing Repository</h2>
+    <pre><code># Download a repository from GitHub to your computer
+git clone https://github.com/username/repository-name.git
+
+# This creates a folder with all the code and history
+cd repository-name</code></pre>
+
+    <h2>Handling Merge Conflicts</h2>
+    <p>A merge conflict happens when two people change the same line of code. Git marks the conflict in the file:</p>
+    <pre><code>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
+Your version of the code
+=======
+Their version of the code
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; feature/their-branch</code></pre>
+    <p>To resolve: edit the file to keep the correct version, remove the conflict markers, then <code>git add</code> and <code>git commit</code>.</p>
+
+    <h2>Essential Git Commands Cheat Sheet</h2>
+    <pre><code>git init              # Initialize a new repo
+git clone &lt;url&gt;       # Clone a remote repo
+git status            # See what's changed
+git add .             # Stage all changes
+git commit -m "msg"   # Commit with message
+git push              # Push to remote
+git pull              # Pull from remote
+git branch            # List branches
+git checkout -b name  # Create and switch branch
+git merge name        # Merge branch into current
+git log --oneline     # View commit history
+git diff              # See unstaged changes
+git stash             # Temporarily save changes
+git stash pop         # Restore stashed changes</code></pre>
+
+    <h2>GitHub Profile Tips</h2>
+    <p>Your GitHub profile is your developer portfolio. Employers look at it. Make it count:</p>
+    <ul>
+      <li>Pin your best 6 repositories to your profile</li>
+      <li>Write good README files for each project (what it does, how to run it, screenshots)</li>
+      <li>Commit regularly — the green contribution graph matters</li>
+      <li>Contribute to open source — even fixing typos in documentation counts</li>
+      <li>Add a profile README (create a repo with your username as the name)</li>
+    </ul>
+  </div>
+
+  <div class="article-cta">
+    <h3 style="color:var(--text);margin-bottom:0.5rem;">Need a Project Built?</h3>
+    <p style="color:var(--muted);margin-bottom:1rem;">Browse our ready-made projects or get a custom one built for you.</p>
+    <a href="../index.html#projects" class="btn btn-primary">Browse Projects</a>
+    <a href="../business.html" class="btn btn-outline" style="margin-left:0.75rem">For Business</a>
+  </div>
+</div>
+<footer>
+  <div class="footer-content">
+    <div class="footer-grid">
+      <div class="footer-section"><div class="footer-logo">Niks<span>projects</span></div><p class="footer-description">Your trusted source for high-quality, ready-to-use student projects with comprehensive support and documentation.</p><div class="social-links"><a href="#" aria-label="Twitter">𝕏</a><a href="#" aria-label="GitHub">⚡</a><a href="#" aria-label="LinkedIn">in</a><a href="#" aria-label="YouTube">▶</a></div></div>
+      <div class="footer-section"><h3>Quick Links</h3><ul><li><a href="../index.html#projects">Browse Projects</a></li><li><a href="../learn.html">Video Tutorials</a></li><li><a href="../custom-order.html">Custom Orders</a></li><li><a href="../contact.html">Contact Support</a></li></ul></div>
+      <div class="footer-section"><h3>Company</h3><ul><li><a href="../about.html">About Us</a></li><li><a href="../blog.html">Blog</a></li><li><a href="#">FAQ</a></li><li><a href="#">Setup Guides</a></li></ul></div>
+      <div class="footer-section"><h3>Legal</h3><ul><li><a href="../privacy.html">Privacy Policy</a></li><li><a href="#">Terms of Service</a></li><li><a href="#">Refund Policy</a></li><li><a href="#">License Agreement</a></li></ul></div>
+    </div>
+    <div class="footer-bottom"><div class="footer-bottom-content"><p>&copy; 2026 Niksprojects Store. All rights reserved.</p><div class="footer-bottom-links"><span>🔒 Payments secured by Razorpay</span><span>•</span><span>🛡️ SSL Encrypted</span></div></div></div>
+  </div>
+</footer>
+</body>
+</html>

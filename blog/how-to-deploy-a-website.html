@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5TBK5FML');</script>
+  <!-- End Google Tag Manager -->
+  <meta charset="UTF-8" />
+  <meta name="google-adsense-account" content="ca-pub-9595610341128742">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="How to deploy a website — 5 easy methods including GitHub Pages, Vercel, Netlify, shared hosting, and VPS, with step-by-step instructions." />
+  <title>How to Deploy a Website: 5 Easy Methods - Niksprojects Blog</title>
+  <link rel="stylesheet" href="../css/style.css" />
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9595610341128742" crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="icon" href="https://www.image2url.com/r2/default/images/1779624924249-8fddfa1a-b2c7-45f4-a6df-df81d01a2116.png" />
+  <style>
+    .article-page { max-width: 780px; margin: 0 auto; padding: 3rem 1.5rem 5rem; }
+    .article-header { margin-bottom: 2rem; }
+    .article-category { font-size: 0.8rem; font-weight: 700; color: var(--primary-light); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.5rem; }
+    .article-title { font-size: clamp(1.6rem, 4vw, 2.4rem); font-weight: 800; color: var(--text); line-height: 1.2; margin-bottom: 1rem; }
+    .article-meta { font-size: 0.85rem; color: var(--muted); margin-bottom: 2rem; }
+    .article-body h2 { font-size: 1.4rem; font-weight: 700; color: var(--text); margin: 2rem 0 0.75rem; }
+    .article-body h3 { font-size: 1.1rem; font-weight: 700; color: var(--primary-light); margin: 1.5rem 0 0.5rem; }
+    .article-body p { color: var(--text-secondary); line-height: 1.8; margin-bottom: 1rem; }
+    .article-body ul, .article-body ol { color: var(--text-secondary); line-height: 1.8; margin: 0.5rem 0 1rem 1.5rem; }
+    .article-body li { margin-bottom: 0.4rem; }
+    .article-body code { background: var(--surface2); color: var(--primary-light); padding: 0.15rem 0.4rem; border-radius: 4px; font-size: 0.9em; }
+    .article-body pre { background: var(--surface2); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.2rem; overflow-x: auto; margin: 1rem 0; }
+    .article-body pre code { background: none; padding: 0; }
+    .article-cta { background: linear-gradient(135deg, rgba(99,102,241,0.1), rgba(139,92,246,0.08)); border: 1px solid var(--border-light); border-radius: var(--radius-lg); padding: 2rem; margin-top: 3rem; text-align: center; }
+    .back-link { display: inline-flex; align-items: center; gap: 0.4rem; color: var(--muted); font-size: 0.9rem; margin-bottom: 2rem; transition: color 0.2s; }
+    .back-link:hover { color: var(--primary); }
+    .method-card { background: var(--surface2); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 1.5rem; margin-bottom: 1.5rem; }
+    .method-header { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.75rem; }
+    .method-num { width: 32px; height: 32px; min-width: 32px; background: linear-gradient(135deg, var(--primary), var(--secondary)); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: 700; font-size: 0.9rem; }
+    .method-name { font-size: 1.1rem; font-weight: 700; color: var(--text); }
+    .method-badge { font-size: 0.72rem; font-weight: 700; padding: 0.2rem 0.6rem; border-radius: 999px; background: rgba(16,185,129,0.15); color: #10b981; margin-left: auto; }
+    .method-badge.paid { background: rgba(245,158,11,0.15); color: #f59e0b; }
+    @media (max-width: 480px) { .article-page { padding: 1.5rem 1rem 3rem; } }
+  </style>
+</head>
+<body>
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5TBK5FML" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<nav>
+  <div class="nav-logo">Niks<span>projects</span></div>
+  <div class="nav-links">
+    <a href="../index.html#projects">Projects</a>
+    <a href="../learn.html">Learn</a>
+    <a href="../custom-order.html">Custom Orders</a>
+    <a href="../business.html">For Business</a>
+    <a href="../about.html">About Us</a>
+    <a href="../contact.html">Contact</a>
+  </div>
+</nav>
+
+<div class="article-page">
+  <a href="../blog.html" class="back-link">← Back to Blog</a>
+  <div class="article-header">
+    <div class="article-category">Tools</div>
+    <h1 class="article-title">How to Deploy a Website: 5 Easy Methods</h1>
+    <div class="article-meta">📅 June 2026 &nbsp;•&nbsp; ⏱ 7 min read &nbsp;•&nbsp; ✍️ Niksprojects Team</div>
+  </div>
+
+  <div class="article-body">
+    <p>Building a website is only half the job — getting it live on the internet is the other half. Deployment can feel intimidating the first time, but in 2026 there are excellent tools that make it straightforward. This guide covers five methods, from completely free to professional-grade, with step-by-step instructions for each.</p>
+
+    <h2>Before You Deploy: Checklist</h2>
+    <ul>
+      <li>Test your site locally — all links work, images load, forms submit</li>
+      <li>Check on mobile — use Chrome DevTools responsive mode</li>
+      <li>Validate your HTML — validator.w3.org</li>
+      <li>Compress images — use squoosh.app or TinyPNG</li>
+      <li>Check page speed — pagespeed.web.dev</li>
+      <li>Have your domain name ready (if using a custom domain)</li>
+    </ul>
+
+    <div class="method-card">
+      <div class="method-header">
+        <div class="method-num">1</div>
+        <div class="method-name">GitHub Pages</div>
+        <span class="method-badge">Free</span>
+      </div>
+      <p style="color:var(--text-secondary);line-height:1.7;margin-bottom:0.75rem;"><strong>Best for:</strong> Static websites, portfolios, project demos</p>
+      <p style="color:var(--text-secondary);line-height:1.7;margin-bottom:0.75rem;">GitHub Pages hosts static websites directly from a GitHub repository. It's completely free, includes HTTPS, and gives you a URL like <code>username.github.io/repo-name</code>.</p>
+      <p style="color:var(--text-secondary);line-height:1.7;margin-bottom:0.5rem;"><strong>Steps:</strong></p>
+      <ol style="color:var(--text-secondary);line-height:1.8;margin-left:1.5rem;">
+        <li>Push your website files to a GitHub repository</li>
+        <li>Go to Settings → Pages in your repository</li>
+        <li>Under "Source," select "Deploy from a branch"</li>
+        <li>Choose the <code>main</code> branch and <code>/ (root)</code> folder</li>
+        <li>Click Save — your site will be live in 1–2 minutes</li>
+      </ol>
+    </div>
+
+    <div class="method-card">
+      <div class="method-header">
+        <div class="method-num">2</div>
+        <div class="method-name">Vercel</div>
+        <span class="method-badge">Free Tier</span>
+      </div>
+      <p style="color:var(--text-secondary);line-height:1.7;margin-bottom:0.75rem;"><strong>Best for:</strong> React, Next.js, Vue, static sites — anything with a build step</p>
+      <p style="color:var(--text-secondary);line-height:1.7;margin-bottom:0.75rem;">Vercel is the gold standard for deploying modern web apps. Connect your GitHub repo and Vercel automatically deploys every time you push code. It includes a global CDN, automatic HTTPS, and preview deployments for every pull request.</p>
+      <p style="color:var(--text-secondary);line-height:1.7;margin-bottom:0.5rem;"><strong>Steps:</strong></p>
+      <ol style="color:var(--text-secondary);line-height:1.8;margin-left:1.5rem;">
+        <li>Sign up at vercel.com with your GitHub account</li>
+        <li>Click "Add New Project" and import your repository</li>
+        <li>Vercel auto-detects your framework (React, Next.js, etc.)</li>
+        <li>Click Deploy — done in under a minute</li>
+        <li>Add a custom domain in Project Settings → Domains</li>
+      </ol>
+      <pre style="margin-top:0.75rem;"><code># Or deploy via CLI
+npm install -g vercel
+vercel login
+vercel --prod</code></pre>
+    </div>
+
+    <div class="method-card">
+      <div class="method-header">
+        <div class="method-num">3</div>
+        <div class="method-name">Netlify</div>
+        <span class="method-badge">Free Tier</span>
+      </div>
+      <p style="color:var(--text-secondary);line-height:1.7;margin-bottom:0.75rem;"><strong>Best for:</strong> Static sites, JAMstack apps, sites with forms and serverless functions</p>
+      <p style="color:var(--text-secondary);line-height:1.7;margin-bottom:0.75rem;">Netlify is similar to Vercel but with some unique features: built-in form handling (no backend needed for contact forms), identity/auth, and A/B testing. The free tier is generous for personal projects.</p>
+      <p style="color:var(--text-secondary);line-height:1.7;margin-bottom:0.5rem;"><strong>Steps:</strong></p>
+      <ol style="color:var(--text-secondary);line-height:1.8;margin-left:1.5rem;">
+        <li>Sign up at netlify.com</li>
+        <li>Drag and drop your project folder onto the Netlify dashboard — it deploys instantly</li>
+        <li>Or connect your GitHub repo for continuous deployment</li>
+        <li>Configure your build command and publish directory</li>
+      </ol>
+    </div>
+
+    <div class="method-card">
+      <div class="method-header">
+        <div class="method-num">4</div>
+        <div class="method-name">Shared Hosting (cPanel)</div>
+        <span class="method-badge paid">Paid (~₹150/mo)</span>
+      </div>
+      <p style="color:var(--text-secondary);line-height:1.7;margin-bottom:0.75rem;"><strong>Best for:</strong> WordPress sites, PHP applications, business websites</p>
+      <p style="color:var(--text-secondary);line-height:1.7;margin-bottom:0.75rem;">Shared hosting is the traditional way to host websites. Providers like Hostinger, SiteGround, and Bluehost give you a cPanel dashboard to manage files, databases, and email. It's affordable and works well for WordPress.</p>
+      <p style="color:var(--text-secondary);line-height:1.7;margin-bottom:0.5rem;"><strong>Steps:</strong></p>
+      <ol style="color:var(--text-secondary);line-height:1.8;margin-left:1.5rem;">
+        <li>Buy a hosting plan and domain from Hostinger or similar</li>
+        <li>Log into cPanel and open File Manager</li>
+        <li>Navigate to <code>public_html</code> folder</li>
+        <li>Upload your website files (or use FTP with FileZilla)</li>
+        <li>For WordPress: use the one-click installer in cPanel</li>
+      </ol>
+    </div>
+
+    <div class="method-card">
+      <div class="method-header">
+        <div class="method-num">5</div>
+        <div class="method-name">VPS (Virtual Private Server)</div>
+        <span class="method-badge paid">Paid (~₹500/mo)</span>
+      </div>
+      <p style="color:var(--text-secondary);line-height:1.7;margin-bottom:0.75rem;"><strong>Best for:</strong> Node.js, Python, Django, custom backends, high-traffic sites</p>
+      <p style="color:var(--text-secondary);line-height:1.7;margin-bottom:0.75rem;">A VPS gives you a virtual server with full root access. You install and configure everything yourself. It's more work but gives you complete control. DigitalOcean, Linode (Akamai), and AWS Lightsail are popular choices.</p>
+      <p style="color:var(--text-secondary);line-height:1.7;margin-bottom:0.5rem;"><strong>Basic setup for a Node.js app:</strong></p>
+      <pre><code># SSH into your server
+ssh root@your-server-ip
+
+# Install Node.js
+curl -fsSL https://deb.nodesource.com/setup_20.x | bash -
+apt-get install -y nodejs
+
+# Install Nginx as reverse proxy
+apt-get install nginx
+
+# Install PM2 to keep your app running
+npm install -g pm2
+
+# Clone and start your app
+git clone https://github.com/you/your-app.git
+cd your-app
+npm install
+pm2 start server.js --name "myapp"
+pm2 startup</code></pre>
+    </div>
+
+    <h2>Which Method Should You Use?</h2>
+    <ul>
+      <li><strong>Student portfolio / static site</strong> → GitHub Pages (free, easy)</li>
+      <li><strong>React / Next.js app</strong> → Vercel (best DX, free tier is generous)</li>
+      <li><strong>WordPress business site</strong> → Shared hosting (Hostinger is good value)</li>
+      <li><strong>Node.js / Django backend</strong> → VPS or Railway.app</li>
+      <li><strong>Full-stack app with database</strong> → Railway, Render, or VPS</li>
+    </ul>
+
+    <h2>Adding a Custom Domain</h2>
+    <p>Once deployed, you'll want a custom domain instead of <code>username.github.io</code>. The process is similar for all platforms:</p>
+    <ol>
+      <li>Buy a domain from Namecheap or GoDaddy</li>
+      <li>In your hosting platform, add the custom domain</li>
+      <li>The platform gives you DNS records (usually an A record or CNAME)</li>
+      <li>Add those records in your domain registrar's DNS settings</li>
+      <li>Wait 10–60 minutes for DNS propagation</li>
+    </ol>
+    <p>All the platforms above provide free SSL certificates automatically once your domain is connected.</p>
+
+    <h2>Continuous Deployment</h2>
+    <p>The best deployment workflow is continuous deployment: every time you push code to GitHub, your site automatically rebuilds and deploys. Vercel and Netlify do this out of the box. It means you never have to manually upload files — just <code>git push</code> and your changes are live in seconds.</p>
+  </div>
+
+  <div class="article-cta">
+    <h3 style="color:var(--text);margin-bottom:0.5rem;">Need a Project Built?</h3>
+    <p style="color:var(--muted);margin-bottom:1rem;">Browse our ready-made projects or get a custom one built for you.</p>
+    <a href="../index.html#projects" class="btn btn-primary">Browse Projects</a>
+    <a href="../business.html" class="btn btn-outline" style="margin-left:0.75rem">For Business</a>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-content">
+    <div class="footer-grid">
+      <div class="footer-section">
+        <div class="footer-logo">Niks<span>projects</span></div>
+        <p class="footer-description">Your trusted source for high-quality, ready-to-use student projects with comprehensive support and documentation.</p>
+        <div class="social-links">
+          <a href="#" aria-label="Twitter">𝕏</a>
+          <a href="#" aria-label="GitHub">⚡</a>
+          <a href="#" aria-label="LinkedIn">in</a>
+          <a href="#" aria-label="YouTube">▶</a>
+        </div>
+      </div>
+      <div class="footer-section">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="../index.html#projects">Browse Projects</a></li>
+          <li><a href="../learn.html">Video Tutorials</a></li>
+          <li><a href="../custom-order.html">Custom Orders</a></li>
+          <li><a href="../contact.html">Contact Support</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h3>Company</h3>
+        <ul>
+          <li><a href="../about.html">About Us</a></li>
+          <li><a href="../blog.html">Blog</a></li>
+          <li><a href="#">FAQ</a></li>
+          <li><a href="#">Setup Guides</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h3>Legal</h3>
+        <ul>
+          <li><a href="../privacy.html">Privacy Policy</a></li>
+          <li><a href="#">Terms of Service</a></li>
+          <li><a href="#">Refund Policy</a></li>
+          <li><a href="#">License Agreement</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-bottom-content">
+        <p>&copy; 2026 Niksprojects Store. All rights reserved.</p>
+        <div class="footer-bottom-links">
+          <span>🔒 Payments secured by Razorpay</span>
+          <span>•</span>
+          <span>🛡️ SSL Encrypted</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

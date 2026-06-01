@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5TBK5FML');</script>
+  <meta charset="UTF-8" /><meta name="google-adsense-account" content="ca-pub-9595610341128742">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="10 responsive design tips every developer should know — CSS Grid, Flexbox, media queries, fluid typography, images, and mobile-first best practices." />
+  <title>10 Responsive Design Tips Every Developer Should Know - Niksprojects Blog</title>
+  <link rel="stylesheet" href="../css/style.css" />
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9595610341128742" crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="icon" href="https://www.image2url.com/r2/default/images/1779624924249-8fddfa1a-b2c7-45f4-a6df-df81d01a2116.png" />
+  <style>
+    .article-page{max-width:780px;margin:0 auto;padding:3rem 1.5rem 5rem}.article-header{margin-bottom:2rem}.article-category{font-size:.8rem;font-weight:700;color:var(--primary-light);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.5rem}.article-title{font-size:clamp(1.6rem,4vw,2.4rem);font-weight:800;color:var(--text);line-height:1.2;margin-bottom:1rem}.article-meta{font-size:.85rem;color:var(--muted);margin-bottom:2rem}.article-body h2{font-size:1.4rem;font-weight:700;color:var(--text);margin:2rem 0 .75rem}.article-body h3{font-size:1.1rem;font-weight:700;color:var(--primary-light);margin:1.5rem 0 .5rem}.article-body p{color:var(--text-secondary);line-height:1.8;margin-bottom:1rem}.article-body ul,.article-body ol{color:var(--text-secondary);line-height:1.8;margin:.5rem 0 1rem 1.5rem}.article-body li{margin-bottom:.4rem}.article-body code{background:var(--surface2);color:var(--primary-light);padding:.15rem .4rem;border-radius:4px;font-size:.9em}.article-body pre{background:var(--surface2);border:1px solid var(--border);border-radius:var(--radius);padding:1.2rem;overflow-x:auto;margin:1rem 0}.article-body pre code{background:none;padding:0}.article-cta{background:linear-gradient(135deg,rgba(99,102,241,.1),rgba(139,92,246,.08));border:1px solid var(--border-light);border-radius:var(--radius-lg);padding:2rem;margin-top:3rem;text-align:center}.back-link{display:inline-flex;align-items:center;gap:.4rem;color:var(--muted);font-size:.9rem;margin-bottom:2rem;transition:color .2s}.back-link:hover{color:var(--primary)}.tip-num{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;background:linear-gradient(135deg,var(--primary),var(--secondary));border-radius:50%;color:white;font-weight:700;font-size:.85rem;margin-right:.5rem;flex-shrink:0}@media(max-width:480px){.article-page{padding:1.5rem 1rem 3rem}}
+  </style>
+</head>
+<body>
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5TBK5FML" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<nav>
+  <div class="nav-logo">Niks<span>projects</span></div>
+  <div class="nav-links">
+    <a href="../index.html#projects">Projects</a><a href="../learn.html">Learn</a><a href="../custom-order.html">Custom Orders</a><a href="../business.html">For Business</a><a href="../about.html">About Us</a><a href="../contact.html">Contact</a>
+  </div>
+</nav>
+<div class="article-page">
+  <a href="../blog.html" class="back-link">← Back to Blog</a>
+  <div class="article-header">
+    <div class="article-category">Web Dev</div>
+    <h1 class="article-title">10 Responsive Design Tips Every Developer Should Know</h1>
+    <div class="article-meta">📅 June 2026 &nbsp;•&nbsp; ⏱ 7 min read &nbsp;•&nbsp; ✍️ Niksprojects Team</div>
+  </div>
+  <div class="article-body">
+    <p>Over 60% of web traffic comes from mobile devices. If your website doesn't work well on a phone, you're losing more than half your visitors. Responsive design isn't optional — it's the baseline. These 10 tips will help you build websites that look great on every screen size.</p>
+
+    <h2><span class="tip-num">1</span> Always Start with the Viewport Meta Tag</h2>
+    <p>Without this tag, mobile browsers render your page at desktop width and then scale it down — making everything tiny. This single line of HTML is non-negotiable:</p>
+    <pre><code>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0" /&gt;</code></pre>
+
+    <h2><span class="tip-num">2</span> Design Mobile-First</h2>
+    <p>Write your base CSS for mobile screens, then use <code>min-width</code> media queries to add complexity for larger screens. This approach is cleaner and performs better because mobile devices don't have to download and override desktop styles.</p>
+    <pre><code>/* Base styles: mobile */
+.card { padding: 1rem; }
+
+/* Tablet and up */
+@media (min-width: 768px) {
+  .card { padding: 1.5rem; }
+}
+
+/* Desktop and up */
+@media (min-width: 1024px) {
+  .card { padding: 2rem; }
+}</code></pre>
+
+    <h2><span class="tip-num">3</span> Use CSS Grid with auto-fill for Responsive Grids</h2>
+    <p>This single CSS rule creates a responsive grid that automatically adjusts the number of columns based on available space — no media queries needed:</p>
+    <pre><code>.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+/* On mobile: 1 column. Tablet: 2 columns. Desktop: 3+ columns. */</code></pre>
+
+    <h2><span class="tip-num">4</span> Use Fluid Typography with clamp()</h2>
+    <p>Instead of setting different font sizes at different breakpoints, use <code>clamp()</code> to create font sizes that scale smoothly between a minimum and maximum:</p>
+    <pre><code>h1 {
+  /* Min: 1.8rem, preferred: 5vw, max: 3.5rem */
+  font-size: clamp(1.8rem, 5vw, 3.5rem);
+}
+
+p {
+  font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+}</code></pre>
+
+    <h2><span class="tip-num">5</span> Make Images Responsive by Default</h2>
+    <p>Add this to your global CSS and images will never overflow their containers:</p>
+    <pre><code>img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* For background images */
+.hero {
+  background-image: url('hero.jpg');
+  background-size: cover;
+  background-position: center;
+}</code></pre>
+    <p>For performance, use the <code>srcset</code> attribute to serve different image sizes to different devices:</p>
+    <pre><code>&lt;img
+  src="image-800.jpg"
+  srcset="image-400.jpg 400w, image-800.jpg 800w, image-1200.jpg 1200w"
+  sizes="(max-width: 600px) 400px, (max-width: 1000px) 800px, 1200px"
+  alt="Description"
+/&gt;</code></pre>
+
+    <h2><span class="tip-num">6</span> Use Relative Units, Not Pixels</h2>
+    <p>Pixels are absolute — they don't scale with user preferences. Use relative units instead:</p>
+    <ul>
+      <li><code>rem</code> — relative to the root font size (best for font sizes and spacing)</li>
+      <li><code>em</code> — relative to the parent element's font size</li>
+      <li><code>%</code> — relative to the parent element's size</li>
+      <li><code>vw/vh</code> — relative to the viewport width/height</li>
+    </ul>
+    <pre><code>/* Good */
+.container { max-width: 75rem; padding: 0 1.5rem; }
+h1 { font-size: 2.5rem; margin-bottom: 1rem; }
+
+/* Avoid for font sizes and spacing */
+h1 { font-size: 40px; margin-bottom: 16px; }</code></pre>
+
+    <h2><span class="tip-num">7</span> Handle Navigation on Mobile</h2>
+    <p>Desktop navigation with many links doesn't work on mobile. Use a hamburger menu pattern:</p>
+    <pre><code>/* Hide nav links on mobile */
+@media (max-width: 480px) {
+  .nav-links { display: none; }
+  .hamburger { display: flex; }
+}
+
+/* Show when menu is open */
+.nav-links.open {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: var(--surface);
+  padding: 1rem;
+}</code></pre>
+
+    <h2><span class="tip-num">8</span> Use Flexbox for Component-Level Layout</h2>
+    <p>Flexbox is perfect for aligning items within a component — navigation bars, card footers, button groups. Use <code>flex-wrap: wrap</code> to let items wrap on small screens:</p>
+    <pre><code>.card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+/* On very small screens, items stack vertically */
+@media (max-width: 360px) {
+  .card-footer { flex-direction: column; }
+}</code></pre>
+
+    <h2><span class="tip-num">9</span> Test on Real Devices, Not Just DevTools</h2>
+    <p>Chrome DevTools responsive mode is useful but not perfect. Real devices have different pixel densities, touch behavior, and browser quirks. Test on at least:</p>
+    <ul>
+      <li>A small Android phone (360px wide)</li>
+      <li>An iPhone (375–390px wide)</li>
+      <li>A tablet (768px wide)</li>
+      <li>A desktop (1280px+ wide)</li>
+    </ul>
+    <p>BrowserStack offers free trials for testing on real devices if you don't have them available.</p>
+
+    <h2><span class="tip-num">10</span> Don't Forget Touch Targets</h2>
+    <p>Buttons and links need to be large enough to tap with a finger. Google recommends a minimum touch target size of 48×48px. Small links that are easy to click with a mouse become frustrating on a touchscreen.</p>
+    <pre><code>/* Ensure buttons are large enough to tap */
+.btn {
+  min-height: 44px;
+  min-width: 44px;
+  padding: 0.75rem 1.5rem;
+}
+
+/* Add extra padding to small links */
+nav a {
+  padding: 0.75rem 1rem;
+  display: inline-block;
+}</code></pre>
+
+    <h2>Bonus: The CSS Reset That Helps</h2>
+    <pre><code>*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+img, video {
+  max-width: 100%;
+  height: auto;
+}</code></pre>
+
+    <p>Responsive design is a mindset, not just a set of techniques. Always ask: "How does this look on a phone?" before considering a feature done. The best responsive designs feel natural on every device — not like a desktop site squeezed into a small screen.</p>
+  </div>
+
+  <div class="article-cta">
+    <h3 style="color:var(--text);margin-bottom:0.5rem;">Need a Project Built?</h3>
+    <p style="color:var(--muted);margin-bottom:1rem;">Browse our ready-made projects or get a custom one built for you.</p>
+    <a href="../index.html#projects" class="btn btn-primary">Browse Projects</a>
+    <a href="../business.html" class="btn btn-outline" style="margin-left:0.75rem">For Business</a>
+  </div>
+</div>
+<footer>
+  <div class="footer-content">
+    <div class="footer-grid">
+      <div class="footer-section"><div class="footer-logo">Niks<span>projects</span></div><p class="footer-description">Your trusted source for high-quality, ready-to-use student projects with comprehensive support and documentation.</p><div class="social-links"><a href="#" aria-label="Twitter">𝕏</a><a href="#" aria-label="GitHub">⚡</a><a href="#" aria-label="LinkedIn">in</a><a href="#" aria-label="YouTube">▶</a></div></div>
+      <div class="footer-section"><h3>Quick Links</h3><ul><li><a href="../index.html#projects">Browse Projects</a></li><li><a href="../learn.html">Video Tutorials</a></li><li><a href="../custom-order.html">Custom Orders</a></li><li><a href="../contact.html">Contact Support</a></li></ul></div>
+      <div class="footer-section"><h3>Company</h3><ul><li><a href="../about.html">About Us</a></li><li><a href="../blog.html">Blog</a></li><li><a href="#">FAQ</a></li><li><a href="#">Setup Guides</a></li></ul></div>
+      <div class="footer-section"><h3>Legal</h3><ul><li><a href="../privacy.html">Privacy Policy</a></li><li><a href="#">Terms of Service</a></li><li><a href="#">Refund Policy</a></li><li><a href="#">License Agreement</a></li></ul></div>
+    </div>
+    <div class="footer-bottom"><div class="footer-bottom-content"><p>&copy; 2026 Niksprojects Store. All rights reserved.</p><div class="footer-bottom-links"><span>🔒 Payments secured by Razorpay</span><span>•</span><span>🛡️ SSL Encrypted</span></div></div></div>
+  </div>
+</footer>
+</body>
+</html>

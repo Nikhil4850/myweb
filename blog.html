@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5TBK5FML');</script>
+  <!-- End Google Tag Manager -->
+  <meta charset="UTF-8" />
+  <meta name="google-adsense-account" content="ca-pub-9595610341128742">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Niksprojects Blog – Tips, guides, and ideas for developers and businesses. Learn web development, app development, SEO, and more." />
+  <title>Blog – Niksprojects</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9595610341128742" crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="icon" href="https://www.image2url.com/r2/default/images/1779624924249-8fddfa1a-b2c7-45f4-a6df-df81d01a2116.png" />
+  <style>
+    .blog-hero {
+      text-align: center;
+      padding: 5rem 2rem 3rem;
+      background: radial-gradient(ellipse at top, rgba(139,92,246,0.15) 0%, transparent 50%);
+    }
+    .blog-hero h1 {
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 900;
+      background: linear-gradient(135deg, var(--text) 0%, var(--primary) 50%, var(--secondary) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 1rem;
+      letter-spacing: -0.02em;
+    }
+    .blog-hero p {
+      color: var(--text-secondary);
+      font-size: 1.1rem;
+      max-width: 560px;
+      margin: 0 auto;
+    }
+    .blog-controls {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-bottom: 2.5rem;
+    }
+    .blog-search {
+      flex: 1;
+      min-width: 220px;
+      max-width: 360px;
+      padding: 0.75rem 1.2rem;
+      background: var(--surface2);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius);
+      color: var(--text);
+      font-size: 0.95rem;
+      font-family: inherit;
+      transition: border-color 0.3s;
+    }
+    .blog-search:focus { outline: none; border-color: var(--primary); }
+    .blog-search::placeholder { color: var(--muted); }
+    .cat-filters { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+    .cat-btn {
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      color: var(--muted);
+      padding: 0.45rem 1rem;
+      border-radius: 999px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.25s;
+      font-family: inherit;
+    }
+    .cat-btn:hover { border-color: var(--primary); color: var(--text); }
+    .cat-btn.active { background: linear-gradient(135deg, var(--primary), var(--secondary)); border-color: var(--primary); color: white; }
+    .blog-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 1.75rem;
+    }
+    .blog-card {
+      background: linear-gradient(135deg, var(--surface) 0%, var(--surface2) 100%);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 1.75rem;
+      display: flex;
+      flex-direction: column;
+      transition: all 0.35s cubic-bezier(0.4,0,0.2,1);
+      position: relative;
+      overflow: hidden;
+    }
+    .blog-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+      transform: scaleX(0);
+      transition: transform 0.35s;
+    }
+    .blog-card:hover { transform: translateY(-6px); border-color: var(--primary); box-shadow: 0 12px 32px rgba(99,102,241,0.2); }
+    .blog-card:hover::before { transform: scaleX(1); }
+    .blog-card-cat {
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--primary-light);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 0.6rem;
+    }
+    .blog-card-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--text);
+      line-height: 1.35;
+      margin-bottom: 0.75rem;
+    }
+    .blog-card-excerpt {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      line-height: 1.65;
+      flex: 1;
+      margin-bottom: 1rem;
+    }
+    .blog-card-meta {
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-bottom: 0.25rem;
+    }
+    .no-results {
+      grid-column: 1/-1;
+      text-align: center;
+      padding: 4rem 2rem;
+      color: var(--muted);
+      font-size: 1.1rem;
+    }
+    @media (max-width: 600px) {
+      .blog-grid { grid-template-columns: 1fr; }
+      .blog-controls { flex-direction: column; align-items: stretch; }
+      .blog-search { max-width: 100%; }
+    }
+  </style>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5TBK5FML" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+<nav>
+  <div class="nav-logo">Niks<span>projects</span></div>
+  <div class="nav-links">
+    <a href="index.html#projects">Projects</a>
+    <a href="learn.html">Learn</a>
+    <a href="custom-order.html">Custom Orders</a>
+    <a href="business.html">For Business</a>
+    <a href="about.html">About Us</a>
+    <a href="contact.html">Contact</a>
+  </div>
+</nav>
+
+<div class="blog-hero">
+  <h1>Niksprojects Blog</h1>
+  <p>Tips, guides, and ideas for developers, students, and businesses.</p>
+</div>
+
+<section class="section" style="padding-top:1rem;">
+  <div class="blog-controls">
+    <input type="text" class="blog-search" id="blogSearch" placeholder="🔍 Search articles…" />
+    <div class="cat-filters" id="catFilters">
+      <button class="cat-btn active" data-cat="all">All</button>
+      <button class="cat-btn" data-cat="Web Dev">Web Dev</button>
+      <button class="cat-btn" data-cat="Mobile">Mobile</button>
+      <button class="cat-btn" data-cat="AI & Projects">AI & Projects</button>
+      <button class="cat-btn" data-cat="Career">Career</button>
+      <button class="cat-btn" data-cat="Backend">Backend</button>
+      <button class="cat-btn" data-cat="Tools">Tools</button>
+    </div>
+  </div>
+
+  <div class="blog-grid" id="blogGrid">
+
+    <div class="blog-card" data-cat="Web Dev">
+      <div class="blog-card-cat">Web Dev</div>
+      <h3 class="blog-card-title">How to Build a Website in 2026: Complete Beginner's Guide</h3>
+      <p class="blog-card-excerpt">Everything you need to know to go from zero to a live website in 2026. Covers planning, tools, hosting, and launching your first site step by step.</p>
+      <div class="blog-card-meta">8 min read &nbsp;•&nbsp; June 2026</div>
+      <a href="blog/how-to-build-a-website-2026.html" class="btn btn-outline" style="margin-top:0.75rem;width:100%;text-align:center;">Read Article →</a>
+    </div>
+
+    <div class="blog-card" data-cat="Web Dev">
+      <div class="blog-card-cat">Web Dev</div>
+      <h3 class="blog-card-title">React vs Angular in 2026: Which Should You Learn?</h3>
+      <p class="blog-card-excerpt">A detailed comparison of React and Angular in 2026 — ecosystem, learning curve, job market, and which one makes sense for your goals.</p>
+      <div class="blog-card-meta">9 min read &nbsp;•&nbsp; June 2026</div>
+      <a href="blog/react-vs-angular.html" class="btn btn-outline" style="margin-top:0.75rem;width:100%;text-align:center;">Read Article →</a>
+    </div>
+
+    <div class="blog-card" data-cat="Mobile">
+      <div class="blog-card-cat">Mobile</div>
+      <h3 class="blog-card-title">20 Android Studio Project Ideas for Students</h3>
+      <p class="blog-card-excerpt">Stuck on what to build? Here are 20 practical Android project ideas ranging from beginner to advanced, with tips on what makes each one stand out.</p>
+      <div class="blog-card-meta">7 min read &nbsp;•&nbsp; June 2026</div>
+      <a href="blog/android-studio-project-ideas.html" class="btn btn-outline" style="margin-top:0.75rem;width:100%;text-align:center;">Read Article →</a>
+    </div>
+
+    <div class="blog-card" data-cat="AI & Projects">
+      <div class="blog-card-cat">AI & Projects</div>
+      <h3 class="blog-card-title">AI Project Ideas for Engineering Students (2026)</h3>
+      <p class="blog-card-excerpt">Practical AI and ML project ideas for engineering students — from beginner-friendly classifiers to advanced NLP and computer vision projects.</p>
+      <div class="blog-card-meta">8 min read &nbsp;•&nbsp; June 2026</div>
+      <a href="blog/ai-project-ideas-engineering.html" class="btn btn-outline" style="margin-top:0.75rem;width:100%;text-align:center;">Read Article →</a>
+    </div>
+
+    <div class="blog-card" data-cat="AI & Projects">
+      <div class="blog-card-cat">AI & Projects</div>
+      <h3 class="blog-card-title">Final Year Project Guide: From Idea to Submission</h3>
+      <p class="blog-card-excerpt">A complete roadmap for final year engineering students — how to pick a topic, plan your project, build it, write documentation, and nail the viva.</p>
+      <div class="blog-card-meta">10 min read &nbsp;•&nbsp; June 2026</div>
+      <a href="blog/final-year-project-guide.html" class="btn btn-outline" style="margin-top:0.75rem;width:100%;text-align:center;">Read Article →</a>
+    </div>
+
+    <div class="blog-card" data-cat="Mobile">
+      <div class="blog-card-cat">Mobile</div>
+      <h3 class="blog-card-title">Flutter vs React Native: Which is Better in 2026?</h3>
+      <p class="blog-card-excerpt">Flutter and React Native are both strong in 2026. We break down performance, developer experience, community, and which one to pick for your next app.</p>
+      <div class="blog-card-meta">8 min read &nbsp;•&nbsp; June 2026</div>
+      <a href="blog/flutter-vs-react-native.html" class="btn btn-outline" style="margin-top:0.75rem;width:100%;text-align:center;">Read Article →</a>
+    </div>
+
+    <div class="blog-card" data-cat="Career">
+      <div class="blog-card-cat">Career</div>
+      <h3 class="blog-card-title">SEO Basics for Small Businesses: Get Found on Google</h3>
+      <p class="blog-card-excerpt">A no-jargon SEO guide for small business owners. Learn keyword research, on-page SEO, Google Business Profile, and local SEO tactics that actually work.</p>
+      <div class="blog-card-meta">9 min read &nbsp;•&nbsp; June 2026</div>
+      <a href="blog/seo-basics-small-business.html" class="btn btn-outline" style="margin-top:0.75rem;width:100%;text-align:center;">Read Article →</a>
+    </div>
+
+    <div class="blog-card" data-cat="Tools">
+      <div class="blog-card-cat">Tools</div>
+      <h3 class="blog-card-title">How to Deploy a Website: 5 Easy Methods</h3>
+      <p class="blog-card-excerpt">From GitHub Pages to Vercel to a VPS — five practical ways to get your website live, with step-by-step instructions and when to use each method.</p>
+      <div class="blog-card-meta">7 min read &nbsp;•&nbsp; June 2026</div>
+      <a href="blog/how-to-deploy-a-website.html" class="btn btn-outline" style="margin-top:0.75rem;width:100%;text-align:center;">Read Article →</a>
+    </div>
+
+    <div class="blog-card" data-cat="Web Dev">
+      <div class="blog-card-cat">Web Dev</div>
+      <h3 class="blog-card-title">HTML, CSS & JavaScript for Beginners: Start Here</h3>
+      <p class="blog-card-excerpt">The definitive starting point for web development beginners. Understand how HTML, CSS, and JavaScript work together and build your first webpage today.</p>
+      <div class="blog-card-meta">10 min read &nbsp;•&nbsp; June 2026</div>
+      <a href="blog/html-css-javascript-beginners.html" class="btn btn-outline" style="margin-top:0.75rem;width:100%;text-align:center;">Read Article →</a>
+    </div>
+
+    <div class="blog-card" data-cat="Career">
+      <div class="blog-card-cat">Career</div>
+      <h3 class="blog-card-title">Best Programming Languages to Learn in 2026</h3>
+      <p class="blog-card-excerpt">Which programming language should you learn in 2026? We rank the top languages by job demand, salary, versatility, and ease of learning for beginners.</p>
+      <div class="blog-card-meta">8 min read &nbsp;•&nbsp; June 2026</div>
+      <a href="blog/best-programming-languages-2026.html" class="btn btn-outline" style="margin-top:0.75rem;width:100%;text-align:center;">Read Article →</a>
+    </div>
+
+    <div class="blog-card" data-cat="Backend">
+      <div class="blog-card-cat">Backend</div>
+      <h3 class="blog-card-title">Node.js vs Django: Which Backend Should You Choose?</h3>
+      <p class="blog-card-excerpt">Node.js and Django are both excellent backend choices. This guide compares them on speed, scalability, ecosystem, and use cases to help you decide.</p>
+      <div class="blog-card-meta">9 min read &nbsp;•&nbsp; June 2026</div>
+      <a href="blog/nodejs-vs-django.html" class="btn btn-outline" style="margin-top:0.75rem;width:100%;text-align:center;">Read Article →</a>
+    </div>
+
+    <div class="blog-card" data-cat="Tools">
+      <div class="blog-card-cat">Tools</div>
+      <h3 class="blog-card-title">GitHub for Beginners: Version Control Made Simple</h3>
+      <p class="blog-card-excerpt">Learn Git and GitHub from scratch. Understand commits, branches, pull requests, and how to collaborate on code — explained simply with real examples.</p>
+      <div class="blog-card-meta">8 min read &nbsp;•&nbsp; June 2026</div>
+      <a href="blog/github-for-beginners.html" class="btn btn-outline" style="margin-top:0.75rem;width:100%;text-align:center;">Read Article →</a>
+    </div>
+
+    <div class="blog-card" data-cat="Web Dev">
+      <div class="blog-card-cat">Web Dev</div>
+      <h3 class="blog-card-title">10 Responsive Design Tips Every Developer Should Know</h3>
+      <p class="blog-card-excerpt">Make your websites look great on every screen. Ten practical responsive design tips covering CSS Grid, Flexbox, media queries, images, and typography.</p>
+      <div class="blog-card-meta">7 min read &nbsp;•&nbsp; June 2026</div>
+      <a href="blog/responsive-design-tips.html" class="btn btn-outline" style="margin-top:0.75rem;width:100%;text-align:center;">Read Article →</a>
+    </div>
+
+    <div class="blog-card" data-cat="Backend">
+      <div class="blog-card-cat">Backend</div>
+      <h3 class="blog-card-title">MongoDB vs MySQL: Which Database for Your Project?</h3>
+      <p class="blog-card-excerpt">SQL or NoSQL? This guide compares MongoDB and MySQL on data modeling, performance, scalability, and which one fits different types of projects.</p>
+      <div class="blog-card-meta">8 min read &nbsp;•&nbsp; June 2026</div>
+      <a href="blog/mongodb-vs-mysql.html" class="btn btn-outline" style="margin-top:0.75rem;width:100%;text-align:center;">Read Article →</a>
+    </div>
+
+    <div class="blog-card" data-cat="Career">
+      <div class="blog-card-cat">Career</div>
+      <h3 class="blog-card-title">How to Start Freelancing as a Developer in India</h3>
+      <p class="blog-card-excerpt">A practical guide to starting your freelance development career in India — finding clients, setting rates, building a portfolio, and getting paid reliably.</p>
+      <div class="blog-card-meta">9 min read &nbsp;•&nbsp; June 2026</div>
+      <a href="blog/freelancing-for-developers.html" class="btn btn-outline" style="margin-top:0.75rem;width:100%;text-align:center;">Read Article →</a>
+    </div>
+
+    <div class="blog-card" data-cat="Tools">
+      <div class="blog-card-cat">Tools</div>
+      <h3 class="blog-card-title">Web Hosting Guide: Shared, VPS, Cloud Explained</h3>
+      <p class="blog-card-excerpt">Confused by hosting options? This guide explains shared hosting, VPS, cloud, and managed hosting — with recommendations for different budgets and needs.</p>
+      <div class="blog-card-meta">8 min read &nbsp;•&nbsp; June 2026</div>
+      <a href="blog/web-hosting-guide.html" class="btn btn-outline" style="margin-top:0.75rem;width:100%;text-align:center;">Read Article →</a>
+    </div>
+
+    <div class="blog-card" data-cat="Web Dev">
+      <div class="blog-card-cat">Web Dev</div>
+      <h3 class="blog-card-title">JavaScript ES6+ Features Every Developer Must Know</h3>
+      <p class="blog-card-excerpt">Master modern JavaScript — arrow functions, destructuring, async/await, modules, optional chaining, and more ES6+ features with clear code examples.</p>
+      <div class="blog-card-meta">9 min read &nbsp;•&nbsp; June 2026</div>
+      <a href="blog/javascript-es6-features.html" class="btn btn-outline" style="margin-top:0.75rem;width:100%;text-align:center;">Read Article →</a>
+    </div>
+
+    <div class="blog-card" data-cat="Career">
+      <div class="blog-card-cat">Career</div>
+      <h3 class="blog-card-title">How to Make Money with Coding Skills in 2026</h3>
+      <p class="blog-card-excerpt">From freelancing to SaaS to YouTube — eight proven ways developers are making money with their coding skills in 2026, with actionable steps to get started.</p>
+      <div class="blog-card-meta">8 min read &nbsp;•&nbsp; June 2026</div>
+      <a href="blog/how-to-make-money-coding.html" class="btn btn-outline" style="margin-top:0.75rem;width:100%;text-align:center;">Read Article →</a>
+    </div>
+
+    <div class="no-results" id="noResults" style="display:none;">No articles found. Try a different search or category.</div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-content">
+    <div class="footer-grid">
+      <div class="footer-section">
+        <div class="footer-logo">Niks<span>projects</span></div>
+        <p class="footer-description">Your trusted source for high-quality, ready-to-use student projects with comprehensive support and documentation.</p>
+        <div class="social-links">
+          <a href="#" aria-label="Twitter">𝕏</a>
+          <a href="#" aria-label="GitHub">⚡</a>
+          <a href="#" aria-label="LinkedIn">in</a>
+          <a href="#" aria-label="YouTube">▶</a>
+        </div>
+      </div>
+      <div class="footer-section">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="index.html#projects">Browse Projects</a></li>
+          <li><a href="learn.html">Video Tutorials</a></li>
+          <li><a href="custom-order.html">Custom Orders</a></li>
+          <li><a href="contact.html">Contact Support</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h3>Company</h3>
+        <ul>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="#">FAQ</a></li>
+          <li><a href="#">Setup Guides</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h3>Legal</h3>
+        <ul>
+          <li><a href="privacy.html">Privacy Policy</a></li>
+          <li><a href="#">Terms of Service</a></li>
+          <li><a href="#">Refund Policy</a></li>
+          <li><a href="#">License Agreement</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-bottom-content">
+        <p>&copy; 2026 Niksprojects Store. All rights reserved.</p>
+        <div class="footer-bottom-links">
+          <span>🔒 Payments secured by Razorpay</span>
+          <span>•</span>
+          <span>🛡️ SSL Encrypted</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const cards = document.querySelectorAll('.blog-card[data-cat]');
+  const noResults = document.getElementById('noResults');
+  let activeCat = 'all';
+  let searchVal = '';
+
+  function filterCards() {
+    let visible = 0;
+    cards.forEach(card => {
+      const cat = card.dataset.cat;
+      const title = card.querySelector('.blog-card-title').textContent.toLowerCase();
+      const excerpt = card.querySelector('.blog-card-excerpt').textContent.toLowerCase();
+      const matchCat = activeCat === 'all' || cat === activeCat;
+      const matchSearch = !searchVal || title.includes(searchVal) || excerpt.includes(searchVal);
+      if (matchCat && matchSearch) { card.style.display = ''; visible++; }
+      else card.style.display = 'none';
+    });
+    noResults.style.display = visible === 0 ? 'block' : 'none';
+  }
+
+  document.querySelectorAll('.cat-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      activeCat = btn.dataset.cat;
+      filterCards();
+    });
+  });
+
+  document.getElementById('blogSearch').addEventListener('input', e => {
+    searchVal = e.target.value.toLowerCase().trim();
+    filterCards();
+  });
+</script>
+</body>
+</html>

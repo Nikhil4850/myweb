@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5TBK5FML');</script>
+  <meta charset="UTF-8" />
+  <meta name="google-adsense-account" content="ca-pub-9595610341128742">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="JavaScript ES6+ features every developer must know — arrow functions, destructuring, async/await, modules, optional chaining, and more with clear examples." />
+  <title>JavaScript ES6+ Features Every Developer Must Know - Niksprojects Blog</title>
+  <link rel="stylesheet" href="../css/style.css" />
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9595610341128742" crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="icon" href="https://www.image2url.com/r2/default/images/1779624924249-8fddfa1a-b2c7-45f4-a6df-df81d01a2116.png" />
+  <style>
+    .article-page { max-width: 780px; margin: 0 auto; padding: 3rem 1.5rem 5rem; }
+    .article-header { margin-bottom: 2rem; }
+    .article-category { font-size: 0.8rem; font-weight: 700; color: var(--primary-light); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.5rem; }
+    .article-title { font-size: clamp(1.6rem, 4vw, 2.4rem); font-weight: 800; color: var(--text); line-height: 1.2; margin-bottom: 1rem; }
+    .article-meta { font-size: 0.85rem; color: var(--muted); margin-bottom: 2rem; }
+    .article-body h2 { font-size: 1.4rem; font-weight: 700; color: var(--text); margin: 2rem 0 0.75rem; }
+    .article-body h3 { font-size: 1.1rem; font-weight: 700; color: var(--primary-light); margin: 1.5rem 0 0.5rem; }
+    .article-body p { color: var(--text-secondary); line-height: 1.8; margin-bottom: 1rem; }
+    .article-body ul, .article-body ol { color: var(--text-secondary); line-height: 1.8; margin: 0.5rem 0 1rem 1.5rem; }
+    .article-body li { margin-bottom: 0.4rem; }
+    .article-body code { background: var(--surface2); color: var(--primary-light); padding: 0.15rem 0.4rem; border-radius: 4px; font-size: 0.9em; }
+    .article-body pre { background: var(--surface2); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.2rem; overflow-x: auto; margin: 1rem 0; }
+    .article-body pre code { background: none; padding: 0; }
+    .article-cta { background: linear-gradient(135deg, rgba(99,102,241,0.1), rgba(139,92,246,0.08)); border: 1px solid var(--border-light); border-radius: var(--radius-lg); padding: 2rem; margin-top: 3rem; text-align: center; }
+    .back-link { display: inline-flex; align-items: center; gap: 0.4rem; color: var(--muted); font-size: 0.9rem; margin-bottom: 2rem; transition: color 0.2s; }
+    .back-link:hover { color: var(--primary); }
+    @media (max-width: 480px) { .article-page { padding: 1.5rem 1rem 3rem; } }
+  </style>
+</head>
+<body>
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5TBK5FML" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<nav>
+  <div class="nav-logo">Niks<span>projects</span></div>
+  <div class="nav-links">
+    <a href="../index.html#projects">Projects</a>
+    <a href="../learn.html">Learn</a>
+    <a href="../custom-order.html">Custom Orders</a>
+    <a href="../business.html">For Business</a>
+    <a href="../about.html">About Us</a>
+    <a href="../contact.html">Contact</a>
+  </div>
+</nav>
+<div class="article-page">
+  <a href="../blog.html" class="back-link">← Back to Blog</a>
+  <div class="article-header">
+    <div class="article-category">Web Dev</div>
+    <h1 class="article-title">JavaScript ES6+ Features Every Developer Must Know</h1>
+    <div class="article-meta">📅 June 2026 &nbsp;•&nbsp; ⏱ 9 min read &nbsp;•&nbsp; ✍️ Niksprojects Team</div>
+  </div>
+  <div class="article-body">
+    <p>ES6 (ECMAScript 2015) was a landmark update to JavaScript that modernized the language. Since then, new features have been added every year. If you're still writing JavaScript the old way — with <code>var</code>, callback hell, and verbose object syntax — this guide will show you the modern features that make your code cleaner, safer, and more readable.</p>
+
+    <h2>1. let and const (Forget var)</h2>
+    <p><code>var</code> has function scope and gets hoisted, which causes confusing bugs. Use <code>let</code> for variables that change and <code>const</code> for values that don't.</p>
+    <pre><code>// Old way
+var count = 0;
+var name = "Rahul";
+
+// Modern way
+let count = 0;        // can be reassigned
+const name = "Rahul"; // cannot be reassigned
+
+// const with objects/arrays - the reference is constant, not the contents
+const user = { name: "Priya", age: 22 };
+user.age = 23; // This is fine
+user = {};     // This throws an error</code></pre>
+
+    <h2>2. Arrow Functions</h2>
+    <p>Arrow functions are shorter and don't have their own <code>this</code> binding (which fixes many bugs in callbacks).</p>
+    <pre><code>// Old way
+function add(a, b) { return a + b; }
+const double = function(n) { return n * 2; };
+
+// Arrow functions
+const add = (a, b) => a + b;
+const double = n => n * 2;
+const greet = name => `Hello, ${name}!`;
+
+// Multi-line arrow function
+const processUser = (user) => {
+  const fullName = `${user.first} ${user.last}`;
+  return fullName.toUpperCase();
+};
+
+// In array methods
+const numbers = [1, 2, 3, 4, 5];
+const doubled = numbers.map(n => n * 2);       // [2, 4, 6, 8, 10]
+const evens = numbers.filter(n => n % 2 === 0); // [2, 4]
+const sum = numbers.reduce((acc, n) => acc + n, 0); // 15</code></pre>
+
+    <h2>3. Template Literals</h2>
+    <p>Template literals use backticks and allow embedded expressions and multi-line strings.</p>
+    <pre><code>const name = "Priya";
+const score = 95;
+
+// Old way
+const msg = "Hello, " + name + "! Your score is " + score + ".";
+
+// Template literal
+const msg = `Hello, ${name}! Your score is ${score}.`;
+
+// Multi-line string
+const html = `
+  &lt;div class="card"&gt;
+    &lt;h2&gt;${name}&lt;/h2&gt;
+    &lt;p&gt;Score: ${score}&lt;/p&gt;
+  &lt;/div&gt;
+`;
+
+// Expression in template
+const result = `${score >= 90 ? 'Excellent' : 'Good'} work!`;</code></pre>
+
+    <h2>4. Destructuring</h2>
+    <p>Destructuring lets you extract values from arrays and objects into variables cleanly.</p>
+    <pre><code>// Object destructuring
+const user = { name: "Amit", age: 21, city: "Mumbai" };
+
+// Old way
+const name = user.name;
+const age = user.age;
+
+// Destructuring
+const { name, age, city } = user;
+
+// With rename
+const { name: userName, age: userAge } = user;
+
+// With default values
+const { name, role = "student" } = user;
+
+// Array destructuring
+const colors = ["red", "green", "blue"];
+const [first, second, third] = colors;
+const [primary, , accent] = colors; // skip second
+
+// In function parameters
+function displayUser({ name, age, city = "Unknown" }) {
+  console.log(`${name}, ${age}, ${city}`);
+}
+displayUser(user);</code></pre>
+
+    <h2>5. Spread and Rest Operators</h2>
+    <pre><code>// Spread: expand an array or object
+const arr1 = [1, 2, 3];
+const arr2 = [4, 5, 6];
+const combined = [...arr1, ...arr2]; // [1, 2, 3, 4, 5, 6]
+
+// Copy an array
+const copy = [...arr1];
+
+// Spread with objects
+const defaults = { theme: "dark", lang: "en" };
+const userPrefs = { lang: "hi", fontSize: 16 };
+const settings = { ...defaults, ...userPrefs };
+// { theme: "dark", lang: "hi", fontSize: 16 }
+
+// Rest: collect remaining arguments
+function sum(...numbers) {
+  return numbers.reduce((acc, n) => acc + n, 0);
+}
+sum(1, 2, 3, 4, 5); // 15
+
+// Rest in destructuring
+const [first, ...rest] = [1, 2, 3, 4, 5];
+// first = 1, rest = [2, 3, 4, 5]</code></pre>
+
+    <h2>6. Promises and Async/Await</h2>
+    <p>Async/await makes asynchronous code look and behave like synchronous code, eliminating callback hell.</p>
+    <pre><code>// Old way: callback hell
+fetch('/api/user', function(err, user) {
+  if (err) { handleError(err); return; }
+  fetch('/api/posts/' + user.id, function(err, posts) {
+    if (err) { handleError(err); return; }
+    displayPosts(posts);
+  });
+});
+
+// Modern: async/await
+async function loadUserPosts(userId) {
+  try {
+    const userRes = await fetch(`/api/user/${userId}`);
+    const user = await userRes.json();
+
+    const postsRes = await fetch(`/api/posts/${user.id}`);
+    const posts = await postsRes.json();
+
+    return posts;
+  } catch (error) {
+    console.error('Failed to load:', error);
+  }
+}
+
+// Parallel requests
+async function loadDashboard() {
+  const [user, posts, notifications] = await Promise.all([
+    fetch('/api/user').then(r => r.json()),
+    fetch('/api/posts').then(r => r.json()),
+    fetch('/api/notifications').then(r => r.json())
+  ]);
+  return { user, posts, notifications };
+}</code></pre>
+
+    <h2>7. Optional Chaining (?.) and Nullish Coalescing (??)</h2>
+    <pre><code>const user = {
+  name: "Priya",
+  address: {
+    city: "Pune"
+  }
+};
+
+// Old way: verbose null checks
+const city = user && user.address && user.address.city;
+const zip = user && user.address && user.address.zip || "N/A";
+
+// Optional chaining
+const city = user?.address?.city;       // "Pune"
+const zip = user?.address?.zip;         // undefined (no error)
+const phone = user?.contact?.phone;     // undefined (no error)
+
+// Nullish coalescing: use default only if null/undefined (not 0 or "")
+const zip = user?.address?.zip ?? "N/A";  // "N/A"
+const count = user?.postCount ?? 0;       // 0</code></pre>
+
+    <h2>8. ES Modules (import/export)</h2>
+    <pre><code>// math.js - named exports
+export const PI = 3.14159;
+export function add(a, b) { return a + b; }
+export function multiply(a, b) { return a * b; }
+
+// utils.js - default export
+export default function formatDate(date) {
+  return new Intl.DateTimeFormat('en-IN').format(date);
+}
+
+// main.js - importing
+import formatDate from './utils.js';           // default import
+import { add, multiply, PI } from './math.js'; // named imports
+import * as math from './math.js';             // import all as namespace
+
+console.log(add(2, 3));       // 5
+console.log(math.PI);         // 3.14159
+console.log(formatDate(new Date())); // "15/06/2026"</code></pre>
+
+    <h2>9. Array Methods You Should Know</h2>
+    <pre><code>const students = [
+  { name: "Rahul", score: 85, passed: true },
+  { name: "Priya", score: 92, passed: true },
+  { name: "Amit", score: 45, passed: false },
+  { name: "Sara", score: 78, passed: true }
+];
+
+// filter: keep items that match condition
+const passed = students.filter(s => s.passed);
+
+// map: transform each item
+const names = students.map(s => s.name);
+const scores = students.map(s => ({ name: s.name, grade: s.score >= 90 ? 'A' : 'B' }));
+
+// find: get first matching item
+const topStudent = students.find(s => s.score > 90);
+
+// some / every
+const anyFailed = students.some(s => !s.passed);   // true
+const allPassed = students.every(s => s.passed);    // false
+
+// reduce: aggregate
+const totalScore = students.reduce((sum, s) => sum + s.score, 0);
+const avgScore = totalScore / students.length;
+
+// sort (returns new array in modern practice)
+const sorted = [...students].sort((a, b) => b.score - a.score);</code></pre>
+
+    <h2>10. Object Shorthand and Computed Properties</h2>
+    <pre><code>const name = "Rahul";
+const age = 21;
+
+// Old way
+const user = { name: name, age: age };
+
+// Shorthand (when variable name matches key)
+const user = { name, age };
+
+// Computed property names
+const key = "score";
+const data = { [key]: 95 }; // { score: 95 }
+
+// Method shorthand
+const calculator = {
+  value: 0,
+  add(n) { this.value += n; return this; },
+  subtract(n) { this.value -= n; return this; },
+  result() { return this.value; }
+};
+calculator.add(10).add(5).subtract(3).result(); // 12</code></pre>
+
+    <p>These features are not just syntactic sugar — they make your code more readable, less error-prone, and easier to maintain. Modern JavaScript frameworks like React, Vue, and Angular use all of these features extensively. Mastering them is essential for any serious JavaScript developer.</p>
+  </div>
+
+  <div class="article-cta">
+    <h3 style="color:var(--text);margin-bottom:0.5rem;">Need a Project Built?</h3>
+    <p style="color:var(--muted);margin-bottom:1rem;">Browse our ready-made projects or get a custom one built for you.</p>
+    <a href="../index.html#projects" class="btn btn-primary">Browse Projects</a>
+    <a href="../business.html" class="btn btn-outline" style="margin-left:0.75rem">For Business</a>
+  </div>
+</div>
+<footer>
+  <div class="footer-content">
+    <div class="footer-grid">
+      <div class="footer-section">
+        <div class="footer-logo">Niks<span>projects</span></div>
+        <p class="footer-description">Your trusted source for high-quality, ready-to-use student projects with comprehensive support and documentation.</p>
+        <div class="social-links"><a href="#" aria-label="Twitter">𝕏</a><a href="#" aria-label="GitHub">⚡</a><a href="#" aria-label="LinkedIn">in</a><a href="#" aria-label="YouTube">▶</a></div>
+      </div>
+      <div class="footer-section"><h3>Quick Links</h3><ul><li><a href="../index.html#projects">Browse Projects</a></li><li><a href="../learn.html">Video Tutorials</a></li><li><a href="../custom-order.html">Custom Orders</a></li><li><a href="../contact.html">Contact Support</a></li></ul></div>
+      <div class="footer-section"><h3>Company</h3><ul><li><a href="../about.html">About Us</a></li><li><a href="../blog.html">Blog</a></li><li><a href="#">FAQ</a></li><li><a href="#">Setup Guides</a></li></ul></div>
+      <div class="footer-section"><h3>Legal</h3><ul><li><a href="../privacy.html">Privacy Policy</a></li><li><a href="#">Terms of Service</a></li><li><a href="#">Refund Policy</a></li><li><a href="#">License Agreement</a></li></ul></div>
+    </div>
+    <div class="footer-bottom"><div class="footer-bottom-content"><p>&copy; 2026 Niksprojects Store. All rights reserved.</p><div class="footer-bottom-links"><span>🔒 Payments secured by Razorpay</span><span>•</span><span>🛡️ SSL Encrypted</span></div></div></div>
+  </div>
+</footer>
+</body>
+</html>

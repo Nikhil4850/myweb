@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5TBK5FML');</script>
+  <meta charset="UTF-8" />
+  <meta name="google-adsense-account" content="ca-pub-9595610341128742">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="MongoDB vs MySQL — comparing SQL vs NoSQL on data modeling, performance, scalability, and which database fits different types of projects." />
+  <title>MongoDB vs MySQL: Which Database for Your Project? - Niksprojects Blog</title>
+  <link rel="stylesheet" href="../css/style.css" />
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9595610341128742" crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="icon" href="https://www.image2url.com/r2/default/images/1779624924249-8fddfa1a-b2c7-45f4-a6df-df81d01a2116.png" />
+  <style>
+    .article-page { max-width: 780px; margin: 0 auto; padding: 3rem 1.5rem 5rem; }
+    .article-header { margin-bottom: 2rem; }
+    .article-category { font-size: 0.8rem; font-weight: 700; color: var(--primary-light); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.5rem; }
+    .article-title { font-size: clamp(1.6rem, 4vw, 2.4rem); font-weight: 800; color: var(--text); line-height: 1.2; margin-bottom: 1rem; }
+    .article-meta { font-size: 0.85rem; color: var(--muted); margin-bottom: 2rem; }
+    .article-body h2 { font-size: 1.4rem; font-weight: 700; color: var(--text); margin: 2rem 0 0.75rem; }
+    .article-body h3 { font-size: 1.1rem; font-weight: 700; color: var(--primary-light); margin: 1.5rem 0 0.5rem; }
+    .article-body p { color: var(--text-secondary); line-height: 1.8; margin-bottom: 1rem; }
+    .article-body ul, .article-body ol { color: var(--text-secondary); line-height: 1.8; margin: 0.5rem 0 1rem 1.5rem; }
+    .article-body li { margin-bottom: 0.4rem; }
+    .article-body code { background: var(--surface2); color: var(--primary-light); padding: 0.15rem 0.4rem; border-radius: 4px; font-size: 0.9em; }
+    .article-body pre { background: var(--surface2); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.2rem; overflow-x: auto; margin: 1rem 0; }
+    .article-body pre code { background: none; padding: 0; }
+    .article-cta { background: linear-gradient(135deg, rgba(99,102,241,0.1), rgba(139,92,246,0.08)); border: 1px solid var(--border-light); border-radius: var(--radius-lg); padding: 2rem; margin-top: 3rem; text-align: center; }
+    .back-link { display: inline-flex; align-items: center; gap: 0.4rem; color: var(--muted); font-size: 0.9rem; margin-bottom: 2rem; transition: color 0.2s; }
+    .back-link:hover { color: var(--primary); }
+    .compare-table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; font-size: 0.9rem; }
+    .compare-table th { background: var(--surface2); color: var(--text); padding: 0.75rem 1rem; text-align: left; border: 1px solid var(--border); }
+    .compare-table td { padding: 0.7rem 1rem; border: 1px solid var(--border); color: var(--text-secondary); }
+    .compare-table tr:nth-child(even) td { background: rgba(30,30,46,0.4); }
+    @media (max-width: 480px) { .article-page { padding: 1.5rem 1rem 3rem; } }
+  </style>
+</head>
+<body>
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5TBK5FML" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<nav>
+  <div class="nav-logo">Niks<span>projects</span></div>
+  <div class="nav-links">
+    <a href="../index.html#projects">Projects</a>
+    <a href="../learn.html">Learn</a>
+    <a href="../custom-order.html">Custom Orders</a>
+    <a href="../business.html">For Business</a>
+    <a href="../about.html">About Us</a>
+    <a href="../contact.html">Contact</a>
+  </div>
+</nav>
+<div class="article-page">
+  <a href="../blog.html" class="back-link">← Back to Blog</a>
+  <div class="article-header">
+    <div class="article-category">Backend</div>
+    <h1 class="article-title">MongoDB vs MySQL: Which Database for Your Project?</h1>
+    <div class="article-meta">📅 June 2026 &nbsp;•&nbsp; ⏱ 8 min read &nbsp;•&nbsp; ✍️ Niksprojects Team</div>
+  </div>
+  <div class="article-body">
+    <p>Every application needs to store data. The database you choose affects your data model, query patterns, scalability, and development speed. MongoDB (NoSQL) and MySQL (SQL) represent two fundamentally different approaches to storing data. Understanding the difference will help you make the right choice for your project.</p>
+
+    <h2>The Core Difference: SQL vs NoSQL</h2>
+    <p>MySQL is a relational database. Data is stored in tables with rows and columns. Tables are related through foreign keys. You query data using SQL. The schema must be defined before inserting data.</p>
+    <p>MongoDB is a document database. Data is stored as JSON-like documents. Documents can have different fields — there is no fixed schema. Related data can be embedded within a single document or referenced across collections.</p>
+
+    <h3>The Same Data, Two Ways</h3>
+    <pre><code>-- MySQL: Two related tables
+CREATE TABLE users (
+  id INT PRIMARY KEY AUTO_INCREMENT,
+  name VARCHAR(100),
+  email VARCHAR(100) UNIQUE
+);
+CREATE TABLE orders (
+  id INT PRIMARY KEY AUTO_INCREMENT,
+  user_id INT REFERENCES users(id),
+  product VARCHAR(100),
+  amount DECIMAL(10,2)
+);
+-- Query with JOIN
+SELECT u.name, o.product, o.amount
+FROM users u JOIN orders o ON u.id = o.user_id
+WHERE u.id = 1;</code></pre>
+
+    <pre><code>// MongoDB: One document with embedded orders
+{
+  "_id": "...",
+  "name": "Rahul Sharma",
+  "email": "rahul@example.com",
+  "orders": [
+    { "product": "Laptop", "amount": 45000 },
+    { "product": "Mouse", "amount": 800 }
+  ]
+}
+// Single query - no JOIN needed
+db.users.findOne({ _id: userId })</code></pre>
+
+    <h2>Head-to-Head Comparison</h2>
+    <table class="compare-table">
+      <tr><th>Factor</th><th>MySQL</th><th>MongoDB</th></tr>
+      <tr><td>Data model</td><td>Tables, rows, columns</td><td>Documents (JSON/BSON)</td></tr>
+      <tr><td>Schema</td><td>Fixed (defined upfront)</td><td>Flexible (schema-less)</td></tr>
+      <tr><td>Query language</td><td>SQL</td><td>MongoDB Query Language</td></tr>
+      <tr><td>Relationships</td><td>JOINs (powerful)</td><td>Embedding or references</td></tr>
+      <tr><td>ACID transactions</td><td>Full support</td><td>Supported (since v4.0)</td></tr>
+      <tr><td>Horizontal scaling</td><td>Harder</td><td>Built-in sharding</td></tr>
+      <tr><td>Write performance</td><td>Good</td><td>Excellent</td></tr>
+      <tr><td>Learning curve</td><td>Moderate (SQL)</td><td>Easy (JSON-like)</td></tr>
+    </table>
+
+    <h2>When to Use MySQL</h2>
+    <ul>
+      <li>Data has clear relationships — users, orders, products, payments</li>
+      <li>Data integrity is critical — banking, healthcare, e-commerce</li>
+      <li>Complex queries are needed — reporting, analytics across multiple tables</li>
+      <li>Schema is stable and well-defined upfront</li>
+      <li>ACID compliance is required for financial transactions</li>
+    </ul>
+
+    <h2>When to Use MongoDB</h2>
+    <ul>
+      <li>Data structure varies — different users have different profile fields</li>
+      <li>Rapid prototyping — you are still figuring out your data model</li>
+      <li>Hierarchical data — blog posts with comments, products with variants</li>
+      <li>High write throughput — logging, analytics, IoT sensor data</li>
+      <li>Real-time applications — MongoDB change streams make live updates easy</li>
+    </ul>
+
+    <h2>Performance Considerations</h2>
+    <p>Both databases are fast when used correctly. The key is proper indexing. Without indexes, both will do full scans which are slow.</p>
+    <pre><code>-- MySQL: Create an index
+CREATE INDEX idx_user_email ON users(email);
+
+// MongoDB: Create an index
+db.users.createIndex({ email: 1 })
+db.orders.createIndex({ userId: 1, createdAt: -1 })</code></pre>
+    <p>MongoDB has an advantage for read-heavy workloads where related data is embedded in a single document — one read gets everything. MySQL requires JOINs which add overhead, though they are well-optimized in modern versions.</p>
+
+    <h2>MongoDB with Mongoose (Node.js)</h2>
+    <pre><code>const userSchema = new mongoose.Schema({
+  name: { type: String, required: true },
+  email: { type: String, required: true, unique: true },
+  createdAt: { type: Date, default: Date.now }
+});
+const User = mongoose.model('User', userSchema);
+
+// Create
+const user = await User.create({ name: 'Priya', email: 'priya@example.com' });
+// Find
+const users = await User.find({ name: /priya/i });</code></pre>
+
+    <h2>PostgreSQL: The Third Option</h2>
+    <p>PostgreSQL deserves a mention. It is a relational database like MySQL but more feature-rich — it supports JSON columns (giving some NoSQL flexibility), full-text search, and advanced data types. Many developers in 2026 choose PostgreSQL over MySQL for new projects because of its superior feature set.</p>
+
+    <h2>The Verdict</h2>
+    <ul>
+      <li><strong>Building with Node.js/MERN?</strong> MongoDB (natural fit)</li>
+      <li><strong>Building with Django/Python?</strong> PostgreSQL or MySQL</li>
+      <li><strong>Financial or transactional data?</strong> MySQL or PostgreSQL</li>
+      <li><strong>Flexible, document-like data?</strong> MongoDB</li>
+      <li><strong>Not sure?</strong> PostgreSQL (handles both structured and semi-structured data)</li>
+    </ul>
+    <p>The most important thing is to learn SQL. Even if you use MongoDB, you will encounter SQL databases throughout your career. SQL is a fundamental skill every developer should have.</p>
+  </div>
+
+  <div class="article-cta">
+    <h3 style="color:var(--text);margin-bottom:0.5rem;">Need a Project Built?</h3>
+    <p style="color:var(--muted);margin-bottom:1rem;">Browse our ready-made projects or get a custom one built for you.</p>
+    <a href="../index.html#projects" class="btn btn-primary">Browse Projects</a>
+    <a href="../business.html" class="btn btn-outline" style="margin-left:0.75rem">For Business</a>
+  </div>
+</div>
+<footer>
+  <div class="footer-content">
+    <div class="footer-grid">
+      <div class="footer-section">
+        <div class="footer-logo">Niks<span>projects</span></div>
+        <p class="footer-description">Your trusted source for high-quality, ready-to-use student projects with comprehensive support and documentation.</p>
+        <div class="social-links"><a href="#" aria-label="Twitter">𝕏</a><a href="#" aria-label="GitHub">⚡</a><a href="#" aria-label="LinkedIn">in</a><a href="#" aria-label="YouTube">▶</a></div>
+      </div>
+      <div class="footer-section"><h3>Quick Links</h3><ul><li><a href="../index.html#projects">Browse Projects</a></li><li><a href="../learn.html">Video Tutorials</a></li><li><a href="../custom-order.html">Custom Orders</a></li><li><a href="../contact.html">Contact Support</a></li></ul></div>
+      <div class="footer-section"><h3>Company</h3><ul><li><a href="../about.html">About Us</a></li><li><a href="../blog.html">Blog</a></li><li><a href="#">FAQ</a></li><li><a href="#">Setup Guides</a></li></ul></div>
+      <div class="footer-section"><h3>Legal</h3><ul><li><a href="../privacy.html">Privacy Policy</a></li><li><a href="#">Terms of Service</a></li><li><a href="#">Refund Policy</a></li><li><a href="#">License Agreement</a></li></ul></div>
+    </div>
+    <div class="footer-bottom"><div class="footer-bottom-content"><p>&copy; 2026 Niksprojects Store. All rights reserved.</p><div class="footer-bottom-links"><span>🔒 Payments secured by Razorpay</span><span>•</span><span>🛡️ SSL Encrypted</span></div></div></div>
+  </div>
+</footer>
+</body>
+</html>
