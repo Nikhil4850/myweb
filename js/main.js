@@ -96,7 +96,7 @@ function filterProjects(filter) {
       p.demoUrl !== 'https://your-demo-link.com/inventory'
     );
   } else if (filter === 'free') {
-    filteredProjects = projects.filter(p => p.price === 1);
+    filteredProjects = projects.filter(p => p.price === 99);
   } else if (filter === 'paid') {
     filteredProjects = projects.filter(p => p.price > 1);
   }
@@ -158,8 +158,8 @@ function renderProjects() {
     const priceDisplay = p.price === 1 ? '₹1' : `₹${p.price}`;
     const originalPriceDisplay = p.originalPrice > 1 ? `₹${p.originalPrice}` : '';
     const discountDisplay = p.discount > 0 ? `${p.discount}% OFF` : '';
-    const buttonClass = p.price === 1 ? 'btn-success' : 'btn-primary';
-    const buttonText = p.price === 1 ? 'Get Now' : 'Buy Now';
+    const buttonClass = p.price === 99 ? 'btn-success' : 'btn-primary';
+    const buttonText = p.price === 99 ? 'Get Now' : 'Buy Now';
 
     card.innerHTML = `
       <img class="card-thumb" src="${p.thumbnail}" alt="${p.title}" loading="lazy" />
@@ -176,7 +176,7 @@ function renderProjects() {
               <div class="price-current">${priceDisplay}</div>
               ${originalPriceDisplay ? `<div class="price-original">${originalPriceDisplay}</div>` : ''}
             </div>
-            <div class="price-note">${p.price === 1 ? 'limited offer' : 'one-time'}</div>
+            <div class="price-note">${p.price === 99 ? 'limited offer' : 'one-time'}</div>
           </div>
           <div class="card-actions">
             <a href="${p.demoUrl}" target="_blank" class="btn btn-outline">Live Demo</a>
