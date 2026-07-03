@@ -296,7 +296,7 @@ const projects = [
   {
     id: 'proj_hms_001',
     title: '🏥 MediCore HMS (Hospital Management System)',
-    description: 'Complete Hospital Management System with React Native mobile app, web dashboard, 25+ functional screens, and role-based panels for Admin, Doctor, Nurse & Staff.',
+    description: 'Hospital Management System with React Native, Web Dashboard & Role-Based Access.',
     tech: ['React Native', 'Expo SDK', 'HTML', 'CSS', 'JavaScript', 'AsyncStorage', 'LocalStorage'],
     price: 999,
     originalPrice: 1499,
