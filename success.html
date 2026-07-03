@@ -12,6 +12,33 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9595610341128742"crossorigin="anonymous"></script>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet" />
   <link rel="icon" href="https://www.image2url.com/r2/default/images/1779624924249-8fddfa1a-b2c7-45f4-a6df-df81d01a2116.png" />
+  <style>
+    .dl-options-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+    }
+    .dl-option-card {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1rem 1.2rem;
+      transition: border-color 0.25s;
+    }
+    .dl-option-card:hover { border-color: var(--primary); }
+    .dl-option-icon { font-size: 1.8rem; flex-shrink: 0; }
+    .dl-option-info { flex: 1; min-width: 0; }
+    .dl-option-label { font-weight: 700; font-size: 0.95rem; margin-bottom: 0.2rem; }
+    .dl-option-hint { font-size: 0.8rem; color: var(--muted); line-height: 1.4; }
+    .dl-btn { white-space: nowrap; flex-shrink: 0; }
+    @media (max-width: 480px) {
+      .dl-option-card { flex-wrap: wrap; }
+      .dl-btn { width: 100%; text-align: center; justify-content: center; }
+    }
+  </style>
 </head>
 <body>
 <!-- Google Tag Manager (noscript) -->
@@ -36,11 +63,10 @@
 
   // Then try localStorage
   const raw = localStorage.getItem('downloadData');
-  let projectName = '', zipUrl = '';
+  let projectName = '', zipUrl = '', proj = null;
 
   if (pidFromUrl && typeof projects !== 'undefined') {
-    // Recover from URL param — most reliable after Cashfree redirect
-    const proj = projects.find(p => p.id === pidFromUrl);
+    proj = projects.find(p => p.id === pidFromUrl);
     if (proj) {
       projectName = proj.title;
       zipUrl = proj.githubZip || '';
@@ -49,11 +75,62 @@
     const saved = JSON.parse(raw);
     projectName = saved.projectName;
     zipUrl = saved.zipUrl;
+    if (typeof projects !== 'undefined') {
+      proj = projects.find(p => p.id === saved.projectId);
+    }
   }
 
   localStorage.removeItem('downloadData');
 
-  if (!projectName || !zipUrl) {
+  // Determine if we have enough data to show the success screen
+  const hasMultiDownload = proj && proj.downloads && proj.downloads.length > 0;
+  const hasSingleZip = zipUrl && zipUrl.trim() !== '';
+  const canShowSuccess = projectName && (hasMultiDownload || hasSingleZip);
+
+  // Build download section — multi-file or single ZIP
+  function buildDownloadSection(project, fallbackZip) {
+    // Multi-download project (e.g. HMS with web code / app code / APK / docs)
+    if (project && project.downloads && project.downloads.length > 0) {
+      const cards = project.downloads.map(d => {
+        const hasUrl = d.url && d.url.trim() !== '';
+        return `
+          <div class="dl-option-card">
+            <div class="dl-option-icon">${d.icon}</div>
+            <div class="dl-option-info">
+              <div class="dl-option-label">${d.label}</div>
+              <div class="dl-option-hint">${d.hint}</div>
+            </div>
+            ${hasUrl
+              ? `<a href="${d.url}" class="btn btn-success dl-btn" target="_blank" rel="noopener noreferrer">Download ↓</a>`
+              : `<a href="https://wa.me/917058871972?text=Hello%20Niks%20Projects%2C%20I%20purchased%20${encodeURIComponent(project.title)}%20and%20need%20the%20${encodeURIComponent(d.label)}%20download%20link." class="btn btn-outline dl-btn" target="_blank" rel="noopener noreferrer">Get on WhatsApp</a>`
+            }
+          </div>
+        `;
+      }).join('');
+
+      return `
+        <div class="download-box" style="text-align:left;">
+          <div style="font-weight:700;margin-bottom:1.2rem;font-size:1.1rem;text-align:center;">📦 Download Your Files</div>
+          <div class="dl-options-grid">${cards}</div>
+          <p style="color:var(--muted);font-size:0.8rem;text-align:center;margin-top:1.2rem;">All files are included with your one-time purchase. Contact us on WhatsApp if you face any issues.</p>
+        </div>
+      `;
+    }
+
+    // Standard single-ZIP project
+    if (!fallbackZip) return '';
+    return `
+      <div class="download-box">
+        <div style="font-weight:700;margin-bottom:0.75rem;font-size:1.1rem;">📦 Download Your Project</div>
+        <p style="color:var(--text-secondary);font-size:0.9rem;margin-bottom:1rem;">Click below to download the full source code ZIP.</p>
+        <a href="${fallbackZip}" class="btn btn-success btn-lg" style="width:100%;justify-content:center;" target="_blank">
+          ⬇ Download Source Code (ZIP)
+        </a>
+      </div>
+    `;
+  }
+
+  if (!canShowSuccess) {
     container.innerHTML = `
       <div class="success-icon">⚠️</div>
       <h1 style="font-size:1.8rem;font-weight:800;margin-bottom:0.5rem;">Session Expired</h1>
@@ -66,13 +143,7 @@
       <div class="success-icon">🎉</div>
       <h1 style="font-size:2rem;font-weight:800;margin-bottom:0.5rem;">Payment Successful!</h1>
       <p style="color:var(--text-secondary);margin-bottom:2rem;">Thank you for purchasing <strong style="color:var(--text)">${projectName}</strong>.</p>
-      <div class="download-box">
-        <div style="font-weight:700;margin-bottom:0.75rem;font-size:1.1rem;">📦 Download Your Project</div>
-        <p style="color:var(--text-secondary);font-size:0.9rem;margin-bottom:1rem;">Click below to download the full source code ZIP.</p>
-        <a href="${zipUrl}" class="btn btn-success btn-lg" style="width:100%;justify-content:center;" target="_blank">
-          ⬇ Download Source Code (ZIP)
-        </a>
-      </div>
+      ${buildDownloadSection(proj, zipUrl)}
       <a href="index.html" class="btn btn-outline" style="margin-top:1rem">Browse More Projects</a>
     `;
   }

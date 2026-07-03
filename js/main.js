@@ -179,7 +179,7 @@ function renderProjects() {
             <div class="price-note">${p.price === 99 ? 'limited offer' : 'one-time'}</div>
           </div>
           <div class="card-actions">
-            <a href="${p.demoUrl}" target="_blank" class="btn btn-outline">Live Demo</a>
+            ${p.demoUrl ? `<a href="${p.demoUrl}" target="_blank" class="btn btn-outline">Live Demo</a>` : `<a href="https://wa.me/917058871972?text=Hello%2C%20I%20am%20interested%20in%20the%20${encodeURIComponent(p.title)}%20project." target="_blank" rel="noopener noreferrer" class="btn btn-outline">WhatsApp</a>`}
             <a href="project.html?id=${p.id}" class="btn ${buttonClass}">${buttonText}</a>
           </div>
         </div>
