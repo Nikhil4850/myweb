@@ -85,6 +85,7 @@ const projects = [
     thumbnail: 'https://cdn.dribbble.com/userupload/11281604/file/original-b7d3386b5723884976a5fe945bc11dd7.png?crop=255x0-2305x1538&resize=1600x1200',
     features: ['Income & Expense Tracking', 'Charts & Graphs', 'Budget Limits', 'Monthly Reports', 'Export CSV'],
     available: true,
+    popular: true,
     githubZip: 'https://github.com/Nikprojects-1/Expense-Tracker/archive/refs/heads/main.zip',
   },
   {
@@ -157,6 +158,7 @@ const projects = [
     thumbnail: 'https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=600&h=340&fit=crop&auto=format',
     features: ['Kanban Board', 'Drag & Drop', 'Team Sharing', 'Deadlines', 'Notifications'],
     available: true,
+    popular: true,
     githubZip: 'https://github.com/Nikprojects-1/task-manager/archive/refs/heads/master.zip'
   },
   {
@@ -229,6 +231,7 @@ const projects = [
     thumbnail: 'https://thf.bing.com/th/id/OIP.5IDoQb86Ch_6BGgaMrE2HQHaEK?o=7&cb=thfc1falcon&rm=3&rs=1&pid=ImgDetMain&o=7&rm=3',
     features: ['Real-time Messaging', 'Chat Rooms', 'Private DMs', 'Online Status', 'File Sharing'],
     available: true,
+    popular: true,
     githubZip: 'https://github.com/Nikprojects-1/Chat-Application/archive/refs/heads/main.zip',
   },
   {
@@ -243,6 +246,7 @@ const projects = [
     thumbnail: 'https://tse3.mm.bing.net/th/id/OIP.ro5YgBPi7ysO-Wq_snXi8gHaE6?cb=thfc1falcon&rs=1&pid=ImgDetMain&o=7&rm=3',
     features: ['Analytics Charts', 'Post Scheduling', 'Engagement Metrics', 'User Management', 'Export Reports'],
     available: true,
+    popular: true,
     githubZip: 'https://github.com/Nikprojects-1/Social-Media/archive/refs/heads/main.zip',
   },
   {
@@ -331,6 +335,7 @@ const projects = [
     ],
     available: true,
     githubZip: '',
+    popular: true,
     downloads: [
       { label: '💻 Web Dashboard Code', icon: '🌐', url: 'https://github.com/Harshadip1/hospital-management-system/archive/refs/heads/main.zip', hint: 'HTML/CSS/JS source code for the web dashboard' },
       { label: '📱 React Native App Code', icon: '📱', url: 'https://github.com/Harshadip1/hospital-management-app/archive/refs/heads/main.zip', hint: 'Full React Native + Expo mobile app source code' },
@@ -352,6 +357,7 @@ const projects = [
     thumbnail: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&h=340&fit=crop&auto=format',
     features: ['User Auth', 'Product Management', 'Cart & Checkout', 'Admin Panel', 'Order History'],
     available: true,
+    popular: true,
     githubZip: 'https://github.com/Nikprojects-1/eCommerce/archive/refs/heads/main.zip'
   },
   {
@@ -380,6 +386,7 @@ const projects = [
     thumbnail: 'https://tse2.mm.bing.net/th/id/OIP.rHELcP3lV86n6gZ_vxXhsQHaE0?cb=thfc1falcon&rs=1&pid=ImgDetMain&o=7&rm=3',
     features: ['Job Listings', 'Application Tracking', 'Company Profiles', 'Resume Upload', 'Email Alerts'],
     available: true,
+    popular: true,
     githubZip: 'https://github.com/Nikprojects-1/Job-Portal/archive/refs/heads/main.zip',
   },
   {
@@ -408,6 +415,7 @@ const projects = [
     thumbnail: 'https://tse3.mm.bing.net/th/id/OIP.rm2XZVQLoLPJlnJ71BkCXAHaF5?cb=thfc1falcon&rs=1&pid=ImgDetMain&o=7&rm=3',
     features: ['Course Management', 'Video Lessons', 'Quiz System', 'Progress Tracking', 'Certificates'],
     available: true,
+    popular: true,
     githubZip: 'https://github.com/Nikprojects-1/E-Learning-Platform/archive/refs/heads/main.zip',
   },
 

@@ -97,8 +97,11 @@ function filterProjects(filter) {
     );
   } else if (filter === 'free') {
     filteredProjects = projects.filter(p => p.price === 99);
-  } else if (filter === 'paid') {
-    filteredProjects = projects.filter(p => p.price > 1);
+  } else if (filter === 'popular') {
+    filteredProjects = projects.filter(p => p.popular === true);
+    filteredProjects.sort((a, b) => b.price - a.price);
+    renderProjects();
+    return;
   }
   
   // Apply current sort after filtering
@@ -163,6 +166,7 @@ function renderProjects() {
 
     card.innerHTML = `
       <img class="card-thumb" src="${p.thumbnail}" alt="${p.title}" loading="lazy" />
+      ${p.popular ? `<div class="popular-badge">🔥 Popular</div>` : ''}
       <div class="card-body">
         <div class="card-title">${p.title}</div>
         <div class="card-desc">${p.description}</div>
