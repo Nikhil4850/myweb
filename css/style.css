@@ -132,12 +132,6 @@ nav {
   background-clip: text;
   position: relative;
   z-index: 1;
-  animation: heroFloat 6s ease-in-out infinite;
-}
-
-@keyframes heroFloat {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-8px); }
 }
 
 .hero h1 span { 
@@ -146,12 +140,6 @@ nav {
   -webkit-text-fill-color: transparent;
   background-clip: text;
   display: inline-block;
-  animation: textGlow 3s ease-in-out infinite;
-}
-
-@keyframes textGlow {
-  0%, 100% { filter: drop-shadow(0 0 20px rgba(99, 102, 241, 0.3)); }
-  50% { filter: drop-shadow(0 0 30px rgba(139, 92, 246, 0.5)); }
 }
 
 .hero p { 
@@ -163,13 +151,8 @@ nav {
   font-weight: 400;
   position: relative;
   z-index: 1;
-  animation: paraFloat 8s ease-in-out infinite;
 }
 
-@keyframes paraFloat {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-5px); }
-}
 .badge { 
   display: inline-flex; 
   align-items: center;
@@ -185,12 +168,7 @@ nav {
   backdrop-filter: blur(10px);
   position: relative;
   z-index: 1;
-  animation: pulse 2s ease-in-out infinite;
   box-shadow: 0 10px 30px rgba(99, 102, 241, 0.2);
-}
-@keyframes pulse {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.05); }
 }
 
 /* 3D PARTICLES */
@@ -470,8 +448,6 @@ nav {
   border-radius: 999px;
   display: inline-block;
   align-self: flex-start;
-  animation: pulse 2s ease-in-out infinite;
-  transform: translateZ(5px);
   box-shadow: 0 2px 8px rgba(236, 72, 153, 0.3);
 }
 .price-wrapper {
