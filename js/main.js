@@ -322,12 +322,11 @@ document.addEventListener('DOMContentLoaded', () => {
   }, 100);
   
   document.querySelectorAll('.section').forEach(section => {
-    // Skip the projects section to avoid conflicts
-    if (section.id !== 'projects') {
-      section.style.opacity = '0';
-      section.style.transform = 'translateY(30px)';
-      section.style.transition = 'all 0.8s cubic-bezier(0.4, 0, 0.2, 1)';
-      observer.observe(section);
-    }
+    // Skip the projects section and the hero to avoid conflicts
+    if (section.id === 'projects' || section.classList.contains('hero')) return;
+    section.style.opacity = '0';
+    section.style.transform = 'translateY(30px)';
+    section.style.transition = 'all 0.8s cubic-bezier(0.4, 0, 0.2, 1)';
+    observer.observe(section);
   });
 });

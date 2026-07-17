@@ -46,6 +46,8 @@ nav {
   border-bottom: 1px solid var(--border); 
   position: sticky; top: 0; z-index: 1000;
   box-shadow: var(--shadow-sm);
+  transform: translateZ(0);
+  isolation: isolate;
 }
 .nav-logo { 
   font-size: 1.4rem; 
@@ -99,9 +101,8 @@ nav {
               linear-gradient(135deg, var(--bg) 0%, var(--surface) 100%);
   position: relative;
   overflow: hidden;
-  z-index: 1;
-  perspective: 1000px;
-  transform-style: preserve-3d;
+  z-index: 0;
+  isolation: isolate;
 }
 .hero::before {
   content: '';
@@ -131,15 +132,12 @@ nav {
   background-clip: text;
   position: relative;
   z-index: 1;
-  transform: translateZ(50px);
   animation: heroFloat 6s ease-in-out infinite;
 }
 
 @keyframes heroFloat {
-  0%, 100% { transform: translateZ(50px) rotateX(0deg) rotateY(0deg); }
-  25% { transform: translateZ(80px) rotateX(2deg) rotateY(2deg); }
-  50% { transform: translateZ(60px) rotateX(-1deg) rotateY(-1deg); }
-  75% { transform: translateZ(70px) rotateX(1deg) rotateY(-2deg); }
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
 }
 
 .hero h1 span { 
@@ -148,7 +146,6 @@ nav {
   -webkit-text-fill-color: transparent;
   background-clip: text;
   display: inline-block;
-  transform: translateZ(20px);
   animation: textGlow 3s ease-in-out infinite;
 }
 
@@ -166,13 +163,12 @@ nav {
   font-weight: 400;
   position: relative;
   z-index: 1;
-  transform: translateZ(30px);
   animation: paraFloat 8s ease-in-out infinite;
 }
 
 @keyframes paraFloat {
-  0%, 100% { transform: translateZ(30px) translateY(0); }
-  50% { transform: translateZ(40px) translateY(-5px); }
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
 }
 .badge { 
   display: inline-flex; 
@@ -190,12 +186,11 @@ nav {
   position: relative;
   z-index: 1;
   animation: pulse 2s ease-in-out infinite;
-  transform: translateZ(25px);
   box-shadow: 0 10px 30px rgba(99, 102, 241, 0.2);
 }
 @keyframes pulse {
-  0%, 100% { transform: translateZ(25px) scale(1); }
-  50% { transform: translateZ(35px) scale(1.05); }
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
 }
 
 /* 3D PARTICLES */
@@ -217,29 +212,15 @@ nav {
   border-radius: 50%;
   left: var(--x);
   top: var(--y);
-  transform: translateZ(var(--z));
   animation: float3d 8s ease-in-out infinite;
   animation-delay: var(--delay);
   box-shadow: 0 0 10px rgba(99, 102, 241, 0.5);
+  opacity: 0.4;
 }
 
 @keyframes float3d {
-  0%, 100% { 
-    transform: translateZ(var(--z)) translateY(0) rotateX(0deg) rotateY(0deg);
-    opacity: 0.3;
-  }
-  25% { 
-    transform: translateZ(calc(var(--z) + 20px)) translateY(-20px) rotateX(10deg) rotateY(15deg);
-    opacity: 0.8;
-  }
-  50% { 
-    transform: translateZ(calc(var(--z) + 10px)) translateY(-10px) rotateX(-5deg) rotateY(-10deg);
-    opacity: 0.6;
-  }
-  75% { 
-    transform: translateZ(calc(var(--z) + 15px)) translateY(-15px) rotateX(5deg) rotateY(-5deg);
-    opacity: 0.4;
-  }
+  0%, 100% { transform: translateY(0); opacity: 0.3; }
+  50% { transform: translateY(-20px); opacity: 0.8; }
 }
 
 /* BUTTONS */
@@ -258,7 +239,6 @@ nav {
   position: relative;
   overflow: hidden;
   text-decoration: none;
-  transform-style: preserve-3d;
   transform: translateZ(0);
 }
 .btn::before {
@@ -395,8 +375,6 @@ nav {
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
   box-shadow: var(--shadow-md);
-  transform-style: preserve-3d;
-  transform: translateZ(0);
 }
 .card::before {
   content: '';
@@ -410,7 +388,7 @@ nav {
   transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .card:hover { 
-  transform: translateY(-12px) translateZ(30px) rotateX(8deg) rotateY(-5deg); 
+  transform: translateY(-8px); 
   border-color: var(--primary);
   box-shadow: 0 20px 40px rgba(99, 102, 241, 0.3);
 }
@@ -423,16 +401,14 @@ nav {
   object-fit: cover; 
   display: block; 
   transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-  transform: translateZ(10px);
 }
 .card:hover .card-thumb {
-  transform: translateZ(20px) scale(1.05);
+  transform: scale(1.05);
 }
 .card-body { 
   padding: 1.8rem; 
   position: relative;
   z-index: 1;
-  transform: translateZ(15px);
 }
 .card-title { 
   font-size: 1.3rem; 

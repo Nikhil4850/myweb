@@ -155,6 +155,8 @@ function addScrollAnimations() {
   
   // Observe elements for animations
   document.querySelectorAll('.card, .section, .video-card').forEach(element => {
+    // Skip the hero section — it has its own animations
+    if (element.classList.contains('hero')) return;
     element.style.opacity = '0';
     element.style.transform = 'translateY(30px)';
     element.style.transition = 'all 0.6s cubic-bezier(0.4, 0, 0.2, 1)';
