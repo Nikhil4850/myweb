@@ -1,33 +1,31 @@
-// Enhanced main.js with loading states, filtering, and sorting
+// Enhanced main.js with loading states, filtering, sorting and search
 const grid = document.getElementById('projectsGrid');
 let currentFilter = 'all';
 let currentSort = 'price-low-high';
+let searchQuery = '';
 
 // Ensure projects are loaded
 let filteredProjects = [];
 
 // Wait for projects to be available
 function initializeProjects() {
-  // Ensure projects section is visible
   const projectsSection = document.getElementById('projects');
   if (projectsSection) {
     projectsSection.style.opacity = '1';
     projectsSection.style.visibility = 'visible';
   }
   
-  // Check if projects are available immediately
   if (typeof projects !== 'undefined' && projects && projects.length > 0) {
     console.log('Projects loaded:', projects.length, 'projects');
     filteredProjects = [...projects];
     filteredProjects.sort((a, b) => a.price - b.price);
     renderProjects();
     setupEventListeners();
-    // Set sort dropdown to match default
+    setupSearch();
     const sortSelect = document.getElementById('sortSelect');
     if (sortSelect) sortSelect.value = 'price-low-high';
   } else {
-    console.error('Projects not available - check if projects.js loaded correctly');
-    // Fallback: Show error message
+    console.error('Projects not available');
     const grid = document.getElementById('projectsGrid');
     if (grid) {
       grid.innerHTML = `
@@ -55,56 +53,60 @@ function showLoadingState() {
 function filterProjects(filter) {
   currentFilter = filter;
   showingAll = false;
-  
-  if (filter === 'all') {
-    filteredProjects = [...projects];
-  } else if (filter === 'available') {
-    // Only show projects with real demo links and marked as available
-    filteredProjects = projects.filter(p => 
-      p.available === true && 
-      p.demoUrl && 
-      p.demoUrl !== 'https://your-demo-link.com/chat' &&
-      p.demoUrl !== 'https://your-demo-link.com/portfolio' &&
-      p.demoUrl !== 'https://your-demo-link.com/taskmanager' &&
-      p.demoUrl !== 'https://your-demo-link.com/blog' &&
-      p.demoUrl !== 'https://your-demo-link.com/expense' &&
-      p.demoUrl !== 'https://your-demo-link.com/weather' &&
-      p.demoUrl !== 'https://your-demo-link.com/todo' &&
-      p.demoUrl !== 'https://your-demo-link.com/calculator' &&
-      p.demoUrl !== 'https://your-demo-link.com/stopwatch' &&
-      p.demoUrl !== 'https://your-demo-link.com/notes' &&
-      p.demoUrl !== 'https://your-demo-link.com/quiz' &&
-      p.demoUrl !== 'https://your-demo-link.com/recipes' &&
-      p.demoUrl !== 'https://your-demo-link.com/music' &&
-      p.demoUrl !== 'https://your-demo-link.com/password' &&
-      p.demoUrl !== 'https://your-demo-link.com/colorpicker' &&
-      p.demoUrl !== 'https://your-demo-link.com/converter' &&
-      p.demoUrl !== 'https://your-demo-link.com/bmi' &&
-      p.demoUrl !== 'https://your-demo-link.com/quotes' &&
-      p.demoUrl !== 'https://your-demo-link.com/clock' &&
-      p.demoUrl !== 'https://your-demo-link.com/shortener' &&
-      p.demoUrl !== 'https://your-demo-link.com/gallery' &&
-      p.demoUrl !== 'https://your-demo-link.com/survey' &&
-      p.demoUrl !== 'https://your-demo-link.com/filemanager' &&
-      p.demoUrl !== 'https://your-demo-link.com/calendar' &&
-      p.demoUrl !== 'https://your-demo-link.com/chatbot' &&
-      p.demoUrl !== 'https://your-demo-link.com/videoplayer' &&
-      p.demoUrl !== 'https://your-demo-link.com/elearning' &&
-      p.demoUrl !== 'https://your-demo-link.com/jobs' &&
-      p.demoUrl !== 'https://your-demo-link.com/fitness' &&
-      p.demoUrl !== 'https://your-demo-link.com/booking' &&
-      p.demoUrl !== 'https://your-demo-link.com/inventory'
+  applyFiltersAndSearch();
+}
+
+function applyFiltersAndSearch() {
+  let base = [...projects];
+
+  // Apply category filter
+  if (currentFilter === 'available') {
+    base = base.filter(p =>
+      p.available === true &&
+      p.demoUrl && p.demoUrl.trim() !== '' &&
+      !p.demoUrl.includes('your-demo-link')
     );
-  } else if (filter === 'free') {
-    filteredProjects = projects.filter(p => p.price === 99);
-  } else if (filter === 'popular') {
-    filteredProjects = projects.filter(p => p.popular === true);
-    filteredProjects.sort((a, b) => b.price - a.price);
+  } else if (currentFilter === 'free') {
+    base = base.filter(p => p.price === 99);
+  } else if (currentFilter === 'popular') {
+    base = base.filter(p => p.popular === true);
+    base.sort((a, b) => b.price - a.price);
+    filteredProjects = base;
+    // Apply search on top
+    if (searchQuery) {
+      filteredProjects = filteredProjects.filter(p =>
+        p.title.toLowerCase().includes(searchQuery) ||
+        p.description.toLowerCase().includes(searchQuery) ||
+        p.tech.some(t => t.toLowerCase().includes(searchQuery))
+      );
+    }
+    renderProjects();
+    return;
+  } else if (currentFilter === '3d') {
+    base = base.filter(p => p.category === '3d');
+    base.sort((a, b) => b.price - a.price);
+    filteredProjects = base;
+    if (searchQuery) {
+      filteredProjects = filteredProjects.filter(p =>
+        p.title.toLowerCase().includes(searchQuery) ||
+        p.description.toLowerCase().includes(searchQuery) ||
+        p.tech.some(t => t.toLowerCase().includes(searchQuery))
+      );
+    }
     renderProjects();
     return;
   }
-  
-  // Apply current sort after filtering
+
+  // Apply search
+  if (searchQuery) {
+    base = base.filter(p =>
+      p.title.toLowerCase().includes(searchQuery) ||
+      p.description.toLowerCase().includes(searchQuery) ||
+      p.tech.some(t => t.toLowerCase().includes(searchQuery))
+    );
+  }
+
+  filteredProjects = base;
   sortProjects(currentSort);
 }
 
@@ -138,9 +140,11 @@ function renderProjects() {
   if (filteredProjects.length === 0) {
     grid.innerHTML = `
       <div style="grid-column: 1 / -1; text-align: center; padding: 3rem;">
-        <div style="font-size: 3rem; margin-bottom: 1rem;">🔍</div>
-        <p style="color: var(--text-secondary); font-size: 1.1rem;">No projects found for this filter.</p>
-        <button class="btn btn-outline" style="margin-top: 1rem;" onclick="resetFilters()">Reset Filters</button>
+        <div class="no-results">
+          <div class="nr-icon">🔍</div>
+          <p style="color: var(--text-secondary); font-size: 1.1rem; margin-bottom:1rem;">No projects found.</p>
+          <button class="btn btn-outline" onclick="resetFilters()">Clear Filters</button>
+        </div>
       </div>
     `;
     updateShowMoreBtn();
@@ -205,21 +209,38 @@ function renderProjects() {
 
 // Setup event listeners for filters and sorting
 function setupEventListeners() {
-  // Filter buttons
   document.querySelectorAll('.filter-btn').forEach(btn => {
     btn.addEventListener('click', function() {
-      // Remove active class from all buttons
       document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-      // Add active class to clicked button
       this.classList.add('active');
-      // Apply filter
       filterProjects(this.dataset.filter);
     });
   });
   
-  // Sort select
   document.getElementById('sortSelect').addEventListener('change', function() {
     sortProjects(this.value);
+  });
+}
+
+// Setup search input
+function setupSearch() {
+  const input = document.getElementById('searchInput');
+  const clearBtn = document.getElementById('searchClear');
+  if (!input) return;
+
+  input.addEventListener('input', function() {
+    searchQuery = this.value.toLowerCase().trim();
+    clearBtn.style.display = searchQuery ? 'block' : 'none';
+    showingAll = false;
+    applyFiltersAndSearch();
+  });
+
+  clearBtn.addEventListener('click', function() {
+    input.value = '';
+    searchQuery = '';
+    this.style.display = 'none';
+    input.focus();
+    applyFiltersAndSearch();
   });
 }
 
@@ -227,12 +248,17 @@ function setupEventListeners() {
 function resetFilters() {
   currentFilter = 'all';
   currentSort = 'default';
+  searchQuery = '';
   showingAll = false;
   filteredProjects = [...projects];
 
   document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
   document.querySelector('.filter-btn[data-filter="all"]').classList.add('active');
   document.getElementById('sortSelect').value = 'default';
+  const input = document.getElementById('searchInput');
+  const clearBtn = document.getElementById('searchClear');
+  if (input) input.value = '';
+  if (clearBtn) clearBtn.style.display = 'none';
 
   renderProjects();
 }

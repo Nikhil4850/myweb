@@ -294,6 +294,37 @@ const projects = [
 
   // ── ₹999 ── (premium projects)
   {
+    id: 'proj_bugatti_001',
+    title: '🚗 AETHER – Bugatti 3D Hypercar Showcase',
+    description: 'Immersive 3D Bugatti hypercar showcase built for a real interview project. Spin, zoom and explore a photorealistic car model with cinematic transitions.',
+    tech: ['Next.js 15', 'TypeScript', 'React Three Fiber', 'Three.js'],
+    price: 999,
+    originalPrice: 1999,
+    discount: 50,
+    demoUrl: 'https://bugatti-3d-model-upxk.vercel.app',
+    thumbnail: 'https://images.unsplash.com/photo-1544636331-e26879cd4d9b?w=600&h=340&fit=crop&auto=format',
+    features: [
+      'Interactive 3D Car Model',
+      'Drag to Rotate & Zoom',
+      'Cinematic Camera Animations',
+      'Futuristic Luxury UI Design',
+      'Fully Responsive',
+      'Next.js 15 App Router',
+      'TypeScript Codebase',
+      'React Three Fiber Integration',
+      'Three.js 3D Rendering',
+      'Clean Folder Structure',
+      'Easy to Customize',
+      'Complete Source Code',
+      'Interview-Ready Project',
+    ],
+    available: true,
+    popular: true,
+    category: '3d',
+    githubZip: 'https://github.com/Nikhil4850/bugatti-3d-model/archive/refs/heads/main.zip',
+  },
+
+  {
     id: 'proj_hms_001',
     title: '🏥 MediCore HMS (Hospital Management System)',
     description: 'Hospital Management System with React Native, Web Dashboard & Role-Based Access.',

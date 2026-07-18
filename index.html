@@ -17,6 +17,51 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet" />
   <link rel="icon" href="https://www.image2url.com/r2/default/images/1779624924249-8fddfa1a-b2c7-45f4-a6df-df81d01a2116.png" />
   <style>
+    .search-bar-wrap {
+      max-width: 520px;
+      margin: 0 auto 1.5rem;
+    }
+    .search-bar {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 50px;
+      padding: 0.65rem 1.2rem;
+      transition: border-color 0.25s, box-shadow 0.25s;
+    }
+    .search-bar:focus-within {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(99,102,241,0.15);
+    }
+    .search-icon { font-size: 1rem; flex-shrink: 0; opacity: 0.6; }
+    .search-bar input {
+      flex: 1;
+      background: none;
+      border: none;
+      outline: none;
+      color: var(--text);
+      font-size: 0.95rem;
+      font-family: inherit;
+    }
+    .search-bar input::placeholder { color: var(--muted); }
+    .search-clear {
+      background: none;
+      border: none;
+      color: var(--muted);
+      cursor: pointer;
+      font-size: 0.85rem;
+      padding: 0 0.2rem;
+      line-height: 1;
+    }
+    .search-clear:hover { color: var(--text); }
+    .no-results {
+      grid-column: 1 / -1;
+      text-align: center;
+      padding: 3rem;
+    }
+    .no-results .nr-icon { font-size: 3rem; margin-bottom: 1rem; }
   </style>
 </head>
 <body>
@@ -37,7 +82,7 @@
 </nav>
 
 <section class="hero">
-  <div class="badge">� For Business & 🎓 Students</div>
+  <div class="badge"> For Business & 🎓 Students</div>
   <h1>We Build <span>Websites & Apps</span><br/>for Your Business</h1>
   <p>Own a shop, salon, clinic or any business? We'll get you online fast. Also browse ready-made student projects with full source code.</p>
   <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
@@ -62,15 +107,25 @@
   <div class="section-title">All Projects</div>
   <div class="section-sub">Click "Live Demo" to preview, then purchase to get the full code.</div>
   
+  <!-- Search Bar -->
+  <div class="search-bar-wrap">
+    <div class="search-bar">
+      <span class="search-icon">🔍</span>
+      <input type="text" id="searchInput" placeholder="Search projects..." autocomplete="off" />
+      <button class="search-clear" id="searchClear" style="display:none;">✕</button>
+    </div>
+  </div>
+
   <!-- Filters and Sorting -->
   <div class="projects-controls">
     <div class="filter-group">
-      <label>Price Type:</label>
+      <label>Filter:</label>
       <div class="filter-buttons">
         <button class="filter-btn active" data-filter="all">All</button>
         <button class="filter-btn" data-filter="available">Available</button>
         <button class="filter-btn" data-filter="free">₹99</button>
-        <button class="filter-btn" data-filter="popular">Popular</button>
+        <button class="filter-btn" data-filter="popular">🔥 Popular</button>
+        <button class="filter-btn" data-filter="3d">✨ 3D Projects</button>
       </div>
     </div>
     
