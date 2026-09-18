@@ -10,7 +10,9 @@
   <title>Learn Development - Niksprojects Store</title>
   <link rel="stylesheet" href="css/style.css" />
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9595610341128742"crossorigin="anonymous"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800;900&display=swap" rel="stylesheet" />
   <link rel="icon" href="https://www.image2url.com/r2/default/images/1779624924249-8fddfa1a-b2c7-45f4-a6df-df81d01a2116.png" />
 </head>
 <body>
@@ -134,66 +136,84 @@
 const videos = [
   {
     id: 'video_001',
-    title: 'Development Tutorial',
-    description: 'Learn web development with step-by-step tutorials',
-    category: 'fullstack',
+    title: 'HTML & CSS Full Course for Beginners',
+    description: 'Master HTML5 and CSS3 fundamentals from scratch. Build responsive websites step-by-step.',
+    category: 'frontend',
     thumbnail: 'https://img.youtube.com/vi/ZqkKNo-pSPQ/hqdefault.jpg',
-    duration: 'Tutorial',
-    videoUrl: 'https://www.youtube.com/embed/ZqkKNo-pSPQ?si=vu71_rRwnl6VR3BJ'
+    duration: '15 min',
+    videoUrl: 'https://www.youtube.com/embed/ZqkKNo-pSPQ'
   },
   {
     id: 'video_002',
-    title: 'Advanced Development Guide',
-    description: 'Master advanced web development concepts and techniques',
-    category: 'fullstack',
-    thumbnail: 'https://img.youtube.com/vi/Vx97HvV6W_Q/hqdefault.jpg',
-    duration: 'Advanced',
-    videoUrl: 'https://www.youtube.com/embed/Vx97HvV6W_Q?si=4K7mqWKLhHMi88Xx'
+    title: 'JavaScript DOM & Asynchronous Programming',
+    description: 'Learn modern ES6+ JavaScript, event listeners, fetch API, and dynamic DOM manipulation.',
+    category: 'frontend',
+    thumbnail: 'https://img.youtube.com/vi/W6NZfCO5SIk/hqdefault.jpg',
+    duration: '22 min',
+    videoUrl: 'https://www.youtube.com/embed/W6NZfCO5SIk'
   },
   {
     id: 'video_003',
-    title: 'Web Development Masterclass',
-    description: 'Complete guide to modern web development best practices',
-    category: 'fullstack',
-    thumbnail: 'https://img.youtube.com/vi/BPKiV6cGX9U/hqdefault.jpg',
-    duration: 'Masterclass',
-    videoUrl: 'https://www.youtube.com/embed/BPKiV6cGX9U?si=5cHxACDml8gykTXN'
+    title: 'React.js Crash Course for Web Developers',
+    description: 'Learn React hooks, state management, components, and single-page app architecture.',
+    category: 'frontend',
+    thumbnail: 'https://img.youtube.com/vi/bMknfKXIFA8/hqdefault.jpg',
+    duration: '28 min',
+    videoUrl: 'https://www.youtube.com/embed/bMknfKXIFA8'
   },
   {
     id: 'video_004',
-    title: 'Professional Web Development',
-    description: 'Learn professional web development techniques and industry standards',
-    category: 'fullstack',
-    thumbnail: 'https://img.youtube.com/vi/7SOx4rGeCzQ/hqdefault.jpg',
-    duration: 'Professional',
-    videoUrl: 'https://www.youtube.com/embed/7SOx4rGeCzQ?si=LNwK9_-GZbxwRDq4'
+    title: 'Node.js & Express REST API Development',
+    description: 'Build robust backend APIs with Node.js, Express framework, and middleware routing.',
+    category: 'backend',
+    thumbnail: 'https://img.youtube.com/vi/Oe421EPjeBE/hqdefault.jpg',
+    duration: '25 min',
+    videoUrl: 'https://www.youtube.com/embed/Oe421EPjeBE'
   },
   {
     id: 'video_005',
-    title: 'Expert Web Development',
-    description: 'Expert-level web development techniques and best practices',
-    category: 'fullstack',
-    thumbnail: 'https://img.youtube.com/vi/HpOuO2RbPBU/hqdefault.jpg',
-    duration: 'Expert',
-    videoUrl: 'https://www.youtube.com/embed/HpOuO2RbPBU?si=uFdGdKlFyrkpRwnh'
+    title: 'Python & Django Web Development Masterclass',
+    description: 'Complete guide to building database-driven web applications using Python and Django.',
+    category: 'backend',
+    thumbnail: 'https://img.youtube.com/vi/ptE-r_P9R9c/hqdefault.jpg',
+    duration: '32 min',
+    videoUrl: 'https://www.youtube.com/embed/ptE-r_P9R9c'
   },
   {
     id: 'video_006',
-    title: 'Ultimate Web Development',
-    description: 'Ultimate guide to web development mastery and advanced techniques',
-    category: 'fullstack',
-    thumbnail: 'https://img.youtube.com/vi/QMaOa7naJSs/hqdefault.jpg',
-    duration: 'Ultimate',
-    videoUrl: 'https://www.youtube.com/embed/QMaOa7naJSs?si=JwG-6tJ2NCE5qcLQ'
+    title: 'MongoDB Database Setup & Schema Design',
+    description: 'Learn NoSQL database concepts, Mongoose schemas, queries, and indexing.',
+    category: 'backend',
+    thumbnail: 'https://img.youtube.com/vi/ofme2o29ngU/hqdefault.jpg',
+    duration: '18 min',
+    videoUrl: 'https://www.youtube.com/embed/ofme2o29ngU'
   },
   {
     id: 'video_007',
-    title: 'Complete Web Development',
-    description: 'Complete web development course from start to finish',
+    title: 'Full Stack MERN App: From Zero to Deployment',
+    description: 'Build and deploy a complete full-stack web app using MongoDB, Express, React, and Node.',
     category: 'fullstack',
-    thumbnail: 'https://img.youtube.com/vi/B1pepta904o/hqdefault.jpg',
-    duration: 'Complete',
-    videoUrl: 'https://www.youtube.com/embed/B1pepta904o?si=qeYNMiGvBJP6zzTp'
+    thumbnail: 'https://img.youtube.com/vi/7CqJlxBYj-M/hqdefault.jpg',
+    duration: '45 min',
+    videoUrl: 'https://www.youtube.com/embed/7CqJlxBYj-M'
+  },
+  {
+    id: 'video_008',
+    title: 'Git & GitHub Crash Course for Developers',
+    description: 'Learn Git version control, commits, branching, pull requests, and GitHub workflows.',
+    category: 'tools',
+    thumbnail: 'https://img.youtube.com/vi/RGOj5yH7evk/hqdefault.jpg',
+    duration: '20 min',
+    videoUrl: 'https://www.youtube.com/embed/RGOj5yH7evk'
+  },
+  {
+    id: 'video_009',
+    title: 'VS Code Setup & Productivity Extensions',
+    description: 'Supercharge your coding workflow with essential VS Code extensions, shortcuts, and settings.',
+    category: 'tools',
+    thumbnail: 'https://img.youtube.com/vi/VqCgcpAypFQ/hqdefault.jpg',
+    duration: '14 min',
+    videoUrl: 'https://www.youtube.com/embed/VqCgcpAypFQ'
   }
 ];
 
@@ -206,12 +226,23 @@ document.addEventListener('DOMContentLoaded', () => {
 // Render videos
 function renderVideos(category) {
   const grid = document.getElementById('videosGrid');
+  if (!grid) return;
+
   const filteredVideos = category === 'all' 
     ? videos 
     : videos.filter(video => video.category === category);
   
   grid.innerHTML = '';
   
+  if (filteredVideos.length === 0) {
+    grid.innerHTML = `
+      <div style="grid-column: 1 / -1; text-align: center; padding: 3rem;">
+        <p style="color: var(--text-secondary); font-size: 1.1rem;">No videos found in this category.</p>
+      </div>
+    `;
+    return;
+  }
+
   filteredVideos.forEach((video, index) => {
     const videoCard = document.createElement('div');
     videoCard.className = 'video-card';
@@ -220,7 +251,7 @@ function renderVideos(category) {
     
     videoCard.innerHTML = `
       <div class="video-thumb-wrap" onclick="openVideoModal('${video.id}')">
-        <img class="video-thumb" src="${video.thumbnail}" alt="${video.title}" loading="lazy" />
+        <img class="video-thumb" src="${video.thumbnail}" alt="${video.title}" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=600&h=340&fit=crop&auto=format';" />
         <div class="play-btn">▶</div>
         <div class="video-duration">${video.duration}</div>
       </div>
@@ -238,7 +269,7 @@ function renderVideos(category) {
       videoCard.style.transition = 'all 0.6s cubic-bezier(0.4, 0, 0.2, 1)';
       videoCard.style.opacity = '1';
       videoCard.style.transform = 'translateY(0)';
-    }, index * 100);
+    }, index * 80);
   });
 }
 

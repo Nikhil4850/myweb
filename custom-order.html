@@ -10,7 +10,9 @@
   <title>Custom Order - Niksprojects Store</title>
   <link rel="stylesheet" href="css/style.css" />
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9595610341128742"crossorigin="anonymous"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800;900&display=swap" rel="stylesheet" />
   <link rel="icon" href="https://www.image2url.com/r2/default/images/1779624924249-8fddfa1a-b2c7-45f4-a6df-df81d01a2116.png" />
   <style>
     .co-page {
@@ -372,8 +374,7 @@
       <div class="footer-section">
         <h3>Company</h3>
         <ul>
-          <li><a href="about.html">About Us</a>
-    <a href="faq.html">FAQ</a></li>
+          <li><a href="about.html">About Us</a></li>
           <li><a href="blog.html">Blog</a></li>
           <li><a href="faq.html">FAQ</a></li>
           <li><a href="setup-guide.html">Setup Guide</a></li>
@@ -438,7 +439,11 @@
       })
       .catch(error => {
         console.error('EmailJS error:', error);
-        alert('Failed to send order.\n\n' + JSON.stringify(error));
+        this.reset();
+        document.querySelectorAll('.order-type-card').forEach(c => c.classList.remove('selected'));
+        document.getElementById('successModal').classList.add('active');
+        const msg = encodeURIComponent(`Hello NiksProjects, I would like to place a custom order.\nOrder Type: ${orderType}`);
+        window.open('https://wa.me/917058871972?text=' + msg, '_blank');
       });
   });
 

@@ -14,48 +14,10 @@
   <link rel="stylesheet" href="css/style.css" />
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9595610341128742"crossorigin="anonymous"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800;900&display=swap" rel="stylesheet" />
   <link rel="icon" href="https://www.image2url.com/r2/default/images/1779624924249-8fddfa1a-b2c7-45f4-a6df-df81d01a2116.png" />
   <style>
-    .search-bar-wrap {
-      max-width: 520px;
-      margin: 0 auto 1.5rem;
-    }
-    .search-bar {
-      display: flex;
-      align-items: center;
-      gap: 0.6rem;
-      background: var(--surface2);
-      border: 1px solid var(--border);
-      border-radius: 50px;
-      padding: 0.65rem 1.2rem;
-      transition: border-color 0.25s, box-shadow 0.25s;
-    }
-    .search-bar:focus-within {
-      border-color: var(--primary);
-      box-shadow: 0 0 0 3px rgba(99,102,241,0.15);
-    }
-    .search-icon { font-size: 1rem; flex-shrink: 0; opacity: 0.6; }
-    .search-bar input {
-      flex: 1;
-      background: none;
-      border: none;
-      outline: none;
-      color: var(--text);
-      font-size: 0.95rem;
-      font-family: inherit;
-    }
-    .search-bar input::placeholder { color: var(--muted); }
-    .search-clear {
-      background: none;
-      border: none;
-      color: var(--muted);
-      cursor: pointer;
-      font-size: 0.85rem;
-      padding: 0 0.2rem;
-      line-height: 1;
-    }
-    .search-clear:hover { color: var(--text); }
     .no-results {
       grid-column: 1 / -1;
       text-align: center;
@@ -122,7 +84,6 @@
       <label>Filter:</label>
       <div class="filter-buttons">
         <button class="filter-btn active" data-filter="all">All</button>
-        <button class="filter-btn" data-filter="available">Available</button>
         <button class="filter-btn" data-filter="free">₹99</button>
         <button class="filter-btn" data-filter="popular">🔥 Popular</button>
         <button class="filter-btn" data-filter="3d">✨ 3D Projects</button>
@@ -133,8 +94,8 @@
       <label>Sort by:</label>
       <select class="sort-select" id="sortSelect">
         <option value="default">Default</option>
-        <option value="price-low-high">Price: Low to High</option>
         <option value="price-high-low">Price: High to Low</option>
+        <option value="price-low-high">Price: Low to High</option>
       </select>
     </div>
   </div>

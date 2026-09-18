@@ -73,31 +73,23 @@ function addPageTransitions() {
 function addMobileMenu() {
   const nav = document.querySelector('nav');
   const navLinks = document.querySelector('.nav-links');
-  
-  // Create mobile menu button
+  if (!nav || !navLinks) return;
+
+  if (nav.querySelector('.mobile-menu-btn')) return;
+
   const mobileMenuBtn = document.createElement('button');
   mobileMenuBtn.className = 'mobile-menu-btn';
+  mobileMenuBtn.setAttribute('aria-label', 'Toggle mobile menu');
   mobileMenuBtn.innerHTML = '☰';
-  mobileMenuBtn.style.cssText = `
-    background: none;
-    border: 1px solid var(--border-light);
-    color: var(--text);
-    font-size: 1.4rem;
-    cursor: pointer;
-    padding: 0.4rem 0.7rem;
-    border-radius: 8px;
-    line-height: 1;
-  `;
   
   nav.appendChild(mobileMenuBtn);
   
-  // Toggle mobile menu
-  mobileMenuBtn.addEventListener('click', () => {
-    navLinks.classList.toggle('mobile-open');
-    mobileMenuBtn.innerHTML = navLinks.classList.contains('mobile-open') ? '✕' : '☰';
+  mobileMenuBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    const isOpen = navLinks.classList.toggle('mobile-open');
+    mobileMenuBtn.innerHTML = isOpen ? '✕' : '☰';
   });
   
-  // Close mobile menu when clicking outside
   document.addEventListener('click', (e) => {
     if (!nav.contains(e.target) && navLinks.classList.contains('mobile-open')) {
       navLinks.classList.remove('mobile-open');
@@ -105,13 +97,25 @@ function addMobileMenu() {
     }
   });
 
-  // Close mobile menu when a nav link is tapped
   navLinks.querySelectorAll('a').forEach(link => {
     link.addEventListener('click', () => {
       navLinks.classList.remove('mobile-open');
       mobileMenuBtn.innerHTML = '☰';
     });
   });
+}
+
+// Add Floating WhatsApp button
+function addWhatsAppFloatingBtn() {
+  if (!document.body || document.querySelector('.wa-float')) return;
+  const wa = document.createElement('a');
+  wa.href = 'https://wa.me/917058871972?text=Hello%2C%20I%20want%20to%20inquire%20about%20NiksProjects%20services.';
+  wa.target = '_blank';
+  wa.rel = 'noopener noreferrer';
+  wa.className = 'wa-float';
+  wa.setAttribute('aria-label', 'Chat on WhatsApp');
+  wa.innerHTML = `<svg viewBox="0 0 32 32" fill="currentColor"><path d="M16 2a13.9 13.9 0 0 0-12 20.8L2 30l7.4-1.9A13.9 13.9 0 1 0 16 2zm0 25.5c-2.3 0-4.5-.6-6.4-1.8l-.5-.3-4.4 1.1 1.2-4.3-.3-.5A11.6 11.6 0 1 1 16 27.5zm6.4-8.7c-.3-.2-2-.9-2.3-1-.3-.1-.5-.2-.7.2s-.8 1-.9 1.2c-.1.2-.3.2-.6.1-.3-.1-1.3-.5-2.5-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.1.2-.3.3-.4.1-.2 0-.4 0-.5s-.7-1.7-1-2.3c-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4s-1.2 1.2-1.2 2.8 1.2 3.2 1.4 3.4c.2.2 2.4 3.7 5.9 5.2.8.4 1.5.6 2 .8.8.2 1.6.2 2.2.1.7-.1 2.1-.8 2.4-1.7.3-.9.3-1.6.2-1.7-.1-.2-.3-.2-.6-.4z"/></svg>`;
+  document.body.appendChild(wa);
 }
 
 // Add loading states for buttons
@@ -164,10 +168,25 @@ function addScrollAnimations() {
   });
 }
 
+// Add ambient glass background light orbs
+function addGlassOrbs() {
+  if (!document.body || document.querySelector('.glass-orb')) return;
+  const container = document.createElement('div');
+  container.className = 'glass-orbs-container';
+  container.innerHTML = `
+    <div class="glass-orb glass-orb-1"></div>
+    <div class="glass-orb glass-orb-2"></div>
+    <div class="glass-orb glass-orb-3"></div>
+  `;
+  document.body.prepend(container);
+}
+
 // Initialize all enhancements
 document.addEventListener('DOMContentLoaded', () => {
+  addGlassOrbs();
   addLoadingStates();
   addScrollAnimations();
+  addWhatsAppFloatingBtn();
 });
 
 // Add keyboard navigation support

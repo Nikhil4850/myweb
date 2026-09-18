@@ -1,7 +1,7 @@
 // Enhanced main.js with loading states, filtering, sorting and search
 const grid = document.getElementById('projectsGrid');
 let currentFilter = 'all';
-let currentSort = 'price-low-high';
+let currentSort = 'price-high-low';
 let searchQuery = '';
 
 // Ensure projects are loaded
@@ -14,16 +14,16 @@ function initializeProjects() {
     projectsSection.style.opacity = '1';
     projectsSection.style.visibility = 'visible';
   }
-  
+
   if (typeof projects !== 'undefined' && projects && projects.length > 0) {
     console.log('Projects loaded:', projects.length, 'projects');
     filteredProjects = [...projects];
-    filteredProjects.sort((a, b) => a.price - b.price);
+    filteredProjects.sort((a, b) => b.price - a.price);
     renderProjects();
     setupEventListeners();
     setupSearch();
     const sortSelect = document.getElementById('sortSelect');
-    if (sortSelect) sortSelect.value = 'price-low-high';
+    if (sortSelect) sortSelect.value = 'default';
   } else {
     console.error('Projects not available');
     const grid = document.getElementById('projectsGrid');
@@ -113,16 +113,16 @@ function applyFiltersAndSearch() {
 // Sort projects
 function sortProjects(sortOption) {
   currentSort = sortOption;
-  
+
   if (sortOption === 'price-low-high') {
     filteredProjects.sort((a, b) => a.price - b.price);
   } else if (sortOption === 'price-high-low') {
     filteredProjects.sort((a, b) => b.price - a.price);
   } else {
-    // Default order - sort by price low to high
-    filteredProjects.sort((a, b) => a.price - b.price);
+    // Default order - sort by price high to low
+    filteredProjects.sort((a, b) => b.price - a.price);
   }
-  
+
   renderProjects();
 }
 
@@ -210,14 +210,14 @@ function renderProjects() {
 // Setup event listeners for filters and sorting
 function setupEventListeners() {
   document.querySelectorAll('.filter-btn').forEach(btn => {
-    btn.addEventListener('click', function() {
+    btn.addEventListener('click', function () {
       document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
       this.classList.add('active');
       filterProjects(this.dataset.filter);
     });
   });
-  
-  document.getElementById('sortSelect').addEventListener('change', function() {
+
+  document.getElementById('sortSelect').addEventListener('change', function () {
     sortProjects(this.value);
   });
 }
@@ -228,14 +228,14 @@ function setupSearch() {
   const clearBtn = document.getElementById('searchClear');
   if (!input) return;
 
-  input.addEventListener('input', function() {
+  input.addEventListener('input', function () {
     searchQuery = this.value.toLowerCase().trim();
     clearBtn.style.display = searchQuery ? 'block' : 'none';
     showingAll = false;
     applyFiltersAndSearch();
   });
 
-  clearBtn.addEventListener('click', function() {
+  clearBtn.addEventListener('click', function () {
     input.value = '';
     searchQuery = '';
     this.style.display = 'none';
@@ -251,6 +251,7 @@ function resetFilters() {
   searchQuery = '';
   showingAll = false;
   filteredProjects = [...projects];
+  filteredProjects.sort((a, b) => b.price - a.price);
 
   document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
   document.querySelector('.filter-btn[data-filter="all"]').classList.add('active');
@@ -336,7 +337,7 @@ const observer = new IntersectionObserver((entries) => {
 document.addEventListener('DOMContentLoaded', () => {
   // Initialize projects first
   initializeProjects();
-  
+
   // Ensure projects section stays visible
   setTimeout(() => {
     const projectsSection = document.getElementById('projects');
@@ -346,7 +347,7 @@ document.addEventListener('DOMContentLoaded', () => {
       projectsSection.style.transform = 'none';
     }
   }, 100);
-  
+
   document.querySelectorAll('.section').forEach(section => {
     // Skip the projects section and the hero to avoid conflicts
     if (section.id === 'projects' || section.classList.contains('hero')) return;
